@@ -15,7 +15,7 @@ public class Calculator {
 	// 매개변수: 숫자 두 개를 매개변수의 인자로 전달받아 -> int num, int num2
 	// num1+num2 => int
 	int add(int num1, int num2) {
-		return num1+ num2;
+		return num1 + num2;
 	}
 	
 	// ② 숫자 두 개를 매개변수의 인자로 전달받아 빼기 메소드를 추가합시다.
