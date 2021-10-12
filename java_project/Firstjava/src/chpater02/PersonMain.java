@@ -3,23 +3,23 @@ package chpater02;
 public class PersonMain {
 	public static void main(String[] args) {
 	
-		//Person Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½º »ı¼º
+		//Person í´ë˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
 		Person p =new Person();
 		
-		//°ª ÀúÀåÇÏ±â
-		//p.memberName ="Á¤Áö¿ø";
-		p.setMemberName("Á¤Áö¿ø");
+		//ê°’ ì €ì¥í•˜ê¸°
+		//p.memberName ="ì •ì§€ì›";
+		p.setMemberName("ì •ì§€ì›");
 		p.setPhoneNum("010-2222-3333");
-		p.setJuminNum(9901011111112L);//LºÙ¿©Áà¾ßÇÔ
+		p.setJuminNum(9901011111112L);//Lë¶™ì—¬ì¤˜ì•¼í•¨
 		
-		//ÇÏ³ªÇÏ³ª °ÙÇØ¼­ Ãâ·ÂÇÒ‹š
-		System.out.println("ÀÌ¸§:"+p.getMemberName());
-		System.out.println("ÀüÈ­¹øÈ£:"+p.getPhoneNum());
-		System.out.println("ÁÖ¹Î¹øÈ£:"+p.getJuminNum());
+		//í•˜ë‚˜í•˜ë‚˜ ê²Ÿí•´ì„œ ì¶œë ¥í• ë–„
+		System.out.println("ì´ë¦„:"+p.getMemberName());
+		System.out.println("ì „í™”ë²ˆí˜¸:"+p.getPhoneNum());
+		System.out.println("ì£¼ë¯¼ë²ˆí˜¸:"+p.getJuminNum());
 		
 		
 		System.out.println("--------------------------------");
-		//¸ğµçÁ¤º¸¸¦ ¸Ş¼Òµå·Î Ãâ·ÂÇÒ¶§ 
+		//ëª¨ë“ ì •ë³´ë¥¼ ë©”ì†Œë“œë¡œ ì¶œë ¥í• ë•Œ 
 		p.printData();
 	}
 

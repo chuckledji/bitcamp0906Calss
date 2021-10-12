@@ -1,77 +1,38 @@
 package chpater02;
 
 public class Member2 {
-	// º¯¼ö = ÀúÀå°ø°£À» »ý¼ºÇÑ´Ù
-	// º¯¼ö¸¦ ¼±¾ðÇÏ¸é ÀúÀå°ø°£(¸Þ¸ð¸®ÀÇ ÀúÀå°ø°£)ÀÌ »ý±â°í 
-	// ÀúÀå°ø°£ÀÇ ³í¸®°ªÁÖ¼Ò°¡ »ý±ä´Ù
-	// º¯¼ö¸¦ ¼±¾ðÇÏ°í ±× »ý±ä ÀúÀå°ø°£¿¡ °ªÀ» ÀÔ·ÂÇÏ°Ô µÇ´Â°Í
-	// ÀÔ·ÂÇÏ´Â µ¥ÀÌÅÍ¿¡ µû¶ó¼­ ÀúÀå°ø°£À» ±¸ºÐÇÏ´Â °ÍÀÌ°í ±×·¡¼­ ±âº»ÇüÅ¸ÀÔÀÌ Á¸Àç.(Á¤¼ö½Ç¼ö¹®ÀÚ³í¸®)
-	// º¯¼ö>¸Þ¸ð¸®°ø°£À» ¸¸µé°í Ã£¾Æ°¥ ¼ö ÀÖ´Â ÁÖ¼Ò>º¯¼öÂü°í>ÀÐ°í ¾²°íÇÏ°ÔµÇ´Â °Í
-	// Á¤º¸ÇÏ³ªÀúÀå = º¯¼ö / Å¸ÀÔ¿¡ ±¸¾Ö¹ÞÁö¾Ê°í ÀúÀå = Å¬·¡½º / °°ÀºÅ¸ÀÔÀ» ÀúÀå = ¹è¿­
 	
-	/*
-	¨ç String Å¸ÀÔÀÇ ÀÌ¸§À» ÀúÀåÇÒ ¼ö ÀÖ´Â º¯¼ö nameÀ» Á¤ÀÇÇØº¾½Ã´Ù.
-	¨è int Å¸ÀÔÀÇ ³ªÀÌ¸¦ ÀúÀåÇÒ ¼ö ÀÖ´Â º¯¼ö age¸¦ Á¤ÀÇÇØº¾½Ã´Ù.
-	¨é double Å¸ÀÔÀÇ Å°¸¦ ÀúÀåÇÒ ¼ö ÀÖ´Â º¯¼ö height¸¦ Á¤ÀÇÇØº¾½Ã´Ù.
-	¨ê boolean Å¸ÀÔÀÇ JAVAÃ¥ÀÇ º¸À¯ ¿©ºÎ¸¦ ÀúÀåÇÒ ¼ö ÀÖ´Â º¯¼ö hasBook¸¦ Á¤ÀÇÇØº¾½Ã´Ù.
-	¨ë ÀÌ¸§°ú ³ªÀÌ, Å°, Ã¥ÀÇ º¸À¯ ¿©ºÎ¸¦ Ãâ·ÂÇØº¾½Ã´Ù.
-	*/
+	String name;    //null, ì´ë¦„ì„ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
+	int age;        //ì‚¬ìš©ìžì˜ ë‚˜ì´ë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
+	double height;  //ì‚¬ìš©ìžì˜ í‚¤ë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
+	boolean hasBook;//ìžë°”ì±… ë³´ìœ  ì—¬ë¶€ë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
 	
-	// Å¬·¡½º Á¤ÀÇ
-	// [Á¢±ÙÁ¦¾îÀÚ] [final] Å¬·¡½º ÀÌ¸§ {}
-	// final = »ó¼ÓÀÌ ¾ÈµÈ´Ù´Â ¶æ. 
-	// {
-	//	 º¯¼öÁ¤ÀÇ
-	//	 ¸Þ¼Òµå Á¤ÀÇ
-	// }
-	// ÀÎ½ºÅÏ½ºº¯¼ö´Â ÀÚµ¿ÃÊ±âÈ­
-	// ÀÎ½ºÅÏ½º°æ¿ì´Â ÃÊ±âÈ­ÇÏÁö¾Ê¾ÆµµµÊ. Áö¿ªº¯¼ö´Â ÇØ¾ßÇÔ.
-	String name;    //null, ÀÌ¸§À» ÀúÀåÇÏ´Â º¯¼ö
-	int age;        //»ç¿ëÀÚÀÇ ³ªÀÌ¸¦ ÀúÀåÇÏ´Â º¯¼ö
-	double height;  //»ç¿ëÀÚÀÇ Å°¸¦ ÀúÀåÇÏ´Â º¯¼ö
-	boolean hasBook;//ÀÚ¹ÙÃ¥ º¸À¯ ¿©ºÎ¸¦ ÀúÀåÇÏ´Â º¯¼ö
-	
-	//È¸¿øÀÇ µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÏ´Â ¸Þ¼Òµå
 	void printData() {
-		System.out.println("ÀÌ¸§: " + name);
-		System.out.println("³ªÀÌ: " + age);
-		System.out.println("Å°: " + height);
-		System.out.println("ÀÚ¹Ù Ã¥ º¸À¯¿©ºÎ: " + hasBook);
+		System.out.println("ì´ë¦„: " + name);
+		System.out.println("ë‚˜ì´: " + age);
+		System.out.println("í‚¤: " + height);
+		System.out.println("ìžë°” ì±… ë³´ìœ ì—¬ë¶€: " + hasBook);
 	}
 	
-	//¨ë ÀÌ¸§°ú ³ªÀÌ, Å°, Ã¥ÀÇ º¸À¯ ¿©ºÎ¸¦ Ãâ·ÂÇØº¾½Ã´Ù.
 	public static void main(String[] args) {
 		
-		long jn = 9701011111111L; //literralÇØÁà¾ß int°¡ longÀ¸·Î º¯È¯µÊ.
+		long jn = 9701011111111L; //literralí•´ì¤˜ì•¼ intê°€ longìœ¼ë¡œ ë³€í™˜ë¨.
 		
 		
-		//Member Å¬·¡½º·Î ÀÎ½ºÅÏ½º¸¦ »ý¼º -> ÀÌ¸§, ³ªÀÌ, Å°, Ã¥º¸À¯¿©ºÎ ÀúÀåÇÒ ¼ö ÀÖ´Â ¸Þ¸ð¸®°ø°£À» »ý¼º
-		Member2 member = new Member2();//ÂüÁ¶ÇÏ±âÀ§ÇØ¼­! ¹Ø¿¡member.age´Â ÂüÁ¶º¯¼öÀÌ´Ù
-		
-		//ÀÎ½ºÅÏ½ºÀÇ º¯¼ö¸¦ ÂüÁ¶ÇØ¼­ Ãâ·Â
-//		System.out.println("ÀÌ¸§: " + member.name);
-//		System.out.println("³ªÀÌ: " + member.age);
-//		System.out.println("Å°: " + member.height);
-//		System.out.println("ÀÚ¹Ù Ã¥ º¸À¯¿©ºÎ: " + member.hasBook);
-		
+	   Member2 member = new Member2();//ì°¸ì¡°í•˜ê¸°ìœ„í•´ì„œ! ë°‘ì—member.ageëŠ” ì°¸ì¡°ë³€ìˆ˜ì´ë‹¤
+	
 		member.printData();		
 		
-		// ÀÎ½ºÅÏ½ºº¯¼öÀÇ °ªÀ» º¯°æ
-		member.name = "Á¤Áö¿ø";
+		member.name = "ì •ì§€ì›";
 		member.age = 27;
 		member.height = 169.7;
 		member.hasBook = false;
 				
 		System.out.println();
-		System.out.println("ÀÎ½ºÅÏ½ºº¯¼öÀÇ °ªÀ» º¯°æ");
+		System.out.println("ì¸ìŠ¤í„´ìŠ¤ë³€ìˆ˜ì˜ ê°’ì„ ë³€ê²½");
 		System.out.println();
 		
-//		System.out.println("ÀÌ¸§: " + member.name);
-//		System.out.println("³ªÀÌ: " + member.age);
-//		System.out.println("Å°: " + member.height);
-//		System.out.println("ÀÚ¹Ù Ã¥ º¸À¯¿©ºÎ: " + member.hasBook); //ÀÌ·¸°Ô Áßº¹µÇ´Â ÄÚµå¸¦ ¸Þ¼Òµå·Î Á¤¸®ÇØ¹ö¸®ÀÚ!
-		
-		// °øÅëÄÚµåµé -> ¸Þ¼Òµå·Î Á¤ÀÇ => Member Å¬·¡½º¿¡¼­ ¸Þ¼Òµå¸¦ Á¤ÀÇ
+
 		member.printData();		
 		
 	}
