@@ -10,17 +10,31 @@ public class Calculator {
 	int birthYear;
 	int age;
 	
-	//이름데이터를 받아서 초기화
-	Calculator(String userName, int year){
-		name = userName;
-		birthYear = year;
-		age =ageCal(year);
+	// shft alt s
+	
+	//이름데이터를 받아서 초기화하는 생성자
+	Calculator(String name, int birthyear){
+		this.name = name;
+		this.birthYear = birthyear;
+		age =ageCal(birthyear);//밑에 메소드를 받아서 사용할 수 있다
 	}
+	
+
 	Calculator(int year){
-		age = ageCal(year);
+		//age = ageCal(year);
+		this(null,year);
 	}
 	//기본생성자
 	Calculator(){}
+	
+	
+	//shft alt s using field에서 코드 만듦
+//	public Calculator(String name, int birthYear, int age) {
+//		
+//		this.name = name;
+//		this.birthYear = birthYear;
+//		this.age = age;
+//	}
 	
 	
 	Scanner scanner = new Scanner(System.in);
@@ -85,6 +99,9 @@ public class Calculator {
 		
 		public static void main(String[] args) {
 			Calculator member = new Calculator("james", 1979);
+			
+			new Calculator();//인스턴스 생성한것
+			new Calculator(1990);
 			
 			System.out.println("이름:"+member.name);
 			member.shot();
