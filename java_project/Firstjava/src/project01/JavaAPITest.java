@@ -27,6 +27,10 @@ public class JavaAPITest {
 		String str2 = str.replace("-", "");
 		System.out.println(str+"\n>");
 		System.out.println(str2);	
+		
+		int index = str.indexOf("-");
+		System.out.println(str.deleteCharAt(index));
+		
 	}
 	
 	
