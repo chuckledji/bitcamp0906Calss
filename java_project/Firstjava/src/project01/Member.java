@@ -3,10 +3,10 @@ package project01;
 import java.util.Scanner;
 
 public class Member {
+	public static final Scanner scanner = new Scanner(System.in);
 	
-	Scanner scanner = new Scanner(System.in);
 	
-	
+	//캡슐화처리
 	private String name;
 	private String phone;
 	private String email;
@@ -52,14 +52,12 @@ public class Member {
 		this.group = group;
 	}
 	
-	//기본생성자
+	
+	//생성자
 	Member(){}
 	
-	//매개변수 있는 생성자
-	Member(Scanner scanner, String name, String phone, String email, String adress, String birthday,
-			String group) {
+	public Member(String name, String phone, String email, String adress, String birthday, String group) {
 		
-		this.scanner = scanner;
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
@@ -67,61 +65,69 @@ public class Member {
 		this.birthday = birthday;
 		this.group = group;
 	}
-	
-	//연락처를 받고 반환하는 메소드
-		private String insertName() {
+	//입력 - 데이터저장
+		public void insertInfo() {
+			
+			
 			System.out.println("이름을 입력해주세요.");
 			System.out.println("> ");
-			setName(scanner.nextLine());
-		return name;	
-		}
-		private String insertPhone() {
+			this.setName(scanner.nextLine());
+			
 			System.out.println("전화번호를 입력해주세요.");
 			System.out.println("> ");
-			setPhone(scanner.nextLine());
-		return phone;
-		}
-		private String email() {
+			this.setPhone(scanner.nextLine());
+			
 			System.out.println("이메일을 입력해주세요.");
 			System.out.println("> ");
-			setEmail(scanner.nextLine());
-		return email;
-		}
-		private String adress() {
+			this.setEmail(scanner.nextLine());
+			
 			System.out.println("주소를 입력해주세요.");
 			System.out.println("> ");
-			setAdress(scanner.nextLine());
-		return adress;
-		}
-		private String birthday() {
+			this.setAdress(scanner.nextLine());
+			
 			System.out.println("생일을 입력해주세요.");
 			System.out.println("> ");
-			setBirthday(scanner.nextLine());
-		return birthday;
-		}
-		private String group() {
+			this.setBirthday(scanner.nextLine());
+			
 			System.out.println("그룹을 입력해주세요.");
 			System.out.println("> ");
-			setGroup(scanner.nextLine());
-		return group;			
+			this.setGroup(scanner.nextLine());
+			
+			System.out.println("입력 완료.");
+			
+			
 		}
 		
 		
-		//저장된 정보를 출력하는 메소드(변수값을 반환하는 메소드호출해서)
-		private void printList1() {
-			Member mem = new Member();
-			System.out.println("이름 :" + mem.getName());
-			System.out.println("전화번호 :" + mem.getPhone());
-			System.out.println("이메일 :" + mem.getEmail());
-			System.out.println("주소 :" + mem.getAdress());
-			System.out.println("생일 :" + mem.getBirthday());
-			System.out.println("그룹 :" + mem.getGroup());
+		//출력
+		public void printList1() {
+			System.out.println("----------------------------");
+			System.out.println("이름 :" + this.getName());
+			System.out.println("전화번호 :" + this.getPhone());
+			System.out.println("이메일 :" + this.getEmail());
+			System.out.println("주소 :" + this.getAdress());
+			System.out.println("생일 :" + this.getBirthday());
+			System.out.println("그룹 :" + this.getGroup());
+			System.out.println("----------------------------");
 		}
 		
+		//수정
+		public void update () {
+			System.out.println("----------------------------");
+			System.out.println("새로운 정보를 입력합니다.");
+			insertInfo();
+			System.out.println("정보 수정 완료.");
+			System.out.println("----------------------------");
+			printList1();
+		}
 		
-	
-	
-	
-	
-	
+	public static void main(String[] args) {
+		
+		Member mem = new Member();
+		
+		mem.insertInfo();
+		mem.printList1();
+		mem.update();
+		scanner.close();	
+	}
 }
