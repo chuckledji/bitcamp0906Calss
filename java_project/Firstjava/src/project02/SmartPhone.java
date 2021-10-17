@@ -49,8 +49,9 @@ public class SmartPhone {
 			
 			System.out.println("---------------------------");
 			
+			mem[numOfUser++] = new Member(m.getName(), m.getPhone(), m.getEmail(), m.getAdress(), m.getBirthday(), m.getGroup());//
 			//입력한 정보 출력
-			mem[numOfUser++] = m; //이렇게 하면 왜 안되는지 알고싶습니다!
+			
 			m.printOne(m);
 		
 	}
