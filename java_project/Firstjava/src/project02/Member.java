@@ -66,18 +66,7 @@ public class Member {
 		this.group = group;
 	}
 	
-		//출력
-		public void printOne(Member m) {
-			System.out.println("---------------------------");
-			System.out.println("이름 :" + m.getName());
-			System.out.println("전화번호 :" + m.getPhone());
-			System.out.println("이메일 :" + m.getEmail());
-			System.out.println("주소 :" + m.getAdress());
-			System.out.println("생일 :" + m.getBirthday());
-			System.out.println("그룹 :" + m .getGroup());
-			System.out.println("---------------------------");
-		}
-		
+	
 			
 		@Override
 		public String toString() {

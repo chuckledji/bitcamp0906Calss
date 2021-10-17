@@ -19,40 +19,40 @@ public class SmartPhone {
 	
 	//-저장(입력받아서)
 	public void insertInfo() {
-		Member m = new Member();
+		
 		System.out.println("---------------------------");
 			System.out.println("이름을 입력해주세요.");
 			System.out.println("> ");
-			m.setName(scanner.nextLine());
+			String name= scanner.nextLine();
 			
 			System.out.println("전화번호를 입력해주세요.");
 			System.out.println("> ");
-			m.setPhone(scanner.nextLine());
+			String phone=scanner.nextLine();
 			
 			System.out.println("이메일을 입력해주세요.");
 			System.out.println("> ");
-			m.setEmail(scanner.nextLine());
+			String email =scanner.nextLine();
 			
 			System.out.println("주소를 입력해주세요.");
 			System.out.println("> ");
-			m.setAdress(scanner.nextLine());
+			String adress =scanner.nextLine();
 			
 			System.out.println("생일을 입력해주세요.");
 			System.out.println("> ");
-			m.setBirthday(scanner.nextLine());
+			String birthday=scanner.nextLine();
 			
 			System.out.println("그룹을 입력해주세요.");
 			System.out.println("> ");
-			m.setGroup(scanner.nextLine());
+			String group=scanner.nextLine();
 			
 			System.out.println("입력 완료");
 			
 			System.out.println("---------------------------");
 			
-			mem[numOfUser++] = new Member(m.getName(), m.getPhone(), m.getEmail(), m.getAdress(), m.getBirthday(), m.getGroup());//
+			mem[numOfUser++] = new Member(name, phone,email,adress,birthday,group);//
 			//입력한 정보 출력
 			
-			m.printOne(m);
+			
 		
 	}
 	//-삭제 : 이름검색으로
