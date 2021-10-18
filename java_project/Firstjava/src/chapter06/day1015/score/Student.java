@@ -1,4 +1,4 @@
-package day1015.score;
+package chapter06.day1015.score;
 
 public class Student {
 	
@@ -61,11 +61,11 @@ public class Student {
 	}
 	
 	//오버라이딩
+	
 	@Override
 	public String toString() {
 		return name + "\t" + scoreKor + "\t" +scoreEng+"\t"+scoreMath+"\t"+getSum()+"\t"+getAvg(); 
 	}
-	
 	
 	
 }

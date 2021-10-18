@@ -1,4 +1,5 @@
-package day1015.score;
+package chapter06.day1015.score;
+
 
 public class ScoreMain1 {
 	public static void main(String[] args) {

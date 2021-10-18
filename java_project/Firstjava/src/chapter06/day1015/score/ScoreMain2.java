@@ -1,4 +1,4 @@
-package day1015.score;
+package chapter06.day1015.score;
 
 public class ScoreMain2 {
 	public static void main(String[] args) {
@@ -8,6 +8,7 @@ public class ScoreMain2 {
 		//사용자가 데이터입력/검색/출력/삭제/프로그램종료 를 선택한다!
 		
 		while (true) {
+			
 			
 			showMenu();
 			

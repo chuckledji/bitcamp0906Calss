@@ -6,6 +6,7 @@ public class SmartPhone {
 	//연락처 정보 관리하는 클래스
 	public static final Scanner scanner = new Scanner(System.in);
 	//배열-10개
+	
 	private Member[] mem;
 	private int numOfUser;
 	
@@ -64,9 +65,9 @@ public class SmartPhone {
 		
 		for(int i = 0; i<numOfUser; i++) {
 			//검색한 이름이 같으면
-			if( searchName == mem[i].getName()) {
+			if( searchName.equals(mem[i].getName())) {
 				//시프트
-				for(int j=-1; j<numOfUser-1; j++ ) {
+				for(int j=i; j<numOfUser-1; j++ ) {
 					mem[j] = mem [j+1];
 				}
 				System.out.println("사용자의 데이터가 삭제되었습니다.");
@@ -87,9 +88,10 @@ public class SmartPhone {
 		
 		for(int i = 0; i<numOfUser; i++) {
 			//검색한 이름이 같으면
-			if( searchName == mem[i].getName()) {
+			if(searchName.equals(mem[i].getName())) {
 				//시프트
 				System.out.println("데이터 수정을 위한 입력을 시작합니다.");
+				numOfUser--;
 				insertInfo();
 				System.out.println("사용자의 데이터가 수정되었습니다.");
 				System.out.println("---------------------------");

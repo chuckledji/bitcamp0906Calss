@@ -70,8 +70,8 @@ public class Member {
 			
 		@Override
 		public String toString() {
-			return "Member [name=" + name + ", phone=" + phone + ", email=" + email + ", adress=" + adress
-					+ ", birthday=" + birthday + ", group=" + group + "]";
+			return name + "\t" + phone + "\t" + email + "\t" + adress
+					+ "\t" + birthday + "\t" + group;
 		}
 		
 	}

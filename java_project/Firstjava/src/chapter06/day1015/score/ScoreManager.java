@@ -1,4 +1,4 @@
-package day1015.score;
+package chapter06.day1015.score;
 
 import java.util.Scanner;
 
@@ -13,11 +13,13 @@ public class ScoreManager {
 	private Student[] score;//외부에서 볼 수 없도록
 	private int numOfStudent;
 	
+	//생성자
 	public ScoreManager(int size) {
-		score = new Student[size];
+		score = new Student[size];//저장공간을 몇개 만들지 생성자를 통해서 만든다
 		numOfStudent =0;
 		
 	}
+
 	
 	public ScoreManager() {
 		this(10);//열개만들어지도록

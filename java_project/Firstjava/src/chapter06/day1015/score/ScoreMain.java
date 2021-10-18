@@ -1,4 +1,4 @@
-package day1015.score;
+package chapter06.day1015.score;
 
 public class ScoreMain {
 	public static void main(String[] args) {
@@ -17,12 +17,12 @@ public class ScoreMain {
 		score[numOfStudent] = s2;
 		numOfStudent++; //추가된 학생의 수를 +1증가
 				
-		
+		System.out.println(score[1]);
 		
 		//③배열에 저장된 Student 타입의 인스턴스의 메소드를 이용해서 모든 데이터를 출력해봅시다.
 		for(int i=0; i<numOfStudent;i++) {
 //			System.out.println(score[i].getScoreKor()+"\t"+score[i].getScoreEng()+"\t"+score[i].getScoreMath()+"\t"+score[i].getSum()+"\t"+score[i].getAvg());
-			System.out.println(score[i]); // score[i].toString()
+			System.out.println(score[i]); // score[i].toString()으로 출력을 해준다.
 		}
 		
 		// 데이터를 입력하면 =>배열에 저장을한다
