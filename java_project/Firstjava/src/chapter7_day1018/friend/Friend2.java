@@ -1,7 +1,6 @@
 package chapter7_day1018.friend;
 
-//추상클래스만들기: 추상메소드 생성
-public abstract class Friend {
+public class Friend2 {
 	//개인정보 프로그램
 	
 	//변수-정보를 저장
@@ -10,7 +9,7 @@ public abstract class Friend {
 	String adress;
 	
 	//생성자-저장 데이터의 초기화 
-	public Friend(String name, String phoneNumber, String adress) {
+	public Friend2(String name, String phoneNumber, String adress) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.adress = adress;
@@ -24,6 +23,6 @@ public abstract class Friend {
 	}
 	
 	//메소드2-오버라이딩 목적
-	//public void showBasicInfo() {}
-	public abstract void showBasicInfo();
+	public void showBasicInfo() {}
+	
 }
