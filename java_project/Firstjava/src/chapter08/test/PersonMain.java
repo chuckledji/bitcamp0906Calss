@@ -5,15 +5,13 @@ package chapter08.test;
 public class PersonMain {
 	 public static void main(String[] args) {
 		
-		Person p1 = new Male("큰남자", "880606-1035647");
-		Person p2 = new Female("큰여자", "960205-2065735");
-		Person p3 = new Male("작은남자", "050606-1035647");
-		Person p4 = new Female("작은여자", "100205-2065735");
+		Person p1 = new Male("사람1", "880606-1035647");
+		Person p2 = new Female("사람2", "960205-4065735");
+		
 		 
 		 p1.sayHi();
 		 p2.sayHi();
-		 p3.sayHi();
-		 p4.sayHi();
+		
 		 
 		 
 	}

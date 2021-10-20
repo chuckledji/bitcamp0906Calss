@@ -15,8 +15,8 @@ public class Person {
 	
 	
 	//생성자
-	public Person() {}
-	public Person(String name, String JuminNum) {
+	
+	public Person(String name, String juminNum) {
 		this.name = name;
 		this.juminNum = juminNum;
 	}
