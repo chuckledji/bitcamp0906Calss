@@ -2,6 +2,7 @@ package chapter10;
 
 import java.util.Scanner;
 
+//if문으로 오류 잡기
 public class ExceptionTest1 {
 	
 	public static void main(String[] args) {
