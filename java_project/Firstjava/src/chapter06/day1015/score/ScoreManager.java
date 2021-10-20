@@ -1,22 +1,22 @@
 package chapter06.day1015.score;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+// 2021:10:20 배열을 ArrayList로변경
 public class ScoreManager {
-	//배열을 가지고있고, 
-	//배열에서 요소를 추가하고, 검색하고, 삭제하는 기능을 가진 클래스
 	
 	public static final Scanner sc = new Scanner(System.in);
 	
 	
-	//배열의 저장공간만들기
-	private Student[] score;//외부에서 볼 수 없도록
-	private int numOfStudent;
-	
+	private List<Student> score;
+
 	//생성자
 	public ScoreManager(int size) {
-		score = new Student[size];//저장공간을 몇개 만들지 생성자를 통해서 만든다
-		numOfStudent =0;
+		
+		score = new ArrayList<Student>(size);
+	
 		
 	}
 
@@ -33,32 +33,34 @@ public class ScoreManager {
 		System.out.println("이름\t국어\t영어\t수학\t총점\t평균");
 		System.out.println("------------------------------------");
 		
-		for(int i=0; i<numOfStudent; i++) { //numOfStudent의 역할 눈여겨보기
-			System.out.println(score[i]);
+		for(Student s : score) {
+			System.out.println(s);
 		}
 		System.out.println("------------------------------------");
 	}
 		
 	//데이터추가 : 배열의 요소로 추가 => Student타입의 참조값
+	//List에 요소 추가
 	public void insertScore(Student s) {
-		score[numOfStudent++] = s;
+		
+		score.add(s);
+		//score[numOfStudent++] = s;
 		//score[numOfStudent] = s;
 		//numOfStudent++;//원래 이렇게 했는데 그냥 위에 해도 된다
 	}
 	
 	//데이터검색 : 이름기준검색 => 배열의 요소들 중 이름(검색어)을 비교
 	public void searchData() {
-		
-		System.out.println("검색하고자하는학생의 이름을 입력해주세요.");
+		System.out.println("검색하고자하는 학생의 이름을 입력해주세요");
 		String name = sc.nextLine();
 		
-		//값이 없으면 -1또는 배열범위안의 정수(0~n-1)가 나올것
+		//-1또는 배열 범위 안의 정수 0~N-1
 		int index = searchIndex(name);
 		
 		if(index>-1) {
-			System.out.println(score[index]);
+			System.out.println(score.get(index));
 		}else {
-			System.out.println("검색하신이름의 데이터가 존재하지않습니다.");
+			System.out.println("검색하신 이름의 데이터가 존재하지 않습니다.");
 		}
 		
 		
@@ -77,13 +79,17 @@ public class ScoreManager {
 		System.out.println("삭제하고자하는학생의 이름을 입력해주세요.");
 		String name = sc.nextLine();
 		
+		
 		int index = searchIndex(name);
+		
 		//시프트 = 참조값을지운다->정보삭제
 		if(index >-1) {
-			for(int i = index; i<numOfStudent-1; i++) {
-				score [i] = score[i+1];
-			}
-			numOfStudent--;//데이터가 사라졌으니 학생수도 줄어야하는것
+			System.out.println("검색하진 이름의 데이터가 존재하지");
+//			for(int i = index; i<numOfStudent-1; i++) {
+//				score [i] = score[i+1];
+//			}
+//			numOfStudent--;//데이터가 사라졌으니 학생수도 줄어야하는것
+			score.remove(index);
 			System.out.println("데이터가 삭제되었습니다.");
 		}else {
 			System.out.println("검색한 이름의 데이터가 존재하지 않습니다.");

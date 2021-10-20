@@ -37,9 +37,9 @@ public class member {
 		try {
 			birthYear =getBirthYear();
 			System.out.println("입력하신 생년은 "+birthYear+"입니다.");
-		}catch(InputMismatchException b) {
+		}catch(InputMismatchException e) {
 			System.out.println("1900년 이후~2021사이 숫자만 입력해주세요");
-			b.getMessage();
+			e.getMessage();
 		}
 		
 		
