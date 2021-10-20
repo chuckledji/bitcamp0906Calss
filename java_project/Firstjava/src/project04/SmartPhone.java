@@ -141,7 +141,7 @@ public class SmartPhone {
 		System.out.println("모든 정보를 출력합니다.");
 		System.out.println("---------------------------");
 		for(int i =0; i<numOfUser; i++) {
-			con[i].printOne();;
+			con[i].showData();;
 		}
 		System.out.println("---------------------------");
 		

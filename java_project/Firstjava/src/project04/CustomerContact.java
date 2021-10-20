@@ -59,9 +59,15 @@ public class CustomerContact extends Contact {
 	
 	//출력메소드 오버라이딩
 	@Override
-	public void printOne() {
+	public void showData() {
 		
-		super.printOne();
+		System.out.println("----------------------------");
+		System.out.println("이름 :" + getName());
+		System.out.println("전화번호 :" + getPhone());
+		System.out.println("이메일 :" + getEmail());
+		System.out.println("주소 :" + getAdress());
+		System.out.println("생일 :" + getBirthday());
+		System.out.println("그룹 :" + getGroup());
 		System.out.println("거래처 회사이름 :" + customerCompName);
 		System.out.println("거래품목 :" + item);
 		System.out.println("직급 :" + position);

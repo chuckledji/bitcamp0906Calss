@@ -74,16 +74,6 @@ public abstract class Contact implements ShowData{
 		this.group = group;
 	}
 	
-	public void printOne() {
-		System.out.println("----------------------------");
-		System.out.println("이름 :" + name);
-		System.out.println("전화번호 :" + phone);
-		System.out.println("이메일 :" + email);
-		System.out.println("주소 :" + adress);
-		System.out.println("생일 :" + birthday);
-		System.out.println("그룹 :" + group);
-		
-	}
 	
 	public abstract void showData();
 	
