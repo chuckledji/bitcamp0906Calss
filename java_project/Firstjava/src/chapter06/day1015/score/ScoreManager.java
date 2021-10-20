@@ -17,7 +17,6 @@ public class ScoreManager {
 		
 		score = new ArrayList<Student>(size);
 	
-		
 	}
 
 	
@@ -113,12 +112,12 @@ public class ScoreManager {
 	
 	private int searchIndex(String name) {
 		
-		int index =-1;//찾는 이름이없으면 -1로 나감
+		int index =-1;					//찾는 이름이없으면 -1로 나감
 		
-		for(int i=0; i<numOfStudent; i++) {
-			if(score[i].getName().equals(name)) {
+		for(int i=0; i<score.size(); i++) {
+			if(score.get(i).getName().equals(name)) {
 				index =i;
-				break;//이름을 찾으면 멈춤
+				break;					//이름을 찾으면 멈춤
 			}
 		}
 		return index;
