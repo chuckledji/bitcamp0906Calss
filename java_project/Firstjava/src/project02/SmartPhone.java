@@ -105,8 +105,6 @@ public class SmartPhone {
 	//-출력 : 모든정보출력
 	public void printAll() {
 		System.out.println("---------------------------");
-		System.out.println("정보 리스트를 출력합니다.");
-		System.out.println("---------------------------");
 		System.out.println("이름 \t 전화번호\t 이메일\t 주소\t 생일\t 그룹");
 		System.out.println("---------------------------");
 		for(int i =0; i<numOfUser; i++) {
