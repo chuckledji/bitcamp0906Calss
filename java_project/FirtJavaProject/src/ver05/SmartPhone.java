@@ -29,7 +29,7 @@ public class SmartPhone {
 		System.out.println("이름: > ");
 		String name =getString();
 		System.out.println("전화번호: > ");
-		String phoneNumber =getString();
+		String phoneNumber =checkPhoneNumber();
 		
 		if(checkPhoneNumber(phoneNumber)) {
 			System.out.println("존재하는 전화번호입니다. 다시 입력해주세요.");
