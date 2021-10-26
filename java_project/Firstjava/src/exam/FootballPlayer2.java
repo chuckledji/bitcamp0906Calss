@@ -1,12 +1,15 @@
 package exam;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 
-public class FootballPlayer2 {
+public class FootballPlayer2 implements Comparable<FootballPlayer2>, Serializable{
 	String name; 
     int number; 
     String team; 
@@ -49,19 +52,20 @@ public class FootballPlayer2 {
 	}
 	
 	//3.TreeSet을 위한 오버라이드//////////////////////////////////////////////
-	
+
+	@Override
 	public int compareTo(FootballPlayer2 o) {
 		int result = this.team.compareTo(o.team);
 		
-		if(result ==0) {							//이름이 같다면
+		if(result ==0) {							//팀이 같다면
 			result = this.name.compareTo(o.name);	
-			if(result == 0) {						//번호가 같다면
-				result = this.number - o.number;
+			if(result == 0) {						//이름이 같다면
+				result = this.number - o.number;	//번호가 큰쪽이 양수, 작은쪽이 음수
 			}
 		}
 		return result;
 	}
-
+	
     /////////////////////////////////////////////////////////////////////
     
     public static void main(String[] args) {
@@ -125,8 +129,37 @@ public class FootballPlayer2 {
         	System.out.println(titr.next());
         }
         System.out.println("------------------");
-        System.out.println("문제4");
+        System.out.println("문제4 출력1");
+        
+     //4.축구선수의 번호를 key로 하고 
+        //축구선수 인스턴스를 저장하는 Map<K,V> 인스턴스를 이용해서 프로그램을 만들어봅시다.
+        
+        //인스턴스생성
+        HashMap<Integer, FootballPlayer2> mapPlayer = new HashMap<Integer, FootballPlayer2>();
+        
+        //인스턴스저장
+        mapPlayer.put(1, new FootballPlayer2("사람1", 1, "팀1", 10));
+        mapPlayer.put(4, new FootballPlayer2("사람1", 4, "팀6", 20));
+        mapPlayer.put(7, new FootballPlayer2("사람5", 7, "팀1", 30));
+        
+        //인스턴스출력
+        //키값을 셋으로 바꿔준다.
+        Iterator<Integer> mitr = mapPlayer.keySet().iterator();
+        while(mitr.hasNext()) {
+        	System.out.println(mapPlayer.get(mitr.next()));
+        }
+        System.out.println("------------------");
+        System.out.println("문제4 출력2");
+        
+        //인스턴스출력
+        for(Map.Entry<Integer, FootballPlayer2> e : mapPlayer.entrySet()) {
+        	System.out.println("[" +e.getKey()+ " , " +e.getValue()+ "]");
+        }
+        
+        
 	}
+
+	
 
 
 	

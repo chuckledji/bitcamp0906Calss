@@ -1,12 +1,12 @@
 package chapter11;
 
 
-
+import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class LinkedList {
+public class LinkedListTest {
 	public static void main(String[] args) {
 		
 		//ArrayList<Integer> list = null;
