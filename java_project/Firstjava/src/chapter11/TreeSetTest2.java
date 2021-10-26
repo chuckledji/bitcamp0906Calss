@@ -11,7 +11,7 @@ public class TreeSetTest2 {
 		set.add(new Person("LEE", 20));
 		set.add(new Person("Park", 40));
 		
-		Iterator<Person> = set.iterator();
+		Iterator<Person> itr = set.iterator();
 		while(itr.hasNext()) {
 			System.out.println(itr.next());
 		}
