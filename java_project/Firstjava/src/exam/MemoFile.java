@@ -7,13 +7,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class MemoFile {
-	private static int fileNum;	//파일의 개수
-	private static String[] memoList;
+	
+	private static List<String> memoList = new ArrayList<String>();
 	final static Scanner scanner = new Scanner(System.in);
 
 	
@@ -27,12 +29,12 @@ public class MemoFile {
 	//1.메모목록을 출력하는 메소드
 	public static void printMemoList() {
 		
-		if (fileNum==0) {					//메모가 등록되지 않았을 경우
+		if (memoList.size()==0) {					//메모가 등록되지 않았을 경우
 			System.out.println("아직 등록된 메모가 존재하지 않습니다.");
 		}else {
-			for(int i=0; i<fileNum; i++) {
+			for(int i=0; i<memoList.size(); i++) {
 				System.out.print("["+(i+1)+"]");
-				System.out.println(memoList[i]);
+				System.out.println(memoList.get(i));
 			}
 		}
 	}
@@ -41,17 +43,17 @@ public class MemoFile {
 	//2-1.선택한번호의 메모장이름을 불러와 그 메모장 파일을 출력하는 메소드
 	public static void findMemoName() throws IOException {
 		
-		if(fileNum==0) {					//메모가 등록되지 않았을 경우
+		if(memoList.size()==0) {					//메모가 등록되지 않았을 경우
 			System.out.println("아직 등록된 메모가 존재하지 않습니다.");
 		}else {
 			System.out.println("볼 메모장의 번호를 선택하세요.> ");
-			int memoNum = scanner.nextInt();
-			
+			int memoNum = Integer.parseInt(scanner.nextLine());
 			//선택한 번호에 맞는 메모장이름을 불러온다.
-			for(int i=0; i<fileNum; i++) {
+			for(int i=0; i<memoList.size(); i++) {
 				if(memoNum == i+1) {
-					String fileName = memoList[i];
-					readFile(fileName);
+					String fileName = memoList.get(i);
+					System.out.println(fileName);
+					//readFile(fileName);
 					break;
 				}else {
 					System.out.println("자료가 존재하지 않습니다.");
@@ -105,11 +107,11 @@ public class MemoFile {
 		out.close();
 		System.out.println("입력이 완료 되었습니다.");
 										
-		String fileName = (strDate +" " + title + ".txt");
-		System.out.println(fileName);
+		String fileName = String.valueOf(strDate + " " + title + ".txt");
+		System.out.println(fileName+" 파일 생성");
+		
 		//리스트에 메모파일 이름을 저장한다.
-		memoList[fileNum++] = fileName;
-		System.out.println("테스트성공2");
+		memoList.add(fileName);
 		
 		
 	}
