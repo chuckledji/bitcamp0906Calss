@@ -49,7 +49,11 @@ select last_day(sysdate) from dual;        --해당 월의 마지막일자
 
 --변환함수
 --날짜 > 문자 to_char(원본, 패턴)
+select to_char(sysdate, 'YYYY.MM.DD. day dy AM PM HH HH24:MI:ss') from dual;
+-- 2021.10.29. 13:00
+select to_char(sysdate, 'YYYY-MM-DD HH24:MI') from dual;
 
+select hiredate, to_char(hiredate, 'YYYY.MM.DD.') from emp;
 
 --숫자 > 문자 to_char(원본, 패턴)
 select to_char(sysdate,'YYYY.MM day dy AM PM HH HH24:MI:ss')from dual;
