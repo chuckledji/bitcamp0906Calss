@@ -110,9 +110,123 @@ truncate table emp02;    --삭제와 동시에 commit : 바로 물리적인 반�
 rename emp02 to test;
 
 
+------------------------------------------------------------------------
+
 --제약조건확인
 desc dept;
 insert into dept (deptno, dname, loc) --실행 시 제약조건에 위배되었다는 내용이 출력된다.
        values(null,'test', 'SEOUL');
 
 
+--제약사항의 정의 : 컬럼레벨과 테이블레벨에서 정의 가능
+--컬럼레벨 : 컬럼정의 바로 뒤에 제약사항을 정의
+--사원 테이블과 유사한 구조의 사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된
+--EMP02 테이블을 생성하되
+--EMPNO와 EMPNAME 컬럼에 NOT NULL 제약 조건 설정
+drop table emp02;
+create table emp02(
+    empno number(4) not null unique,
+    ename VARCHAR2(20) not null,
+    job VARCHAR(20),
+    deptno number(2)    
+);
+desc emp02;
+insert into emp02 values (10,'test',null,null); --empno와 ename은 null허용X
+select * from emp02;
+
+--사원 테이블과 유사한 구조의 사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된 
+--EMP03 테이블을 생성하되 사원번호를 유일키로 지정합시다.
+drop table emp03;
+create table emp03(
+        empno number(4) constraint uq_emp03_empno unique , --emp03테이블의 empno컬럼의 제약조건이름
+        ename VARCHAR(20) not null,
+        job VARCHAR(9),
+        deptno number(3)
+        );
+select * from emp03;
+insert into emp03 values (1000,'test','manager',40);
+insert into emp03 values (1000,'test2','manager',40);
+
+
+--------------------------------------------------------------------------
+--기본키 제약조건
+drop table emp04;
+create table emp04(
+        empno number(4) constraint emp04_empno_pk primary key , --constraint emp04_empno_pk)생략가능
+        ename VARCHAR(20) not null,
+        job VARCHAR(9),
+        deptno number(3)
+        );
+desc emp04;
+select * from emp04;
+insert into emp04 values (1000,'test','manager',40);
+insert into emp04 values (1000,'test2','manager',40); --pk설정으로 unique제약조건실행
+insert into emp04 values (null,'test2','manager',40); --pk설정으로 null제약조건실행
+
+
+-------------------------------------------------------------------------
+--참조무결성
+--외래키 제약조건
+drop table emp05;
+create table emp05(
+        empno number(4) constraint emp05_empno_pk primary key , 
+        ename VARCHAR(20) not null,
+        job VARCHAR(9),
+        deptno number(3) constraint emp05_deptno_fk REFERENCES dept(deptno) --dept테이블의 deptno를 참조한다는 외래키이름
+        );
+desc emp05;
+select * from emp05;
+insert into emp05 values (1000,'test','manager',20);
+insert into emp05 values (1000,'test2','manager',40); 
+insert into emp05 values (4000,'test2','manager',60); --dept테이블의 deptno에 없는 부서번호로 오류
+
+
+--------------------------------------------------------------------------
+--체크제약
+drop table emp06;
+create table emp06(
+        empno number(4) constraint emp06_empno_pk primary key , 
+        ename VARCHAR(20) not null,
+        job VARCHAR(9),
+        --sal number(7,2) constraint emp06_sal_ck check(sal >= 500 and sal <= 5000),
+        sal number(7,2) constraint emp06_sal_ck check(sal between 500 and 5000),
+        --gender char(1) constraint emp06_gender_ck check(gender = 'M' or gender ='F'),
+        gender char(1) constraint emp06_gender_ck check(gender in('M','F')),    --체크제약조건
+        deptno number(3) constraint emp06_deptno_fk REFERENCES dept(deptno) 
+        );
+desc emp06;
+select * from emp06;
+insert into emp06 values (1000,'test','manager',3000,'M',20);
+insert into emp06 values (1000,'test','manager',200,'M',20); --salck오류
+insert into emp06 values (1000,'test','manager',3000,'T',20); --genderck오류
+
+
+--------------------------------------------------------------------------
+--default 디폴트
+drop table dept01;
+
+create table dept01(
+    deptno number(2),
+    dname varchar2(20),
+    loc VARCHAR(20) default 'SEOUL',    --아무값도 넣지 않을때 자동으로 나오는 값을 설정한다.
+    regdate date default sysdate
+);
+select * from dept01;
+insert into dept01(deptno,dname) values (10, 'test'); --이렇게 삽입도 가능
+insert into dept01(deptno,dname, loc) values (10, 'test','서울');
+insert into dept01(deptno,dname, loc, regate) values (10, 'test','서울', null);
+----------------------------------------------------------------------------
+--테이블레벨에서 제약조건
+--컬럼 정의후 제약조건정의
+--컬럼레벨에서 해야하는 것 -> not null, default
+drop table emp07;
+create table emp07(
+    empno number(4), --기본키
+    ename VARCHAR(20) not null,
+    sal number(7,2) check (sal between 300 and 9000),
+    deptno number(2),
+    ------------------
+    --제약조건정의
+    constraint emp07_empno_pk primary key( empno),
+    constraint emp07_empno_fk foreign key (deptno) references dept(deptno)
+    );
