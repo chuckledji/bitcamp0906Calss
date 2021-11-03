@@ -13,6 +13,8 @@ desc phoneInfo_basic;
 select * from phoneInfo_basic;
 drop table phoneInfo_basic;    
   
+  
+  
 create table phoneInfo_univ (
     idx number(6) primary key,
     fr_u_major VARCHAR2(20) default 'N' not null,
@@ -22,6 +24,8 @@ create table phoneInfo_univ (
 desc phoneInfo_univ;
 select * from phoneInfo_univ;
 drop table phoneInfo_univ;
+    
+    
     
 create table phoneInfo_com(
     idx NUMBER(6) PRIMARY KEY,
