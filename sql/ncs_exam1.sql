@@ -15,19 +15,22 @@
 --회사이름,부서이름,직급
 --모임이름,닉네임
 
+
 CREATE TABLE Contact(
-    idx number(6) constraint pi_contact_idx_PK primary key,
+    idx number(6) constraint contact_idx_PK primary key,
     c_name VARCHAR2(20) not null,
     c_phonenumber VARCHAR2(20) not null,
     c_address VARCHAR2(20) default 'N' not null,
-    c_email VARCHAR2(20) default 'N', not null
+    c_email VARCHAR2(20) default 'N' not null
 );
 
 create table Contact_Univ(
     idx number(6),
     c_u_major varchar2(20),
     c_u_year number(1) default 1 not null check(c_u_year between 1 and 4),
-    c_u_ref number(6) not null constraint pi_univ_ref_FK FOREIGN KEY(c_u_ref) REFERENCES Contact (idx) );
+    c_u_ref number(6) not null,
+    constraint univ_ref_FK FOREIGN KEY(c_u_ref) REFERENCES Contact (idx) 
+    );
     
     
 create table Contact_com(
@@ -35,12 +38,14 @@ create table Contact_com(
     c_c_compname varchar2(20),
     c_c_deptname varchar2(20),
     c_c_job varchar2(20),
-    c_c_ref number(6) not null constraint pi_com_ref_FK FOREIGN KEY(c_c_ref) REFERENCES Contact (idx) );
+    c_c_ref number(6) not null,
+    constraint com_ref_FK FOREIGN KEY(c_c_ref) REFERENCES Contact (idx) );
 
 create table Contact_cafe(
     c_cf_groupname varchar2(20),
     c_cf_nickname varchar2(20),
-    c_cf_ref number(6) not null constraint pi_cafe_ref_FK FOREIGN KEY(c_cf_ref) REFERENCES Contact (idx) );
+    c_cf_ref number(6) not null,
+    constraint cafe_ref_FK FOREIGN KEY(c_cf_ref) REFERENCES Contact (idx) );
     
     
 --2.) DEPT테이블에 데이터를 삽입하는 SQL을 작성하시오. 입력데이터는 임의로 작성하시오.
@@ -66,7 +71,7 @@ desc emp;
 --7.)사용자가 정의한 제약조건들을 확인하는 sql
 ----아래 요구사항에 맞도록 고급sql문작성
 --7.1-emp테이블의 ename컬럼에 인덱스를 생성하는 sql / 인덱스이름:emp_index
-
+create index emp_index on emp(ename);
 
 
 --7.2-emp테이블과 dept테이블을 조인하는 sql 기반 view객체생성 / view이름: emp_view
