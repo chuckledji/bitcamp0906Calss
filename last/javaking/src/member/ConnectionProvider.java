@@ -1,4 +1,4 @@
-package dept;
+package member;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,6 @@ public class ConnectionProvider {
 		String jdbcUrl1="jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "scott";
 		String pw = "tiger";
-		
 		
 		return DriverManager.getConnection(jdbcUrl1,user,pw);
 	}
