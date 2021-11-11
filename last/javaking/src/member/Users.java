@@ -3,8 +3,8 @@ package member;
 public class Users {
 
 	private int id;
-	private String userid;
 	private String username;
+	private String userid;
 	private String password;
 	private String address;
 	private String phone;
@@ -12,11 +12,11 @@ public class Users {
 	
 	
 	//생성자 초기화
-	public Users(int id, String userid, String username, String password, String address, String phone, String email) {
+	public Users(int id, String username, String userid, String password, String address, String phone, String email) {
 		
 		this.id = id;
-		this.userid = userid;
 		this.username = username;
+		this.userid = userid;
 		this.password = password;
 		this.address = address;
 		this.phone = phone;
@@ -39,16 +39,6 @@ public class Users {
 	}
 
 
-	public String getUserid() {
-		return userid;
-	}
-
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-
 	public String getUsername() {
 		return username;
 	}
@@ -56,6 +46,16 @@ public class Users {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+
+	public String getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 
@@ -101,7 +101,7 @@ public class Users {
 	//to String
 	@Override
 	public String toString() {
-		return  id + "\t" + userid + "\t" + username + "\t" + password + "\t"
+		return  id + "\t" + username + "\t" + userid + "\t" + password + "\t"
 				+ address + "\t" + phone + "\t" + email;
 	}
 
