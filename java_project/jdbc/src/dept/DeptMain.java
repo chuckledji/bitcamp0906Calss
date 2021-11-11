@@ -57,6 +57,10 @@ public static void main(String[] args) {
 			System.out.println("입력실패");
 		}
 		
+		
+		conn.commit();  // 완료
+		
+		
 		System.out.println("입력 결과 : "+ deptDao.selectByDeptno(conn, 50));
 		System.out.println("-----------------------");
 		
