@@ -42,7 +42,8 @@ ALTER TABLE users
 		PRIMARY KEY (
 			id
 		);
-delete from users where id != 0;      
+delete from users where id != 0;  
+delete from users where id >2;   
 --관리자 정보(회원번호 0 임의로 정함)
 insert into users values(0, 'manager', 'kingmanager', 'kingM1', '서울특별시 강남구 비트캠프', '010-0101-1010', 'jkmanager@gmail.com');  
 insert into users values(users_seq.nextval, 'tName1', 'tId1', 'tPw1', '서울특별시 강남구 비트캠프', '010-0101-1010', 'jkmanager@gmail.com');  
