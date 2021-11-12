@@ -72,6 +72,8 @@ public class RegisterView {
 					int sameinfo = regDao.sameInfo(conn, input, chk);
 						if(sameinfo == 1) {
 							System.out.println("이미 사용중인 아이디입니다. 다시 입력해주세요.");
+							//System.out.println("다시 입력해주시거나, 메인 메뉴로 돌아가려면 0을 눌러주세요. >");
+							
 						}else {
 							System.out.println(input+"은(는) 사용가능한 아이디입니다.");
 							break;
@@ -85,6 +87,7 @@ public class RegisterView {
 					int sameinfo = regDao.sameInfo(conn, input, chk);
 						if(sameinfo == 1) {
 							System.out.println("이미 사용중인 전화번호입니다. 다시 입력해주세요.");
+							//System.out.println("다시 입력해주시거나, 메인 메뉴로 돌아가려면 0을 눌러주세요. >");
 						}else {
 							System.out.println(input+"은(는) 사용가능한 전화번호입니다.");
 							break;

@@ -10,7 +10,7 @@ public class LoginMain {
 	    Connection conn;
 	    
 	    //입력메소드
-	    public void connect2() {
+	    public void logmain() {
 	        try {
 	            conn = ConnectionProvider.getConnection();
 	            //로그인화면

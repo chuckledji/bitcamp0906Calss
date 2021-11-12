@@ -10,11 +10,12 @@ public class LoginView {
 	
 	//로그인한다
 	public void login(Connection conn) {
-		
+		System.out.println("==================================================");
 		System.out.println("로그인을 시작합니다.");
 		System.out.println();
 		System.out.println("아이디를 입력하세요. >");
 		String id = sameId(conn);
+		//backtomenu하는 메소드 만들기
 		System.out.println("비밀번호를 입력하세요. >");
 		String pw = rightPw(conn, id);
 		
@@ -33,7 +34,8 @@ public class LoginView {
 			if(sameId == 1) {
 				break;	//존재하는 아이디가 맞으므로 while문에서 벗어난다.
 			}else {
-				System.out.println("존재하지 않는 아이디입니다. 다시 입력해주세요. >");
+				System.out.println("존재하지 않는 아이디입니다.");
+				//System.out.println("*다시 입력하시거나 메인메뉴로 돌아가려면 X를 눌러주세요. >");
 			}
 		}return inputId;
 	}
@@ -50,10 +52,21 @@ public class LoginView {
 				break;
 			}else {
 				System.out.println("맞는 비밀번호가 아닙니다. 다시 입력해주세요. >");
+				//System.out.println("*다시 입력하시거나 메인메뉴로 돌아가려면 X를 눌러주세요. >");
 			}
 		}return inputPw;
 				
 	}
+	
+	
+	//메인화면으로 돌아가는 메소드
+//	public void backToHome(String choice) {
+//		
+//		if(choice.equalsIgnoreCase("X")) {
+//			//메뉴로 돌아간다.
+//		}
+//		
+//	}
 	
 	
 	//주소 물어보는 메소드

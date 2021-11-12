@@ -13,7 +13,7 @@ public class RegisterMain {
     Connection conn;
     
     //입력메소드
-    public void connect() {
+    public void regmain() {
         try {
             conn = ConnectionProvider.getConnection();
             //회원정보입력
