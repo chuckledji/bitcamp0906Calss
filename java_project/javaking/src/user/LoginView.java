@@ -18,10 +18,8 @@ public class LoginView {
 		System.out.println();
 		System.out.println("아이디를 입력하세요. >");
 		String id = sameId(conn);
-		backToHome(id);
 		System.out.println("비밀번호를 입력하세요. >");
 		String pw = rightPw(conn, id);
-		backToHome(pw);
 		System.out.println("로그인 성공!\n");
 		logId = id;							//로그인에 성공한 아이디를 현 로그인상태 변수에 넣는다.
 		
@@ -44,8 +42,8 @@ public class LoginView {
 			if(sameId == 1) {
 				break;	//존재하는 아이디가 맞으므로 while문에서 벗어난다.
 			}else {
-				System.out.println("존재하지 않는 아이디입니다.");
-				System.out.println("*다시 입력하시거나 메인메뉴로 돌아가려면 X를 눌러주세요. >");
+				System.out.println("존재하지 않는 아이디입니다. 다시 입력해주세요 >");
+				
 			}
 		}return inputId;
 	}
@@ -65,23 +63,12 @@ public class LoginView {
 				break;
 			}else {
 				System.out.println("맞는 비밀번호가 아닙니다. 다시 입력해주세요. >");
-				System.out.println("*다시 입력하시거나 메인메뉴로 돌아가려면 X를 눌러주세요. >");
+			
 			}
 		}return inputPw;
 				
 	}
 
-	
-	
-	//메인화면으로 돌아가는 메소드
-	public void backToHome(String choice) {
-		
-		if(choice.equalsIgnoreCase("X")) {
-			StartUi.homeMenu();
-		}
-		
-	}
-	
 	
 	
 	
@@ -98,7 +85,7 @@ public class LoginView {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				uid = rs.getInt(1);	//매니저가 로그인한것이면 매니저의 고유번호 0이 들어갈 것이다.
+				uid = rs.getInt(1);	
 			}
 			
 		} catch (SQLException e) {

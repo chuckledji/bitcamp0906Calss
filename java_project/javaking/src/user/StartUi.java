@@ -13,11 +13,6 @@ public class StartUi {
 	
 	public static void home() {
 		System.out.println("JavaKing에 오신것을 환영합니다.");
-		homeMenu();
-		
-	}
-	
-	public static void homeMenu() {
 		RegisterMain regmain = new RegisterMain();
 		LoginMain logMain = new LoginMain();
 
@@ -48,10 +43,8 @@ public class StartUi {
 				System.out.println("존재하지 않는 메뉴입니다. \n다시 선택해주세요.");
 				
 			}	
-		}	
+		}
 	}
-	
-	
 	
 	
 }
