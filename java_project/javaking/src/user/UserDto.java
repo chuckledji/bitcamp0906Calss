@@ -1,6 +1,6 @@
-package member;
+package user;
 
-public class Users {
+public class UserDto {
 
 	private int id;
 	private String username;
@@ -12,7 +12,7 @@ public class Users {
 	
 	
 	//생성자 초기화
-	public Users(int id, String username, String userid, String password, String address, String phone, String email) {
+	public UserDto(int id, String username, String userid, String password, String address, String phone, String email) {
 		
 		this.id = id;
 		this.username = username;
@@ -25,10 +25,10 @@ public class Users {
 	
 	
 	//기본생성자(디폴트)
-	public Users() {}
+	public UserDto() {}
 	
 	//회원에게 출력할 용 생성자
-	public Users(String username, String userid, String password, String address, String phone, String email) {
+	public UserDto(String username, String userid, String password, String address, String phone, String email) {
 		
 		this.username = username;
 		this.userid = userid;
@@ -113,11 +113,12 @@ public class Users {
 	//to String
 	@Override
 	public String toString() {
-		return  username + "\t" + userid + "\t" + password + "\t"
-				+ address + "\t" + phone + "\t" + email;
+		return  "==================================================" + "\n회원번호 = " + id + "\n이름 = " + username
+	            + "\n아이디 = " + userid + "\n비밀번호 = " + password + "\n주소 = " + address + "\n전화번호 = " + phone + "\n이메일 = "
+	            + email;
 	}
 
-
+	
 	
 	
 	

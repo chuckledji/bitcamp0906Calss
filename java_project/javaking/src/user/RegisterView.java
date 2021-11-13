@@ -1,4 +1,4 @@
-package member;
+package user;
 
 
 import java.sql.Connection;
@@ -30,12 +30,12 @@ public class RegisterView {
 			System.out.println("이메일: >");			//그냥 넘어가도 되는지 확인하기
 			String email = getString();
 			
-			Users users = new Users(0, name, id, pw, address, phone, email);
+			UserDto users = new UserDto(0, name, id, pw, address, phone, email);
 			
 			int insertCnt = regDao.inputUsersDb(conn, users);	//입력된 값을 디비에 저장
 			
 			if(insertCnt > 0) {
-				System.out.println("회원가입 성공! 환영합니다!");
+				System.out.println("회원가입 성공! 환영합니다!\n");
 			}else {
 				System.out.println("입력 실패되었습니다.");
 			}

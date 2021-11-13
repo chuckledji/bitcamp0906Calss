@@ -1,4 +1,4 @@
-package member;
+package user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ public class RegisterDao {
 	
 		
 	//회원정보 DB생성메소드	users에 저장되어있는 값들을 불러와서 sql문에 대입해서 DB데이터를 생성한다.
-	public int inputUsersDb(Connection conn, Users users) {
+	public int inputUsersDb(Connection conn, UserDto users) {
 		PreparedStatement pstmt = null;
 		int resultCnt = 0;
 		
@@ -56,7 +56,7 @@ public class RegisterDao {
 			
 			//출력할 정보를 불러온다 (회원번호는 없음)
 			if(rs.next()) {
-				Users users = new Users(rs.getString(2), rs.getString(3), 
+				UserDto users = new UserDto(rs.getString(2), rs.getString(3), 
 						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
 				
 				//불러온 정보를 출력
