@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#btn{
+    
+    width: 150px;
+    height: 80px;
+
+    background-color: orangered;
+
+    /*버튼 중앙으로 옮기기(margin사용)*/
+    margin-top: 100px;
+    margin-left: 200px;
+
+    /*테두리 만들기*/
+    border: 8px solid rgb(5, 148, 5);
+    border-radius: 30%;
+
+}
+
+#btn>a{ /*a는 인라인*/
+
+    display: block; /*a가 인라인이었는데 블럭으로 바꿔서 정렬을 가운데로 할 수 있다. */
+
+    font-size: 200%;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    line-height: 80px; /*줄간격 (버튼의 높이와 같게 만든다.)*/
+
+    background-image: url('../doh1.png');
+    background-size: 80%;
+    /* background-attachment: fixed; */
+    background-repeat: no-repeat;
+    background-position: left; /*20px - 만큼 떨어지라는 뜻*/
+}
+
+#btn:hover{
+    border: 8px solid rgb(243, 49, 168);
+}
+
+#btn>a:hover{
+    color: springgreen;
+}

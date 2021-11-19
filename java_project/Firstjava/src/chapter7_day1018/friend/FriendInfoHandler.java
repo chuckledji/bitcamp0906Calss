@@ -7,9 +7,13 @@ public class FriendInfoHandler {
 	//배열에 데이터를 저장하고
 	//배열에 저장된 정보 데이터를 출력하는 메소드
 	
+	
+	
 	//배열-다형성을 이용
 	private Friend[] friends;
 	private int numOfFriends; //입력된 친구 정보의 개수, 배열의 index로 사용
+	
+	
 	
 	//배열 사이즈
 	FriendInfoHandler(int size){
@@ -20,6 +24,8 @@ public class FriendInfoHandler {
 		this(10);
 	}
 	
+	
+	
 	//메소드1-배열에 요소 입력 : Friend타입의 인스턴스를 참조하는 참조값을 받아서 배열에 추가
 	void addFriendInfo(Friend f) {
 		//다형성이용 -> 매개변수의 선언은 상위타입의 클래스타입으로 정의
@@ -27,6 +33,9 @@ public class FriendInfoHandler {
 		//Friend f = new UnivFriend();
 		friends[numOfFriends++] =f;
 	}
+	
+	
+	
 	
 	//메소드2-데이터를 사용자로부터 입력받아
 	//		Friend 클래스의 파생 클래스의 인스턴스를 생성,
@@ -62,6 +71,8 @@ public class FriendInfoHandler {
 		}
 	}
 	
+	
+	
 	//메소드3-모든정보출력
 	public void showAllData() {
 		System.out.println("친구정보를 모두 출력합니다.");
@@ -70,6 +81,9 @@ public class FriendInfoHandler {
 			System.out.println("-----------------");
 		}
 	}
+	
+	
+	
 	//메소드4-기본정보만출력
 	public void showAllSimpleData() {
 		System.out.println("친구의 기본정보를 모두 출력합니다.");

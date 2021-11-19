@@ -32,7 +32,7 @@ public class Array2 {
 		//행의쉬프트
 		System.out.println("시프트=============");
 		//임시배열선언
-		int [] temp = arr[arr.length-1];
+		int [] temp = arr[arr.length-1];	//마지막 행 배열을 의미
 		
 		for(int i = arr.length-1; i>0; i--) {//0까지 가면 작동안함 -1이되므로
 			arr[i] = arr[i-1];

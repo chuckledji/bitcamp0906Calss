@@ -24,38 +24,53 @@ public class Array {
 		int[][] arr3 = { { 1, 5, 67 }, { 23, 26, 6, 7, 4 }, { 3, 56, 7, 8, 9, 24, 64 } };
 		System.out.println("2차원배열출력");
 		addOneDArr(arr3, 10);
+		
+		
+		System.out.println("====================================");
+		//for-each
+		for(int i=0; i<arr.length; i++) {
+			System.out.println(arr[i]);
+		}
+		System.out.println("====================================");
+		for(int num : arr) {
+			System.out.println(num);
+		}
+		
 	}
 
-	public static void addOneDArr(int[][] arr, int add) {
+		public static void addOneDArr(int[][] arr, int add) {
 
-		// 출력
-		// 행
-		for (int i = 0; i < arr.length; i++) {
-			// 열
-			for (int j = 0; j < arr[i].length; i++) {
-				System.out.print(arr[i][j] + "\t");
+			// 2차원 배열의 출력
+			// 행
+			for (int i = 0; i < arr.length; i++) {
+				// 열
+				for (int j = 0; j < arr[i].length; j++) {
+					System.out.print(arr[i][j] + "\t");
+				}
+				System.out.println();
 			}
-			System.out.println();
-		}
 
-		// 매개변수로 전달받은 숫자를 각 요소에 더해준다
-		for (int i = 0; i < arr.length; i++) {
-			// 열
-			for (int j = 0; j < arr[i].length; i++) {
-				arr[i][j] += add;
+			// 매개변수로 전달 받은 숫자를 각 요소에 더해준다.
+			for (int i = 0; i < arr.length; i++) {
+				// 열
+				for (int j = 0; j < arr[i].length; j++) {
+					arr[i][j] += add;
+				}
 			}
-		}
-		// 각요소에 숫자를 더하기==================
-		// 행
-		for (int i = 0; i < arr.length; i++) {
-			// 열
-			for (int j = 0; j < arr[i].length; i++) {
-				System.out.print(arr[i][j] + "\t");
-			}
-			System.out.println();
-		}
-	}
 
+			System.out.println("각 요소에 숫자를 더하기 ===================");
+
+			// 2차원 배열의 출력
+			// 행
+			for (int i = 0; i < arr.length; i++) {
+				// 열
+				for (int j = 0; j < arr[i].length; j++) {
+					System.out.print(arr[i][j] + "\t");
+				}
+				System.out.println();
+			}
+
+		}
 	// 최소값반환
 	public static int miniValue(int[] arr) { // 배열을 매개변수로 받을 수 있습니다.
 		int min = arr[0];// 임의로 처음값을 최소값으로 저장
