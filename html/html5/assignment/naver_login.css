@@ -1,0 +1,41 @@
+
+*{
+    margin: 0;
+    padding:0;
+    background-color: rgb(245, 245, 245);
+}
+
+#main_wrap{
+    width:400px;
+    margin: 0 auto;
+}
+
+header h1{
+    font-size: 400%;
+    color: rgb(53, 204, 39);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input_idpw{
+    padding-left: 10px;
+    width: 385px;
+    height: 40px;
+    border-color:white;
+    color:#ccc;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.input_login{
+    width: 400px;
+    height: 50px;
+    background-color: rgb(53, 204, 39);
+    border-color: rgb(53, 204, 39);
+    border-radius: 5px;
+    color: white;
+    font-size: 130%;
+}
+
+
+

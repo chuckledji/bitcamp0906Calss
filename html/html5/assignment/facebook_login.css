@@ -1,0 +1,147 @@
+
+
+*{
+    margin:0;
+    padding:0;
+}
+
+#body1{
+    background-color: rgba(244, 245, 248, 0.973);
+    height : 1000px;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 10%;
+}
+#body1_main{
+    background-color: rgba(244, 245, 248, 0.973);
+    margin:0 auto;
+}
+
+
+
+/* 메인페이지 */
+#main{
+    width: 400px;
+    position: absolute;
+    left: 25%;
+}
+
+#title{
+    font-size:450%;
+    font-weight: bolder;
+    color: rgb(23, 102, 247);
+}
+
+header p{
+    font-weight: 400;
+    font-size: 140%;
+}
+
+/* 로그인페이지꾸미기 */
+nav{
+    position: absolute;
+     right: 25%;
+}
+#loginbox{
+    background-color: white;
+     width: 384px;
+     height: 340px;
+     border-radius: 8px ;
+     box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.507);
+     padding: 20px;
+     
+}
+
+nav input[type=text]{
+    width: 355px;
+    height: 50px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    color: slategray;
+    border-color: rgb(144, 149, 153);
+    padding-left: 15px;
+    font-size: 100%;
+}
+
+nav input[type=submit]{
+    width: 370px;
+    height: 50px;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    background-color: rgb(23, 102, 247);
+    border-color: rgb(23, 102, 247);
+    color: white;
+    font-size: 120%;
+    font-weight: 800;
+}
+
+nav div p{
+    background-color: white;
+    font-size: 100%;
+    color: rgb(23, 102, 247);
+    text-align: center;
+    padding-bottom: 22px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    
+}
+
+
+nav input[type=button]{
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: rgb(30, 194, 57);
+    border-color: rgb(30, 194, 57);
+    color: white;
+    font-size: 100%;
+    font-weight: 600;
+    margin-left: 117px;
+}
+
+#belowLbox{
+    text-align: center;
+    padding-top: 30px;
+    font-size: 80%;
+}
+
+/* FOOTER부분 */
+
+footer{
+    background-color: white;
+    position: absolute;
+    bottom: 0px;
+    height: 200px;
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 25%;
+    padding-right: 25%;
+    color: #CCC;
+    font-size: 80%;
+}
+
+
+#footer1{
+    width: 950px;
+    height: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px #ccc;
+}
+
+
+#footer2{
+    width: 950px;
+    height: 40px;    
+}
+
+ul li{
+    float: left;
+    list-style: none;
+    padding-right: 5px;
+    padding-bottom: 7px;
+}
+
+#footer3{
+    font-size: 80%;
+}
