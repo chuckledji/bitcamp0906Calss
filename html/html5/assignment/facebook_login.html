@@ -7,29 +7,32 @@
 </head>
 <body>
     <div id="body1">
-        <div id="main">
+        <!-- <div id="group" class="clearfix"> -->
+        <div id="main1">
             <header>
                 <p id="title">facebook</p>
                 <p>Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.</p>
             </header>
             
         </div>
-        <nav>
+        <div id="main2">
             <div id="loginbox">
                 <input type="text" value="이메일 또는 전화번호" >
                 <input type="text" value="비밀번호" >
                 <input type="submit" value="로그인">
-                <p> <a href="#">비밀번호를 잊으셨나요?</a></p>
+                <p class="forgotpw"> <a href="#">비밀번호를 잊으셨나요?</a></p>
                 
-                <input type="button" value="새 계정 만들기">
+                <input id="regibutton" type="button" value="새 계정 만들기">
             </div>
             <div id="belowLbox">유명인, 브랜드 또는 비즈니스를 위한 페이지 만들기.</div>
-        </nav>
+        </div>
+    <!-- </div> -->
     </div>
     <footer>
+        <div id="wholefooter">
             <div id="footer1">
                 <ul>
-                    <li><a  href="#">한국어</a></li> <!--클릭하면 말풍선 나타나게 만들기-->
+                    <li><a  href="#">한국어</a></li> 
                     <li><a href="#">English (US)</a></li>
                     <li><a href="#">Tiếng Việt</a></li>
                     <li><a href="#">Bahasa Indonesia</a></li>
@@ -79,6 +82,7 @@
             </div>
             <br>
             <div id="footer3">Meta © 2021</div>
+        </div>
         </footer>
 </body>
 </html>

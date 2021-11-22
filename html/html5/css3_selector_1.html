@@ -55,14 +55,17 @@
             margin: 0 auto;
         }
 
-        h1.title {
+        h1.title { /*h1에 title이라는 이름을 가지고있는것 선택*/
+            /*header라는 div에 속해있어서 넓이를 지정하지 않아도 header와 넓이 동일하게 들어감*/
             color : white;
             font-weight: lighter;
             background-color: black;
         }
-        
-
+      
     </style>
+
+
+
 
     <!-- 속성 선택자 -->
     <style>
@@ -129,11 +132,11 @@
             border : 5px solid #ff0000;
         }
 
-        input:disabled {
+        input:disabled {    /*사용하지않는 인풋을 선택*/
             background-color: darkgray;
         }
 
-        input:focus {
+        input:focus {       /*포커스가 가는  순간 반응*/
             background-color: darkorange;
             border:5px solid darkturquoise;
         }
@@ -145,7 +148,7 @@
             overflow: hidden;
         }
 
-        input[type=checkbox]:checked+#article {
+        input[type=checkbox]:checked+#article { /*체크박스가 눌러졌을 때 :checked*/
             
             height: 0px;
         }
@@ -154,24 +157,24 @@
             display: none;
         }
 
-        li:nth-child(2n) {
+        li:nth-child(2n) {  /*짝수번째순서*/
             background-color: gold;
             color : #000000;
         }
 
-        li:nth-child(2n+1) {
+        li:nth-child(2n+1) {/*홀수번째순서*/
             background-color: aquamarine;
             color: blue;
         }
 
 
-        li:first-child {
+        li:first-child {    /*1번째순서*/
             background-color: deeppink;
             color: floralwhite;
 
             border-radius: 40px 0px 0px 40px;
         }
-        li:last-child {
+        li:last-child {    /*마지막순서*/
             background-color: deeppink;
             color: floralwhite;
             border-radius: 0 40px 40px 0;
@@ -180,9 +183,7 @@
         /* 리스트 태그를 수평방향으로 나열 */
         ul {
             overflow: hidden;
-
-            /* 리스트 스타일 */
-            list-style: none;
+            list-style: none;   /* 리스트 스타일 */
         }
 
         li {
@@ -207,11 +208,11 @@
             text-decoration: none;
         }
 
-        a:visited {
-            color: green;
+        a:visited {     /*방문했던 곳*/
+            color: rgb(49, 0, 128);
         }
 
-        a:hover {
+        a:hover {       /*커서가 있는 곳*/
             color: rgb(0, 0, 0);
             text-decoration: underline; 
         }
@@ -230,7 +231,7 @@
 
     <hr>
 
-    <img id="photo" src="images/mini2.jpg" alt="">
+    <img id="photo" src="images/doh2.jpg" >
 
     <hr>
 
@@ -305,9 +306,8 @@
 
     <hr>
 
-
-
     <input type="text"> <input type="password">
+
     <h2>h2</h2>
 
     <hr>

@@ -36,6 +36,8 @@
     background-position: left; /*20px - 만큼 떨어지라는 뜻*/
 }
 
+
+/* 커서가 요소 위에 올라가면 작용하는 hover */
 #btn:hover{
     border: 8px solid rgb(243, 49, 168);
 }

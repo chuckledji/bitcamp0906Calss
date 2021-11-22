@@ -6,101 +6,130 @@
 }
 
 #body1{
-    background-color: rgba(244, 245, 248, 0.973);
+    background-color: rgb(240, 242, 245);
     height : 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#group{
+    width: 100%;
+    height: 400px;
+    background-color: rgb(240, 242, 245);
+}
+
+.clearfix::after{
+content: "";
+display: block;
+clear: both;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+
+/* 메인페이지(왼쪽) */
+#main1{
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
     padding-left: 25%;
-    padding-right: 25%;
-    padding-top: 10%;
-}
-#body1_main{
-    background-color: rgba(244, 245, 248, 0.973);
-    margin:0 auto;
+    padding-right: 7px;
+    padding-top: 5%;
+    float: left;
+
 }
 
-
-
-/* 메인페이지 */
-#main{
-    width: 400px;
-    position: absolute;
-    left: 25%;
-}
-
-#title{
+#title{                 /*facebook*/
+    width: 100%;
     font-size:450%;
     font-weight: bolder;
-    color: rgb(23, 102, 247);
+    color: rgb(24, 119, 242);
 }
 
-header p{
-    font-weight: 400;
+header p{                /*Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.*/
+    width: 100%;
     font-size: 140%;
+    font-weight: 400;
+}
+input:focus{
+    border: 3px solid rgb(24, 119, 242);
 }
 
-/* 로그인페이지꾸미기 */
-nav{
-    position: absolute;
-     right: 25%;
+/* 로그인페이지(오른쪽) */
+#main2{
+    float: right;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-right: 25%;
+    padding-top: 5%;
+    padding-left: 5%;
 }
 #loginbox{
     background-color: white;
-     width: 384px;
+     width: 100%;
      height: 340px;
-     border-radius: 8px ;
-     box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.507);
+     border-radius: 8px;
+     box-shadow: 3px 3px 10px rgb(240, 242, 245);
      padding: 20px;
      
 }
 
-nav input[type=text]{
-    width: 355px;
+input[type=text]{
+    width: 100%;
     height: 50px;
+    padding-left: 5px;
     margin-bottom: 12px;
     border-radius: 8px;
+    border: solid 1px rgb(223, 226, 228);
+    font-size: 100%;    
     color: slategray;
-    border-color: rgb(144, 149, 153);
-    padding-left: 15px;
-    font-size: 100%;
 }
 
-nav input[type=submit]{
-    width: 370px;
+input[type=submit]{
+    width: 100%;
     height: 50px;
     margin-top: 8px;
     margin-bottom: 18px;
     border-radius: 8px;
-    background-color: rgb(23, 102, 247);
-    border-color: rgb(23, 102, 247);
+    background-color: rgb(24, 119, 242);
+    border-color: rgb(24, 119, 242);
     color: white;
     font-size: 120%;
     font-weight: 800;
 }
-
-nav div p{
-    background-color: white;
-    font-size: 100%;
-    color: rgb(23, 102, 247);
+.forgotpw{
     text-align: center;
-    padding-bottom: 22px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ccc;
-    
+    padding-top: 5px;
+    padding-bottom: 15px;
+    border-bottom: solid 1px #ccc;
+    color: rgb(24, 119, 242);
+    font-size: 90%;
 }
 
 
-nav input[type=button]{
-    width: 150px;
+#regibutton{
+    width: 40%;
     height: 50px;
+    line-height:50px;
     border-radius: 8px;
     background-color: rgb(30, 194, 57);
     border-color: rgb(30, 194, 57);
     color: white;
     font-size: 100%;
     font-weight: 600;
-    margin-left: 117px;
+    margin: 30px 0 0 30%; /*위 우 아래 좌*/
+    /* margin-top: 30px; */
 }
 
 #belowLbox{
+    width: 100;
     text-align: center;
     padding-top: 30px;
     font-size: 80%;
@@ -115,31 +144,35 @@ footer{
     height: 200px;
     width: 100%;
     padding-top: 20px;
-    padding-left: 25%;
-    padding-right: 25%;
-    color: #CCC;
-    font-size: 80%;
 }
 
+#wholefooter{
+    padding-left: 25%;
+    padding-right: 25%;
+}
 
 #footer1{
-    width: 950px;
+    width: 100%;
     height: 20px;
     margin-bottom: 10px;
-    border-bottom: 2px #ccc;
+    border-bottom: solid 1px #ccc;
 }
 
 
 #footer2{
-    width: 950px;
+    width: 100%;
     height: 40px;    
 }
 
 ul li{
+    
     float: left;
     list-style: none;
     padding-right: 5px;
     padding-bottom: 7px;
+    
+    text-decoration-color: #CCC;
+    font-size: 80%;
 }
 
 #footer3{
