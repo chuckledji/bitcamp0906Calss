@@ -61,5 +61,9 @@ minvalue 1
 increment by 1
 ;
 
+<<<<<<< HEAD:java_project/javaking-main/sql/users.sql
 commit;
 select * from users where userid = 123;
+=======
+commit;
+>>>>>>> e3dadb45a45169651c7efbac58c42a5fe8fdf0c3:java_project/javaking/javaKing_sql/users.sql
