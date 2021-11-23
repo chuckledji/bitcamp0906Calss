@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어쿼리_화면크기에따른요소변화</title>
+
+    <style>
+
+        div{
+            width: 20%;
+            height: 100px;
+
+            background-color: darkorchid;
+
+        }
+
+        /* @import url(); 스타일 적용하는 방법중에 import도 있다*/
+
+
+        @media screen and (max-width:1024px) {      /*화면이 일정크기 이상이 되면 요소가 변한다*/
+            body{
+                background-color: darkseagreen;
+            }
+            div{
+                width: 50%;
+                height: 200px;
+
+                background-color: darkslateblue;
+            }
+        }
+        @media  screen and (max-width:768px) {
+            body{
+                background-color: rgb(31, 48, 31);
+            }
+            div{
+                width: 80%;
+                height: 300px;
+
+                background-color: rgb(95, 161, 192);
+            }
+        }
+        @media  screen and (max-width:320px) {       /*이사이즈는 이제 잘 안씀*/
+            body{
+                background-color: rgb(0, 0, 0);
+            }
+            div{
+                width: 100%;
+                height: 500px;
+
+                background-color: rgb(217, 231, 25);
+            }
+        }
+
+        /*화면회전*/
+
+        @media screen and (orientation: portrait) {
+            body{
+                background-color: darkslateblue;
+            }
+        }
+        @media screen and (orientation: landscape) {
+            body{
+                background-color: rgb(228, 231, 42);
+            }
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    <div></div>
+</body>
+</html>

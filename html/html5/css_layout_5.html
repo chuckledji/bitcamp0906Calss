@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #nav{
+            position: fixed;    /*fixed를 사용하면 이런 레이아웃을 사용할수있다.*/
+            left: 0px;
+            right: 0px;
+            height: 50px;       /*좌우가 화면에 100%를 차지하게된다*/
+            /* width: 50px; */
+
+            background-color: blueviolet;
+
+        }
+        #sub{
+            position: fixed;
+            /* height: 50px; */
+            width: 50px;
+
+            top: 0px;
+            bottom: 0px;      /*위아래가 화면에 100%를 차지하게된다*/
+
+            background-color: cadetblue;
+
+        }
+        #contents{
+            background-color: rgb(212, 237, 100);
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">nav</div>
+    <div id="sub">cub</div>
+    <div id="contents"></div>
+    
+</body>
+</html>

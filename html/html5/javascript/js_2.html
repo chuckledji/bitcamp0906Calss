@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //자바스크립트의 변수특징
+
+        //변수에 저장하는 데이터타입 : 숫자, 문자, bool, 함수, 객체(배열...)
+        /*호이스팅 -> 변수 선언과 동시에 초기화 하지 않는 경우 자동으로 undefined저장
+          변수 선언 방법 => var 변수이름(식별자)*/
+        var num;
+        console.log("num=>", num);
+
+        
+
+        //var 생명주기 => 함수단위의 생명주기
+        //=> 함수 밖에서 선언할 경우, 전역변수가 됨.(ex. 위의 var num)
+        
+        fn();                               //함수 호출 (위에서 호출해도 된다.)
+
+        function fn(){                      //함수 정의 (프로그램이 실행되기 전에 실행된다.)
+            num=11;
+            var age = 10;                   //함수 내에 존재하는 변수
+            console.log('age1=>', age);
+            console.log('num1=>', num);
+
+            //상수를 만드는 const => 초기화 후 새로운 값 대입 불가.
+            const no =7;
+            no = 777;                       //변경불가 에러(상수이므로)
+
+            //let : 생명주기 => 블록({})단위의 생명주기
+            for(let i=0; i<5; i++){
+                console.log(i);
+            }
+            console.log('for문 밖에서 출력하는 i=>', i);
+        }
+
+
+        console.log('age2=>', age);         //전역변수를 불러서 에러가 뜰 것.
+        console.log('num2=>', num);
+        
+
+        //-----------------------------------------------------------------------------
+
+        alert(10+10);                        //연산, 문자열 등 모두 출력이 가능하다.
+        // alert(111);
+        // alert('test');                    //작은따옴표 큰따옴표 사용가능
+        // alert("test");
+        // alert('<a href="http://www.naver.com">');
+        
+            
+        if(true){
+            console.log('if=> true');
+        }else{  
+            console.log('if=>false');        //분기 사용 가능
+        }
+
+        console.log(true);
+        console.log(false);
+        console.log( 'true>false => 1>0', true>false);
+
+        /*
+        논리값 true/ false
+        비교연산(> < >= <= == !=)
+        논리연산( && || !)                   //너무 자바와 묶어서 생각하지말기!(비슷하지만)
+        문자열 비교 가능(사전 순)
+        */
+
+        console.log(111);
+        console.log('test\n tester');       //\n줄바꿈
+        console.log('age:', 11);
+        console.log('errorCode:', 404);
+        console.log(23.223)                 //정수, 실수 구분없이 출력가능
+        console.log(2+3*3)                  //사칙연산 가능, 우선하고싶은 연산있으면 ()로 묶기
+        
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

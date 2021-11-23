@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요소의 변형</title>
+
+    <!-- XY축움직이기 -->
+    <style>
+        .border{
+            border: 1px solid #333;
+            width: 500px;
+        }
+        .moveX:hover{
+            transform: translateX(150px);
+        }
+        .moveY:hover{
+            transform: translateY(150px);
+        }
+        .moveXY:hover{
+            transform: translate(100px, 100px);
+        }
+    </style>
+
+    <!-- 요소 늘어나기 -->
+    <style>
+        .scaleX:hover{
+            transform:scaleX(1.5);
+        }
+        .scaleY:hover{
+            transform:scaleY(1.5);
+        }
+        .scaleXY:hover{
+            transform:scale(1.5);
+        }
+    </style>
+
+    <!-- 로테이트 -->
+    <style>
+        /* .rotate60{
+            transform: rotate(60deg);
+        }
+        .rotate120{
+            transform: rotate(120deg);
+        }
+        .rotate180{
+            transform: rotate(180deg);
+        } */
+    </style>
+
+    <!--모서리를 기준으로 돌리기-->
+    <style>
+        .img{
+            transform: rotate(45deg);
+            border: 2px solid #ccc;
+        }
+        .rotate60 .img{ /* .rotate60>img*/
+            transform-origin: left top;
+        }
+        .rotate120 .img{ 
+            transform-origin: right top;
+        }
+        .rotate180 .img{ 
+            transform-origin: right bottom;
+        }
+        .rotate240 .img{ 
+            transform-origin: left bottom;
+        }
+    </style>
+
+    <!--애니메이션효과주기-->
+    <style>
+        #tr1{
+            width: 100px;
+            height: 100px;
+
+            background-color: crimson;
+            border: darkblue 1px solid;
+
+            transition-property: width, heigth; /*변형이 적용될 부분*/
+            transition-delay: 5s, 2s;
+            transition-duration: 2s, 2s;
+            transition-timing-function: linear;
+        }
+        #tr1:hover{
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--애니메이션효과주기-->
+    <div id="tr1"></div>
+
+    <hr>
+
+    <!-- XY축움직이기 -->
+    <div class="border">
+        <div class="moveX"> <img src="doh1.png"> </div>
+    </div>
+
+    <div class="border">
+        <div class="moveY"> <img src="doh1.png"> </div>
+    </div>
+
+    <div class="border">
+        <div class="moveXY"> <img src="doh1.png"> </div>
+    </div>
+    
+    <hr>
+
+    <!-- 늘어나기 -->
+    <div class="border">
+        <div class="scaleX"> <img src="doh1.png"> </div>
+    </div>
+
+    <div class="border">
+        <div class="scaleY"> <img src="doh1.png"> </div>
+    </div>
+
+    <div class="border">
+        <div class="scaleXY"> <img src="doh1.png"> </div>
+    </div>
+
+    <hr>
+
+    <!-- 로테이트 -->
+    <div class="border">
+        <div class="rotate60"> <img src="doh1.png" class="img"> </div>
+    </div>
+
+    <div class="border">
+        <div class="rotate120"> <img src="doh1.png" class="img"> </div>
+    </div>
+
+    <div class="border">
+        <div class="rotate180"> <img src="doh1.png" class="img"> </div>
+    </div>
+    <div class="border">
+        <div class="rotate240"> <img src="doh1.png" class="img"> </div>
+    </div>
+</body>
+</html>
