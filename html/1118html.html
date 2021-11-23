@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:enabled{
+            border : 5px solid #aaaaaa;
+        }
+        input:disabled{
+            background-color: blue;
+        }
+
+        input:focus{
+            background-color: blueviolet;
+            border: 5px solid coral;
+        }
+
+        #article{
+            width : 300px;
+            height: 300px;
+
+            overflow : hidden;
+        }
+        input[type=checkbox]:checked{
+            width: 50px;
+            height: 50px;
+        }
+        
+
+    </style>
+
+    <!--링크선택자-->
+    <style>
+
+        a:link{
+            color: darkgreen;
+            text-decoration: none;
+        }
+
+        a:visited{
+            color: darkgreen;
+        }
+        a:hover{
+            color: darksalmon;
+            text-decoration: line-through;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <a href="http://naver.com">네이버</a>
+    <a href="http://naver.com">네이버</a>
+
+
+    <hr>
+    <input type="checkbox"> 기사가리기
+
+    <div id="article">
+        <h1>ddddddddddddddddddddd</h1>
+        <p>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+    </div>
+    <hr>
+    <input><input disabled>
+</body>
+</html>
