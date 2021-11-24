@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>위치 속성</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div.box{
+            width: 100px;
+            height: 100px;
+
+            border : 3px solid black;
+
+            text-align: center;
+            line-height:100px;
+
+            color: white;
+            font-weight: bold;
+
+            position: absolute;
+
+        }
+        #box1{
+            background-color: crimson;
+            left: 50px;
+            top: 20px;
+            z-index: 10; 
+        }
+        #box2{
+            background-color: rgb(9, 170, 9);
+            left: 70px;
+            top: 40px;
+            z-index: 10;
+        }
+        #box3{
+            background-color: blue;
+            left: 90px;
+            top: 60px;
+            z-index: 10;
+        }
+        #box4{
+            background-color: purple;
+            left: 110px;
+            top: 80px;
+            z-index: 10;
+        }
+        #wrap{
+            border: 3px solid black;
+
+            position: relative;     /*wrap이 기준점을 자신으로 잡으라고하는것과 같음*/
+
+            height: 100px;
+
+            overflow: auto;     /*scroll은 양방향 스크롤이 다 생기고 auto는 필요한부분만 생김*/
+        }
+    </style>
+</head>
+<body>
+
+    <h1>header</h1>
+    <div id="wrap">
+         <div id= "box1" class="box">BOX 1</div>
+         <div id= "box2" class="box">BOX 2</div>
+        <div id= "box3" class="box">BOX 3</div>
+        <div id= "box4" class="box">BOX 4</div>
+
+        <table>
+            <tr>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+            </tr>
+            <tr>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+            </tr>
+            <tr>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+            </tr>
+            <tr>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+            </tr>
+            <tr>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+            </tr>
+            <tr>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+            </tr>
+            <tr>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+                <td>rainbow</td>
+            </tr>
+        </table>
+
+    </div>
+    
+    <h1>footer</h1>
+
+</body>
+</html>

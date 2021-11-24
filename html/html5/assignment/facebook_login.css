@@ -26,6 +26,7 @@ clear: both;
 
 a:link{
     text-decoration: none;
+    color: #ccc;
 }
 
 a:hover{
