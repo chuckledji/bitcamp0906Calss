@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 10px;;
+        }
+        h1{
+            background-color: blueviolet;
+        }
+        hr{
+
+        }
+        input[type=submit]{
+            padding : 10px;
+            border: 1px solid crimson;
+        }
+
+        form{
+            margin:20px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+        //1. 이벤트 적용 : 캐스팅 -> 이벤트속성에 이벤트핸들러를 할당
+        //h1캐스팅
+        var btn1 = document.getElementById('btn1');     //캐스팅
+        //이벤트속성에 핸들러 할당
+        btn1.onclick = function(){
+            alert('h1태그안의 영역을 마우스로 클릭');     //함수 안에 일어나는 일도 이벤트관련?
+            console.log(this);
+
+            //한번 클릭이벤트가 발생하고 이벤트를 제거
+            btn1.onclick = null;
+        };
+
+        //캐스팅.이벤트 속성 = 핸들러
+        // document.getElementById('btn2').ocnclick = function(){
+        //     //this -> 이벤트가 발생한 객체를 가리킨다.ㅔ
+        //     this.style.backgroundColor = "yellow";\\
+        //      this.style.color = "black";
+             
+        //      btn1.localName
+        // }
+
+        //폼캐스팅
+        var form = document.querySelector('#form');
+
+        form.onsubmit = function(){
+           console.log('form 태그에서 submit버튼 클릭 -> onsubmit이벤트발생');
+
+            // uid캐스팅 -> 공백문자 확인 후 공백이면 -> return false
+            var uid = document.getElementById('uid');
+            console.log(typeof(uid.value), uid.value);
+            var pw = document.querySelector('#pw');
+
+            if(uid.value.length ==0){
+                alert('아이디를 입력하세요');
+                //입력 포커스를 uid 입력 폼으로 이동
+                uid.focus();
+                return false;
+            }
+
+            if(pw.value.length ==0){
+                alert('비밀번호를 입력하세요');
+                pw.focus();
+                return false;
+            }
+
+           //기본 이벤트를 제거
+           //return false;
+
+        //    document.getElementById('p1').onclick = function(e){
+
+        //     //이벤트객체 받기 : null 일 때 window.event 객체로 할당
+        //     var event = e? e : window.event; //e || window.event
+
+        //     alert('P click');
+
+        //     //이벤트 버블링 종료
+        //     // IE
+        //     event.cancleBuble = true;
+        //     //이외의 브라우저 //////////////////////////////////////////////다시듣기
+        //    }
+
+        //이벤트 연결 표준 방식
+            var btn = document.getElementById('btn');
+            btn.addEventListener('click', function(){
+               this.innerHTML += '+';
+            });
+        }
+
+        }
+       function inlineClick(){
+           alert('인라인에서 함수를 호출했다');
+       }
+
+       function submitProc(){
+        var uid = document.getElementById('uid');
+            console.log(typeof(uid.value), uid.value);
+            var pw = document.querySelector('#pw');
+
+            if(uid.value.length ==0){
+                alert('아이디를 입력하세요');
+                //입력 포커스를 uid 입력 폼으로 이동
+                uid.focus();
+                return false;
+            }
+
+            if(pw.value.length ==0){
+                alert('비밀번호를 입력하세요');
+                pw.focus();
+                return false;
+            }
+
+           
+       }
+
+    </script>
+
+</head>
+<body>
+    <h1 id="btn">click</h1>
+
+    <hr>
+    <div onclick="alert('outer Div')" style="border: 1ps solid #f00; background-color: rgb(63, 63, 63); width: 100%; padding:10px">
+        <div onclick="alert('inner Div')" style="border: 1px solid rgb(226, 222, 0); background-color: rgb(143, 1, 172); width: 75%; padding:10px">
+            <h1 onclick="alert('h1')" style="border: 1px solid #0F0; background-color: rgb(230, 215, 7); width: 75%; padding:10px">
+                <p onclick="alert('p')" id="p1" style="border: 1px solid rgb(17, 0, 255);
+                                  background-color: darkcyan; 
+                                  width: 75%; padding:10px">click</p>
+            </h1>
+        </div>
+    </div>
+    <hr>
+
+    <form id ="form" onsubmit = " return submitProc()">
+        아이디 <input type ="text" id="uid" name="uid"> 
+        <br>
+        비밀번호 <input type="password" id="pw" name="pw">
+        <br>
+        <input type="submit">
+
+    </form>
+    <hr>
+    <h1 id="btn1">click</h1>
+    <h1 style = "border:5px solid #f00" onclick="var num =10; alert('인라인이벤트정의')">click</h1>      <!--인라인 안에서 정의-->
+    <h1 onclick="inlineClick()">click</h1>      <!--script의 함수사용??-->
+</body>
+</html>

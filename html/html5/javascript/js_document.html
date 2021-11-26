@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //윈도우객체
+        //console.log(window);
+
+        //새 윈도우 만들기
+        window.open();
+        window.open('http://www.naver.com','newwind', 'width=300, height=400');
+
+        
+        var child=window.open('','child', 'width=400','hieght=400');
+        var html = '<h1 onclick="self.close();">윈도우닫기</h1>';
+
+        child.document.write('<h1>부모 window에서 html태그 추가</h1>'+html);
+
+
+        //--------------------------------------------------------------------------------
+        //location 객체
+        //console.log(location);
+
+        function goNaver(){
+            location.href='https://www.naver.com';
+        }
+
+
+        //---------------------------------------------------------------------------------
+        //스크립트와 html 태그는 위에서 아래로 순서대로 실행
+        alert(1);
+
+        window.onload = function(){
+            var h1 = document.getElementById('hello');        //실행순서를 알아보기 위해 작성했음.
+            h1.innerHTML='test';                              //(밑에서 아직 생성이 안되었기때문에 여기서 에러가생김)
+        };                                                    //하지만 function 안에 넣어서 실행하면 모든게 다 실행되고 나서 실행되기 때문에 에러발생 X
+        
+    </script>
+</head>
+<body>
+    <h1 id ="hello">안녕하세요</h1>
+    <script>
+        alert(2);
+    </script>
+    <button onclick="goNaver();">네이버로 이동</button>
+
+    <script>
+        alert(3);
+    </script>
+</body>
+</html>
