@@ -251,6 +251,38 @@
 
 
         console.log('---------------------------------------------------------------');
+        //while문
+        var num =0;
+        while(num<5){
+            
+            num++; //탈출을 위한 증가식(++이 없으면 무한반복된다)
+        }
+        while(true){
+            //탈출코드 : break
+            if(num==10){
+                break;
+            }
+            num++;
+        }
+        
+        for(let item in array){     //전체참조?? 다시듣기필요합니다.-----------------------
+            console.log(item, typeof(item), array[item]);
+        }
+        for(let i=0; i<9; i++){
+            let str='';             //초기화한번 해준다.
+            for(let j=0; j<i+1; j++){
+                str+='*';
+            }
+            console.log(str);
+        }
+
+        console.log('continue 실행예제');
+        for(let i=0; i<5; i++){
+            if(i%2==1){
+                continue;           //현재 반복을 멈추고 다음 반복을 진행한다.(건너뛴다는 뜻)
+            }
+            console.log(i);
+        }
 
     </script>
 </head>
