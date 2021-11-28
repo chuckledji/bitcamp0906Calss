@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캡슐화</title>
+    <script>
+        //rectangle
+        function Rectangle(w, h){
+            // this.width = width;
+            // this.height = height;
+            var width = w;
+            var height = h;
+
+            this.getArea = function(){
+                return width*height;
+            }
+        }
+
+        // Rectangle.prototype.getArea = function(){
+        //     return this.width*this.height;
+        // }
+
+        var rec = new Rectangle(5,7);
+        console.log(rec);
+
+        rec.width =-10;                     //이것도 아예 계산에서 실행되지 않게 된다.(오류 실행X)
+        console.log('width: ', rec.width);  //그냥 새로운 객체로 생성되게 됨.
+        console.log(rec);
+
+        console.log(rec.getArea());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

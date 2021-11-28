@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    var primitiveNumber = 100;
+    var objectNumber = new Number(100);
+    
+    console.log('primitiveNumber', typeof(primitiveNumber), primitiveNumber);   //number 100
+    console.log('objectNumber', typeof(objectNumber), objectNumber.toString()); //object 100 (object안에는 내장되어있는 기본함수들이 있다.)
+
+
+    //기본객체생성
+    var obj1 = {};                  //방법1,2
+    var obj2 = new Object();
+    console.log(typeof(obj1));      //object
+    console.log(typeof(obj2));      //object
+    
+
+    var person = {
+        name : '사람1',
+        age : 30,
+        toString : function(){
+            return this.name +':'+this.age;
+        }
+    };
+    console.log('person : ', person);
+
+
+    //----------------------------------------------------------------------------------
+    //Number : 숫자를 정의하는 객체
+    var number = 123.123456789;
+    var objNumber = new Number(number);
+
+    console.log(objNumber.toExponential());      //1.123456789e+2 (지수와 자리수)
+    console.log(objNumber.toFixed());            //123
+    console.log(objNumber.toFixed(1));           //소수점1번째까지 반환
+    console.log(objNumber.toFixed(4));
+    console.log(objNumber.toPrecision());
+
+
+
+    //-----------------------------------------------------------------------------------
+    //String : 문자열을 다루는 객체
+    var str = 'Hello';
+    var objectStr = new String ('Hello');   //hello대신 str도 무방
+
+    console.log(typeof(str));               //string
+    console.log(typeof(objectStr));         //object
+
+    console.log(str.length);                //5
+    console.log(objectStr.length);          //5
+
+
+    //-----------------------------------------------------------------------------------
+    //Array : 배열을 다루는 객체
+    var arr1 = [1,2,3,4,5];
+    var arr2 = new Array();
+    var arr3 = new Array(10);   //저장소10개짜리
+    var arr4 = new Array(9,8,7,6,5);
+
+    console.log(arr1);      // (5)   [1,2,3,4,5]  => 배열 5개짜리
+    console.log(arr2);      // []
+    console.log(arr3);      // (10)  [비어있음 * 10]
+    console.log(arr4);      // (5)   [9,8,7,6,5]
+
+
+    console.log(arr1.concat(6,7,8));    // (8) [1~8] => 추가됨
+    console.log(arr1.join());           //1,2,3,4,5  => String이 반환
+    arr1.pop();                         //마지막 요소를 제거해준다(빼내준다)
+    console.log(arr1.reverse());        //[4,3,2,1]  => 거꾸로
+    console.log(arr1.slice(1,3));       //[3,2]      => 1번지부터 3번지전까지 추출(1,2)
+    console.log(arr1.splice(1));        //[3,2,1]    => 1번지를 지우고 나머지를 반환
+
+
+    var arr5 = [101, 77, 300, 23, 50];
+    console.log(arr5);
+
+    arr5.sort(function(left, right){     //정렬
+        //return left-right;             //오름차
+        return right-left;               //내림차
+    });        
+    console.log(arr5);
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

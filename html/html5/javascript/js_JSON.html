@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <script>
+        window.onload = function(){
+            //객체 => JSON포맷의 문자열로 변환
+            var book = {
+                name: 'FIRSTJAVA',
+                price: 30000,
+                publisher: '연두에디션',
+                author:['aaa', 'bbb']
+            }
+            console.log(typeof (book), book);           //object출력
+
+            var jsonStr = JSON.stringify(book);         //JSON문자열로변환
+            console.log(typeof (jsonStr), jsonStr);     //String출력 ( "name" : "FIRSTJAVA")
+            document.body.innerHTML = '<h1>'+jsonStr+'</h1>';  
+            
+            
+            var newStr ='{"name":"FIRSTJAVA","price":30000,"publisher":"연두에디션","author":["aaa","bbb"]}';
+            //JSON포맷의 문자열 => javascript 객체로 변환
+            var newObj = JSON.parse(newStr);
+            console.log(typeof (newObj), newObj.name);       //object출력
+           
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>함수</title>
     <script>
         //함수
         //필요한 데이터를 받아서
@@ -18,22 +18,173 @@
         //  -> 매개변수에 함수를 전달할 때
         //2.명시적 선언함수 : 함수 선언시에 이름을 지정해서 생성
 
-        fn2();
 
-        //익명함수 선언
+
+        //fn1(); > 아직 함수가 만들어지기 전이어서 에러가 난다.
+        fn2();   //함수가 만들어져서 호출이 됨
+
+        //1. 익명함수 선언
         var fn1 = function(){
             alert('익명함수 호출');
-        };
-
-        //함수 호출
-        fn1();
+        };       
+        fn1();                      //함수 호출
         
-        //a명시적함수
-        function fn2(){
+
+        //2. 명시적함수 선언
+        function fn2(){             //함수의 호이스팅으로 함수가 미리 만들어짐 > 코드가 위에서 아래로 실행
             alert('명시적함수 호출');
         };
 
 
+
+
+        window.onload = function(){}    //onload가 다 되면 함수를 실행시켜라
+
+
+        //-----------------------------------------------------------------------------
+        //익명함수 재정의
+        var fn3 = function(){
+            alert('fn3');
+        };
+        fn3();                  //fn3 출력
+
+        var fn3 = function(){
+            alert('new fn3');
+        };
+        fn3();                  //new fn3출력
+
+
+       
+        //명시적함수 재정의
+        fn4();                  //new fn4출력 
+        function fn4(){
+            alert('fn4');
+        };
+        fn4();
+
+        function fn4(){
+            alert('new fn4');   //재정의 되므로 위의 함수는 사라짐(익명함수와의 차이)
+        };
+        fn4();
+
+
+
+        //------------------------------------------------------------------------------
+        //매개변수 : 반환값이 있는 함수 정의
+        //매개변수 선언시, var키워드를 사용하지 않음
+
+        function add(num1, num2){
+            return num1 + num2;             //반환, 매개변수는 선택적
+        };
+
+        var result = add(10, 20);
+        console.log('10+20 =', add(10,20));
+
+
+        var hello = function(name, age){
+            console.log('안녕하세요 저는 ' + name + '입니다. 나이는 ' + age + '살 입니다.');
+        };
+
+        hello(정지원, 27);
+        hello(정지원, 27, 500, '사람1');    //더 많아도 오류뜨지않는다.(앞의 두개만 계산해서 나옴)
+
+
+
+        //------------------------------------------------------------------------------
+        //가변 매개변수 인자의 사용법
+        //function은 기본적으로 arguments 배열을 가짐
+        //arguments를 이용하면 가변 매개변수의 인자를 사용할 수 있다
+        function sumAll(){
+            var sum =0;
+            for(let i=0; i< arguments.length; i++){
+                //console.log(arguments[i]);
+                sum += arguments[i];
+            }
+            console.log('합 : ', sum);
+        }
+
+        //sumAll(10, 30, 'String', false, {}, []);
+        sumAll(1,2,3,4,5,6,7,8,9,10);
+
+
+
+        //-------------------------------------------------------------------------------
+        //return : 함수종료, 값 반환
+        //1. 함수종료
+        function returnFn(){
+            console.log('A');
+            return;         //함수종료
+            console.log('B');
+        }
+
+        returnFn();         // A 까지만 출력.
+
+        
+        //-------------------------------------------------------------------------------
+        //콜백 함수 : 매개변수로 전달받은 함수
+
+        //콜백함수를 받아서 10번 실행하는 함수
+        function callTenTimes(callbackFn){
+            for(let i=0; i<10; i++){
+                callbackFn();
+            }
+        };
+
+        var cbFn = function(){
+            console.log('callback함수 실행');
+        };
+
+        callTenTimes(cbFn);
+
+        callTenTimes(function(){console.log('콜백함수를 익명함수로 정의')}); //익명함수를 안에 정의해도 실행이 된다.
+
+
+        //-------------------------------------------------------------------------------
+        //1초마다 화면에 시간 출력
+        const id = setInterval(function(){
+            document.body.innerHTML='<h1>'+ new Date() +'</h1>';
+        },1000);
+
+
+        //5초 이후에 시간 출력을 멈추게하는 기능
+        //clearInterval(ID);
+        setTimeout(function(){
+            clearInterval(id);
+        },5000);
+
+
+        //-------------------------------------------------------------------------------
+        //eval() : 문자열을 코드로 실행할 수 있는 함수
+        //javascript문법을 적용한 문자열 생성
+        var jsStr = '';
+        jsStr += 'var num1 = 5;';       //자바스크림트코드도 동적으로 처리할 수 있다는 사실
+        jsStr += 'alert(num1);';
+
+        eval(jsStr);    
+        
+
+        //-------------------------------------------------------------------------------
+        //숫자변환함수
+        //Number() : 숫자로 바꿀 수 없으면 Nan으로 변환함
+        //parseInt(String) : 정수변환 / 숫자+문자일경우, 숫자까지 숫자로 변환함. (1000원 => 1000)
+        //parseFloat(String) : 유리수변환 / 위와같음.
+        var won = '1000원';
+        var doolar = '1.5$';
+        var percent = '10.5%';      // %계산할때 이 함수 사용하면된다.
+
+        console.log('Number(won) : ', Number(won));                  //Nan
+        console.log('Number(daollsr) : ', Number(dollar));           //Nan
+
+        console.log('parseInt(won) : ', parseInt(won));              //1000
+        console.log('parseFloat(dollar) : ', parseFloat(dollar));    //1.5
+        
+        console.log('parseFloat(won) : ', parseFloat(won));          //1000
+        console.log('parseInt(dollar) :', parseInt(dollar));         //1.5
+
+        console.log(parseFloat(percent));
+
+
+        
     </script>
 </head>
 <body>
