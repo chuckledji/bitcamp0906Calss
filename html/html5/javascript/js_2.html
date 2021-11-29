@@ -28,29 +28,28 @@
             console.log('age1=>', age);
             console.log('num1=>', num);
 
-            //상수를 만드는 const => 초기화 후 새로운 값 대입 불가.
-            const no =7;
-           // no = 777;                       //변경불가 에러(상수이므로)
+            //const : 상수 => 초기화 후 새로운 값 대입 불가.
+            const no =7;                    //no = 777; 변경불가 에러(상수이므로)
 
             //let : 생명주기 => 블록({})단위의 생명주기
-            // for(let i=0; i<5; i++){
-            //     console.log(i);
-            // }
-            // console.log('for문 밖에서 출력하는 i=>', i);
+             for(let i=0; i<5; i++){
+                 console.log(i);
+             }
+             //console.log('for문 밖에서 출력하는 i=>', i);//에러
         }
 
 
        // console.log('age2=>', age);         //전역변수를 불러서 에러가 뜰 것.
-        console.log('num2=>', num);
+        console.log('num2=>', num);           //11
         
 
         //-----------------------------------------------------------------------------
 
-        // alert(10+10);                     //연산, 문자열 등 모두 출력이 가능하다.
-        // alert(111);
-        // alert('test');                    //작은따옴표 큰따옴표 사용가능
-        // alert("test");
-        // alert('<a href="http://www.naver.com">');
+        alert(10+10);                     //연산, 문자열 등 모두 출력이 가능하다.
+        alert(111);
+        alert('test');                    //작은따옴표 큰따옴표 사용가능
+        alert("test");
+        alert('<a href="http://www.naver.com">');
         
             
         if(true){
@@ -123,8 +122,8 @@
             list += '   <li>Javascript</li>';
             list += '</ul>';
 
-           // document.body.innerHTML=list;
-            document.body.innerText = list;
+            //document.body.innerHTML=list;
+            document.body.innerText = list; //둘다 같이나옴
         };
 
 
@@ -169,14 +168,14 @@
         //----------------------------------------------------------------------------------
 
         //prompt(stringm string)  =>  string반환
-        // var input = prompt('숫자를 입력하세요');
-        // console.log('input :', input, typeof(input)); //숫자를 입력해도 string으로 나온다.
+        var input = prompt('숫자를 입력하세요');
+        console.log('input :', input, typeof(input)); //숫자를 입력해도 string으로 나온다.
 
-        // var numberInput = Number(input);                            //숫자 반환(형변환)
-        // console.log('numberInput :', numberInput, typeof(numberInput));
+        var numberInput = Number(input);                            //숫자 반환(형변환)
+        console.log('numberInput :', numberInput, typeof(numberInput));
 
-        // var numberStr = String(1233);
-        // console.log('numberStr :', numberStr, typeof(numberStr));   //String반환
+        var numberStr = String(1233);
+        console.log('numberStr :', numberStr, typeof(numberStr));   //String반환
 
 
         
