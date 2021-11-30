@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        .title{
+            font-size: 200%;
+            font-weight: bold;
+        }
+        .subtitle{
+            font-size: 150%;
+            font-weight: 400;
+            font-style: italic;
+        }
+        .color_blue{
+            color: blue;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('div').removeClass('title');           //class속성지움
+            $('div').addClass('subtitle').addClass('color_blue');
+            $('h3').addClass('title');
+
+
+            //-------------------------------
+            //attr : getter : src속성값 반환
+            var imgSrc = $('#img').attr("src");      
+            console.log("imgSrc",imgSrc);            //../doh1.png 출력
+            console.log($('#img').attr('width'));    //200 출력
+
+            var aTag = $('a');
+            var aHref = aTag.attr('href');          //뭐더라
+            aTag.html();
+
+            //-------------------------------
+            //attr() : setter
+            //$('#img1').attr('src','../doh1.png').attr('width','200');     //속성이름, 속성값
+            $('#img1').attr({                                               //{}객체로처리,^위와같음
+                src: "../doh1.png",
+                width:100,
+                height: function(){
+                    return 300;
+                }
+            });
+
+            $('img').attr('height', function(index){                        //속성값에 함수를 넣어도 됨
+                return 200 + (index*100);
+            });
+
+            //특정 속성 삭제
+            $('img').removeAttr('width');
+
+            //--------------------------------
+            //css('속성이름') : 해당속성의 값을 반환
+            var colorVal = $('div').css('color');
+            console.log(colorVal);                                           //컬러값반환 rgb(0, 0, 255)
+
+            //css() : setter
+            //css('속성이름',속성값);
+            $('h1').css('background', 'blue').css('color', 'white');
+            
+            //css({}); 여러 속성을 정의
+            var colors = ['red', 'greem', 'blue','yellow'];
+            $('h1').css({                                                    //객체 값
+                backgroundColor : 'black', 
+                color: function(index){
+                    return colors[index];
+                }
+            });
+            
+            //-------------------------------------
+            //html(), text()
+            console.log($('#hello').html());            //태그까지 출력
+            console.log($('#hello').text());            //글만 출력
+
+            //html('html string'), text('문자열')
+            $('#hello').html('<h1>안녕</h1>');
+            $('#hello').text('<h1>안녕</h1>');
+
+        });
+
+        
+    </script>
+</head>
+<body>
+    <div id = "hello">
+    <h2>안녕하십니까 - 0</h2>
+    <p>반가워요</p>
+    </div>
+    <hr>
+    <h1>안녕하세요 - 0</h1>
+    <h1>안녕하세요 - 1</h1>
+    <h1>안녕하세요 - 2</h1>
+    <h1>안녕하세요 - 3</h1>
+    <h1>안녕하세요 - 4</h1>
+    <hr>
+    <img id="img1">
+
+    <a href="http://www.naver.com"></a>
+
+    <img id="img" src="../doh1.png" width="200">
+    <hr>
+    <div class="title">안녕하세요</div>
+    <h3>반갑습니다</h3>
+</body>
+</html>

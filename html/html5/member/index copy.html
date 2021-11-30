@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="member.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="member1.js">   //^위에 들어가야한다.
+    </script>
+    
+</head>
+<body>
+
+    <!--타이틀 시작-->
+    <header>
+        <h1 class="title">Memeber Manager</h1>
+    </header>
+    <!--타이틀 끝-->
+
+    <!--회원데이터입력 폼 시작-->
+    <div id="regFormArea">
+        <h2 class="subtitle">Registration</h2>
+        <!-- <form id="regForm"> 
+            form > submit > js:데이터를 받고 객체 > 배열에저장 -->
+        <table>
+            <form id="regForm"> 
+            <tr>
+                <td><label for="userid">아이디</label></td>
+                <td><label for="pw">비밀번호</label></td>
+                <td><label for="repw">비밀번호 확인</label></td>
+                <td><label for="username">이름</label></td>
+                <td rowspan="2"><input type="submit" value="등록"><input type="reset" value="초기화"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="userid" name ="userid" placeholder="아이디 입력"></td>
+                <td><input type="password" id="pw" name="pw" placeholder="비밀번호 입력"></td>
+                <td><input type="password" id="repw" placeholder="비밀번호 확인"></td>              <!--비밀번호확인은 정보전송 안해도 되므로 name주지않음-->
+                <td><input type="text" id="username" name="username" placeholder="이름 입력"></td>
+                <!-- <td></td> -->
+            </tr>
+            <tr>
+                <td><div id="msgid" class='msg'></div></td>    <!--div, span 모두 가능-->
+                <td><div id="msgpw" class='msg'></div></td>
+                <td><div id="msgrepw" class='msg'></div></td>
+                <td><div id="msgname" class='msg'></div></td>
+                <td></td>
+            </tr>
+        </form> 
+        </table>
+    <!-- </form> -->
+    </div>
+    <!--회원데이터입력 폼 끝-->
+
+    <!-- 회원정보 리스트 시작 -->
+    <div id="memberlist">
+        <h2 class="subtitle">Member List</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>순번</th>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>이름</th>
+                    <th>관리</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>아이디</td>
+                    <td>패스워드</td>
+                    <td>이름</td>
+                    <td><a href="#">수정</a> | <a href="#">삭제</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!-- 회원정보 리스트 끝 -->
+
+    <!-- 회원정보 수정 폼 시작 -->
+    <div id="editFormArea">
+        <div id="wrapHeader">
+            <h2 class="subtitle">Edit Information</h2>
+            <a href="javascript:editformClose();">닫기</a>
+        </div>
+        <form id="editForm">
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" id="eid" readonly>
+                    <input type="hidden" id="index">    <!--몇번사용자의 정보가 잘 맞는지 확인용으로 쓰기 위해-->
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" id ="epw"></td>
+            </tr>
+            <tr>
+                <td>비밀번호 확인</td>
+                <td><input type="password" id="erepw"></td>
+            </tr>
+            <var><tr>
+                <td>이름</td>
+                <td><input type="text" id="ename"></td>
+            </tr>
+            <tr>
+                <td rowspan="2"><input type="submit" value="수정">
+                                <input type="button" id ="resetBtn" value="초기화">
+                </td>
+                <!-- <td></td> -->
+            </tr>
+        </table>
+        </form>
+    </div>
+    <!-- 회원정보 수정 폼 끝 -->
+</body>
+</html>

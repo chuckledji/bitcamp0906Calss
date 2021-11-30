@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <title>Document</title>
+
+    <script>
+        $(document).ready(function(){
+            //동적태그(엘리먼트)생성    => 필요한 위치로 추가
+            $('<h2></h2>').html('다음에만나요').appendTo('body');
+            $('<h2>다시만나요</h2>').appendTo('body');
+            $('<button onclick="hi();">나가기</button>').appendTo('body');
+
+            $('h1').remove();   //엘리먼트객체를 삭제
+            $('p').empty();     //엘리먼트내용만지움, 엘리먼트태그는 존재
+            $('h1').html('');
+       });
+       function hi(){
+           alert('잘가요');
+       }
+    </script>
+</head>
+<body>
+    <h1>안녕하세요</h1>
+    <p>반갑습니다</p>
+</body>
+</html>
