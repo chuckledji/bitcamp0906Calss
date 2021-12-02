@@ -7,6 +7,11 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <title>Document</title>
 
+    <style>
+        #target{
+            border: blue 1px solid;
+        }
+    </style>
     <script>
         $(document).ready(function(){
             //동적태그(엘리먼트)생성    => 필요한 위치로 추가
@@ -14,9 +19,70 @@
             $('<h2>다시만나요</h2>').appendTo('body');
             $('<button onclick="hi();">나가기</button>').appendTo('body');
 
-            $('h1').remove();   //엘리먼트객체를 삭제
-            $('p').empty();     //엘리먼트내용만지움, 엘리먼트태그는 존재
-            $('h1').html('');
+            // $('h1').remove();   //엘리먼트객체를 삭제
+            // $('p').empty();     //엘리먼트내용만지움, 엘리먼트태그는 존재
+            // $('h1').html('');
+
+            //동적 html생성
+            $('<h1></h1>');     //h1태그로 엘리먼트 객체 생성   //-----------------------?
+            $('<h1></h1>').html('Hello');//<h1>Hello</h1>
+            $('<h1>Hello</h1>')
+
+            //이미지생성
+            $('<img>').attr({
+                src:'../doh1.png',
+                width:200
+            }).appendTo('#target'); //이미지는 단일태그
+
+            $('<img>',{
+                src: '../images/doh2.jpg',
+                width: 200
+            }).appendTo('#target');
+
+            
+            //엘리먼트요소를 원하는 위치에 추가----------------------------------------------
+            //appendTo(target) : 타깃 엘리먼트 안의 현요소들의 마지막 요소 아래에 추가
+            $('<h5></h5>').html('appenTo').appendTo('#target');
+            $('<h5>goodbye</h5>').appendTo('#target');
+
+            //대상객체.append(동적객체) : 대상객체에 동적객체를 추가 
+            $('#target').append('<h3>append</h3>', '<hr>');
+
+            //prependTo(target) : 대상요소의 자식태그들 중 맨 앞의 요소 위에 추가
+            $('<h4>prependTo</h4>').prependTo('#target');
+
+            //insertAfter(target) : 대상의 같은 레벨의 엘리먼트 추가, 대상 뒤에 추가(target뒤)
+            $('<div>insertAfter</div>').insertAfter('#target'); 
+            
+            //insertbefore : 대상의 앞에 엘리먼트추가(target앞)
+            $('<div>insertBefore</div>').insertBefore('#target');
+
+            $('#target').prepend();
+            
+            var h6 = '<h6>prepend h6</h6>';
+            var h5 = '<h5>prepend h5</h5>';
+            var h4 = '<h4>prepend h4</h4>';
+
+            $('#target').prepend(h6,h5,h4);
+
+            //배열 생성----------------------------------------------------------------------
+            var links =[
+                {name : '네이버', url: 'https://www.naver.com'},
+                {name : '다음', url: 'https://www.daum.net'},
+                {name : '카카오', url: 'https://www.kakao.com'},
+            ];
+            //함수쓰는경우
+            // $.each(links, function(index, item){
+            //     let html = '<li>'+item.name+'='+item.url+'</li>';
+            //     $('#links').append(html);
+            // });
+            for(let i=0; i<links.length; i++){
+                $('#links').append('<li></li>');        //링크개수에 맞게 li생성해주고
+            }
+
+            $('#links>li').append(function(index) {     //생성한 li에 url과 이름 반환해준다
+                return '<a href="'+links[index].url+'">'+links[index].name+'</a>';
+            });
        });
        function hi(){
            alert('잘가요');
@@ -24,6 +90,11 @@
     </script>
 </head>
 <body>
+    <ul id="links">
+
+    </ul>
+    <div id="target"></div>
+    <hr>
     <h1>안녕하세요</h1>
     <p>반갑습니다</p>
 </body>

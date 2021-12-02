@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+        h1{
+            border: 1px solid hotpink;
+        }
+
+        h1:hover, div:hover{
+            cursor: pointer;
+        }
+        .mover{
+            background-color: hotpink;
+            color: lawngreen;
+        }
+        div{
+            width: 50%;
+            height: 50%;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        
+        $(document).ready(function(){
+            //이벤트적용 : 특정 엘리먼트 캐스팅 후, 이벤트를 연결
+             //this : 클릭한 이벤트가 발생한 객체를 가리킨다.
+            
+            $('h1').on('click', function(){
+                 $(this).html(function(index, html){             //set, $(this).html();   //get
+                    return html + '+';                          //return (html 형식의 문자열);
+                });
+            });
+
+            $('h1').click(function(){
+                $(this).html(function(index, html){
+                    return html + '+';
+                });
+            });
+
+            $('h1').on({                                       //객체사용 { 이벤트 : 속성, 이벤트 : 속성}
+                mouseenter: function(){
+                    $(this).addClass('mover');
+                },
+                mouseleave: function(){
+                    $(this).removeClass('mover');
+                }
+            });
+
+            $('h1').hover(function(){
+                $(this).addClass('mover');
+            }, function(){
+                $(this).removeClass('mover');
+
+                //이벤트연결 삭제
+                //$(this).off();
+                $(this).off('mouseleave');
+            });
+
+            $('div').click(function(e){                         //--------------------------------프로젝트써야할것
+                var h2Str = $('h2',this).text();                //이벤트가 발생한div => this
+                var pStr = $('p', this).text();                 //$('h22, this') => 이벤트가 발생한 엘리먼트(div) 안의에 위치한 h2
+
+                alert(h2Str+'\n'+pStr);
+
+                console.log(e); //클릭했을때 실행된 이벤트가 출력된다.
+            });
+            
+            $('h3').click(function(){
+                $(this).html(function(index, html){
+                    return html+'+';
+                });
+            });
+
+            //trigger : 이벤트를 자동 실행
+            setInterval(function(){
+                $('h3').trigger('click');                       //click이벤트를 자동실행 (위의 이멘트가 계속 실행된다.)
+            },1000);
+
+            $('a').click(function(e){
+                console.log('a tag click');
+                var ev = e || window.event;
+                //기본이벤트를 제거
+                //ev.preventDefault();                         //네이버로 이동하지 않음.
+                //이벤트 버블링제거
+                //ev.stopPropagation(); 
+
+                return false;                                  //네이버로 이동하지 않음
+            });
+
+            $('h4').click(function(){
+                var length = $('h4').length;
+                var targetHtml = $(this).html();
+
+                $('#wrap').append('<h4>'+length+'-'+targetHtml+'</h4>');
+            });
+
+            $('#wrap').on('click','h4',function(){
+                var length = $('h4').length;
+                var targetHtml = $(this).html();
+                $('#wrap').append('<h4>'+length+'-'+targetHtml+'</h4>');
+            });
+
+            $('#memo').keyup(function(){
+                var cnt = $(this).val().length;
+                var remain = 150 - Number(cnt);               //그냥cnt써도 자동형변환됨
+                console.log(cnt, remain);
+                if(remain<0){
+                    alert('메모는 150자까지 작성 가능합니다.');
+                    var str = $(this).val().substr(0,150);
+                    $(this).val(str);
+                    cnt = 150;                                  //해야 150/150 으로바뀜
+                }
+                $('span').text(cnt);
+            });
+
+            $('#myform').submit(function(){
+                //console.log('myform submit');
+                var uid = $('#uid').val();
+                var pw = $('#pw').val();
+                console.log(uid, pw);
+
+                return false;   //페이지갱신X
+            });
+
+            $('#allcheck').change(function(){
+                
+                if(this.checked){
+                    //#checkItem안에있는 input type=checkbox
+                    $('#checkItem>input:checkbox').prop('checked',true);        //property
+                }else{
+                    $('#checkItem>input:checkbox').prop('checked',false);
+                }
+            });
+
+        });
+        
+
+    </script>
+
+</head>
+<body>
+    <input type="checkbox" id="allcheck">
+    <label for="allcheck">전체동의</label>
+
+    <div id="checkItem">
+        <input type="checkbox" id="item1" value="A"><label for ="item1">Atype</label><br>
+        <input type="checkbox" id="item2" value="B"><label for ="item2">Btype</label><br>
+        <input type="checkbox" id="item3" value="C"><label for ="item3">Ctype</label><br>
+        <input type="checkbox" id="item4" value="D"><label for ="item4">Dtype</label><br>
+        <input type="checkbox" id="item5" value="E"><label for ="item5">Etype</label><br>
+    </div>
+    <hr>
+    <form id="myform">
+        아이디 <input type="text" id="uid"> <br>
+        비밀번호 <input type="paddword" id="pw"><br>
+        <input type="submit">
+    </form>
+
+    <textarea id="memo" cols="50" rows="10"></textarea>
+    <span>0</span>/150
+
+    <div id="wrap">
+        <h4>HEADER</h4>
+    </div>
+
+    <a href="http://www.naver.com">네이버</a>
+
+    <h3>click: </h3>
+
+    <div>
+        <h2>header-0</h2>
+        <p>paragraph-0</p>
+    </div>
+    <div>
+        <h2>header-1</h2>
+        <p>paragraph-1</p>
+    </div>
+    <div>
+        <h2>header-</h2>
+        <p>paragraph-2</p>
+    </div>
+
+    <h1>click-0</h1>
+    <h1>click-1</h1>
+    <h1>click-2</h1>
+</body>
+</html>

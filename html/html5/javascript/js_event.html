@@ -25,7 +25,7 @@
             margin:20px;
         }
     </style>
-    <script>
+    <script>                                                                                                              //@@@@@@@@@@@@@@@@@@
         window.onload = function(){
         //1. 이벤트 적용 : 캐스팅 -> 이벤트속성에 이벤트핸들러를 할당
         //h1캐스팅
@@ -41,9 +41,8 @@
 
         //캐스팅.이벤트 속성 = 핸들러
         document.getElementById('btn2').ocnclick = function(){
-            //this -> 이벤트가 발생한 객체를 가리킨다.
-            this.style.backgroundColor = "yellow";
-             this.style.color = "black";
+            this.style.backgroundColor = "yellow";          //this -> 이벤트가 발생한 객체를 가리킨다
+            this.style.color = "black";
 
              //이벤트강제실행 => 프로그램내부에서 이벤트실행
              btn1.onclick();    //같이실행된다

@@ -22,28 +22,17 @@
         */
 
         window.onload = function(){
-            //----------------------------------------------------------------------------------------------
+            //----------------------------------------------------------------------------------------------        //@@@@@@@@@@@@@@@@@@@제이쿼리랑 비교
             //동적파일에서 문서객체생성
 
             //태그 엘리먼트 객체생성
             var header = document.createElement('h1');
             var div = document.createElement('div');
 
-            var img = document.createElement('img');    //이미지생성
-
             //텍스트 노드 객체 생성
             var text = document.createTextNode('hello DOM');
             var text1 = document.createTextNode('this is div');
-
-            //img태그 속성 추가
-            img.src='../doh1.png';
-            img.width = 300;                            //무조건 숫자만 쓴다.(단위는px)
             
-            //속성 추가 메소드
-            img.setAttribute('src','../doh0.jfif');     //이걸 좀 더 권장....
-            img.setAttribute('width', 300);
-
-
             //텍스트노드를 태그엘리먼트로 추가
             header.appendChild(text);
             div.appendChild(text1);
@@ -51,12 +40,25 @@
             //body태그 캐스팅하고 header를 추가
             document.body.appendChild(header);
             document.body.appendChild(div);
+            
+            //이미지----------------------------------
+            //객체생성
+            var img = document.createElement('img');              //이미지생성
+            
+            //img태그 속성 추가
+            img.src='../doh1.png';
+            img.width = 300;                                     //무조건 숫자만 쓴다.(단위는px)
+            
+            //속성 추가 메소드
+            img.setAttribute('src','../doh0.jfif');              //이걸 좀 더 권장....
+            img.setAttribute('width', 300);
 
             document.body.appendChild(img);
 
             //----------------------------------------------------------------------------------------------
             //정적파일에서 문서객체생성 : 메소드이용
-
+            
+            //id 이름으로 엘리먼트 캐스팅
             var header1 = document.getElementById('header1');   //id가 중복되는 것이 있으면 안됨.
             var header2 = document.getElementById('header2');
 
@@ -66,7 +68,7 @@
             header1.innerHTML = 'h1 태그 안의 텍스트';
             header2.innerHTML = '다음에 만나요';
 
-            header1.style.backgroundColor = 'red';
+            header1.style.backgroundColor = 'red';              //style속성 추가하기
             header1.style.color = 'yellow';
             header1.style.marginTop = '100px';
 
