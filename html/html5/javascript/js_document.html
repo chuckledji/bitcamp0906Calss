@@ -9,15 +9,15 @@
         //윈도우객체
         //console.log(window);
 
-        //새 윈도우 만들기
+        //새 윈도우 만들기              //@@@@@@@@@@@@@@@@@@
         window.open();
         window.open('http://www.naver.com','newwind', 'width=300, height=400');
 
         
-        var child=window.open('','child', 'width=400','hieght=400');
-        var html = '<h1 onclick="self.close();">윈도우닫기</h1>';
+        var child=window.open('','child', 'width=400','hieght=400');             //child라는 위도우 생성
+        var html = '<h1 onclick="self.close();">윈도우닫기</h1>';                 //html 생성
 
-        child.document.write('<h1>부모 window에서 html태그 추가</h1>'+html);
+        child.document.write('<h1>부모 window에서 html태그 추가</h1>' + html);    //이게 작성되어야 위의 생성된 명령들이 실행된다.(아니면 창만 만들어짐)
 
 
         //--------------------------------------------------------------------------------

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>    <!--반드시로드해야한다--->
+    <style>
+        .title{
+            background-color: blueviolet;
+            color: chartreuse;
+        }
+    </style>
+
+    <script>
+        //객체생성 메소드 : $(jQuery를 의미)
+        //$(선택자 or Javascript객체) : 선택자를 JQuery객체로 변환(문서객체를 생성)
+        
+        $(document).ready(function(){                   //$(document).ready(fn()) : onload 속성에 핸들러 적용하는것과 동일.
+            //alert('onload');
+            //$('h1').html('test');                     //h1의 안녕 > test 로 변환
+
+            
+           // $('*').css('color', 'red');               //문서객체생성 : $(선택자)
+
+
+
+            //문서객체 캐스팅 : 선택자이용---------------------------------------------------------
+            var uid = $('#userid').val();
+
+            //getter : .val() : value값을 가져온다
+            console.log('uid', uid);            //test출력
+
+            //setter : .val(String) : value값에 매개변수의 인자값으로 set
+            $('input[type=text]').val('바뀐 값');       //바뀐값 출력
+            $('input:text').val('반갑습니다.');          //반값습니다 출력
+
+
+            setTimeout(function(){
+                var selectValue = $('select>option:selected').val();
+                console.log('selectValue', selectValue);
+
+                var checkedValue = $('input:radio:checked').val();
+                console.log('checkedValue', checkedValue);
+            },3000);
+            
+
+            //속성사용------------------------------------------------------------------------------
+            $('table tr:odd').css('background-color', '#ddd');
+            $('table tr:even').css('background-color','olive');
+            $('table tr:first').css('background-color', 'black').css('color', 'white'); //연속 속성 가능
+            $('table tr:last').css('background-color', 'black').css('color', '#0F0'); //연속 속성 가능
+
+
+            //배열-------------------------------------------------------------------------------------
+            var links = [
+                {name:'네이버', url:'http://www.naver.com'},
+                {name:'다음', url:'http://www.daum.net'},
+                {name:'카카오', url:'http://www.kakao.com'},
+            ];
+            //배열의 요소데이터를 이용해 화면을 구성
+            var newHtml = '';
+
+            //배열을 $.each()메소드로 처리
+            $.each(links, function(index, item){
+                console.log(index, item);
+
+                newHtml += '<a href="'+item.url+'">'+item.name+'</a>\n';
+                // <a href="https://www,naver.com>네이버</a>"
+            });
+            console.log(newHtml);
+            
+            console.log($('#linkbox').html());
+
+            $('#linkbox').html(newHtml);
+            //^위와같음 document.getElementById('linkbox').innerHTML=newHtml;
+
+            $('h1.header1').addClass('title');
+            $('h1').each(function(index, item){
+                console.log(index, item.innerHTML);
+                console.log(index, $(item).html());         //item : JQuery객체가 아니다.(엘리먼트 객체일뿐)
+            });
+
+
+            //filter--------------------------------------------------------------------------------------
+            //.filter('선택자')
+            //.filter(fn()) : 함수의 반환값이 논리값이어야한다
+            $('h3:odd').css({
+                 backgroundColor: "black",
+                 color: 'yellow'
+            });
+
+            $('h3').filter(':even').css({   
+                backgroundColor: "blue",
+                 color: 'white'
+            });
+
+            $('h3').filter(function(index){
+                return index % 3 ==0;
+            }).css({
+                backgroundColor: "pink",
+                 color: 'white'
+            });
+
+            
+
+
+            //--------------------------------------------------------------------------------------
+            //css('속성이름')           => getter 속성이름을 가져오는것
+            //css('속성이름', '속성값') => setter
+            //css({})                  => setter : 여러 속성을 한번에 정의
+
+            $('h2').css('background', 'pink').filter(':even').css('color', 'skyblue').end().css('background', 'blue').filter(':odd').css('color', 'yellow');
+
+            $('h4').eq(2).css('background', 'green');   //특정위치선택
+            $('h4').first().css('background', 'blue');
+            $('h4:first').css('background', 'blue');
+            $('h4').last().css('background','orange');
+
+            $('h1').css('background', 'gray').add('h2').css('float', 'left');   //범위의확장add
+        });
+
+
+    </script>
+</head>
+<body>
+    <h4>header-0</h4>
+    <h4>header-1</h4>
+    <h4>header-2</h4>
+    <h4>header-3</h4>
+    <h4>header-4</h4>
+
+
+    <hr>
+    <h2>header - 0</h2>
+    <h2>header - 1</h2>
+    <h2>header - 2</h2>
+    <h2>header - 3</h2>
+    <h2>header - 4</h2>
+    <h2>header - 5</h2>
+
+    <hr>
+
+    <h3>header - 0</h3>
+    <h3>header - 1</h3>
+    <h3>header - 2</h3>
+    <h3>header - 3</h3>
+    <h3>header - 4</h3>
+    <h3>header - 5</h3>
+
+    <hr>
+
+    <h1 class="header1">Header -1</h1>
+    <h1 class="header1">Header -2</h1>
+    <h1 class="header1">Header -3</h1>
+    <h1 class="header1">Header -4</h1>
+    <h1 class="header1">Header -5</h1>
+    <h1 class="header1">Header -6</h1>
+
+    <hr>
+    <div id='linkbox'>
+        링크정보가 위치한다.
+    </div>
+    <hr>
+
+    <table border="1">
+        <tr>
+            <th>thead-1</th>
+            <th>thead-2</th>
+        </tr>
+        <tr>
+            <td>1-1</td>
+            <td>1-2</td>
+        </tr>
+        <tr>
+            <td>2-1</td>
+            <td>2-2</td>
+        </tr>
+        <tr>
+            <td>3-1</td>
+            <td>3-2</td>
+        </tr>
+        <tr>
+            <td>tfoot-1</td>
+            <td>tfoot-2</td>
+        </tr>
+    </table>
+    <hr>
+    남자 <input type="radio" name="gender" value="1">
+    여자 <input type="radio" name="gender" value="2">
+    <select >
+        <option value="html5">html5</option>
+        <option value="css">css</option>
+        <option value="js">js</option>
+    </select>
+    <hr>
+    <input type="text" id="userid" value="test">
+    <hr>
+    <h1>안녕</h1>
+</body>
+</html>

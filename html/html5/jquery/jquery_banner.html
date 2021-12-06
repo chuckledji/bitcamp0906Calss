@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <title>움직이는배너만들기</title>
+
+    <style>
+        img{
+            width : 200px;
+            height: 200px;
+        }
+
+        #box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid darkblue;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            setInterval(function(){
+                $('#box>img').first().appendTo('#box');
+            },3000);
+        });
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <img src="../doh0.jfif">
+        <img src="../doh1.png">
+        <img src="../images/doh2.jpg">
+        <img src="../images/apple.jpg">
+
+    </div>
+    
+
+</body>
+</html>

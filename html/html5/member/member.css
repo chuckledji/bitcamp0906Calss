@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR&family=Secular+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 폰트설정 */
+.title{
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+.font{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.subtitle{
+    font-family: 'Secular One', sans-serif;
+}
+
+
+/*****************************************************/
+/* 전체 공통 설정 */
+input[type]{
+    border: 1px solid #aaa;
+    padding: 5px;
+    font-size: 0.8em;
+}
+input[type=text], input[type=password]{
+    width: 200px;
+}
+input[type=submit], input[type=reset], input[type=button]{
+    width: 100px;
+    height: 50px;
+}
+
+
+/*****************************************************/
+/* header설정 */
+header{
+    padding: 20px;
+
+    border-bottom: 1px solid #aaa;
+}
+
+header>h1{
+    color: rgb(255, 102, 0);
+}
+
+
+/*****************************************************/
+/* 회원정보입력 폼 설정 */
+ #regFormArea{
+    padding: 10px 30px; /*상하.좌우*/
+
+    border-bottom: 1px solid #aaa;
+}
+#regFormArea>table td{
+    padding:2px 8px;
+}
+
+/* #regFormArea input[type]{
+    border: 1px solid #aaa;
+    padding: 5px;
+    font-size: 0.8em;
+}
+#regFormArea input[type=text], #regFormArea input[type=password]{
+    width: 200px;
+}
+#regFormArea input[type=submit], #regFormArea input[type=reset]{
+    width: 100px;
+    height: 50px;
+}*/
+
+div.msg{
+    height: 20px;
+    color: orangered;
+}
+
+
+/*****************************************************/
+/* 회원리스트 영역 설정 */
+#memberlist{
+    padding: 10px 30px; /*상하.좌우*/
+
+    border-bottom: 1px solid #aaa;
+}
+
+#memberlist > table{
+    margin: 15px 0;
+    width: 1000px;
+
+    border-collapse: collapse;
+}
+#memberlist>table td, #memberlist>table th{   /*자손그런거 확실히 다시*/
+ border: 1px solid #aaa;
+ padding: 10px;
+ text-align: center;
+}
+
+
+/*****************************************************/
+/* 회원정보수정 영역 설정 */
+#editFormArea{
+    padding: 20px;
+    background-color: rgb(255, 102, 0);
+    width: 400px;
+    border: 10px solid rgb(6, 37, 212);
+    border-radius: 10px;
+
+    position: absolute;
+    left: 50%;
+    top:100px;
+    margin-left: -223px;
+
+    display: none;
+}
+
+#wrapHeader{
+    overflow: hidden; /*감싸고있어서? 플롯송성을 갖고있기때문에*/
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    margin-bottom: 20px;
+}
+#wrapHeader>h2{
+    float: left;
+}
+#wrapHeader>a{
+    
+    float: right;
+    line-height: 32px;
+}
+#editForm td{
+    padding: 5px 10px;
+    text-align:center;
+}

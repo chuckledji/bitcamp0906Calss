@@ -10,7 +10,7 @@
         /*1.태그 동적생성
             1.태그 엘리먼트 객체를 생성                                     | document.createElement('객체');
             2.텍스트 노드 객체를 생성 (단일 태그 제외)                       | document.createTextNode('텍스트');
-            3.태그 엘리먼트 객체에 텍스트노드 객체를 추가                    | 엘리먼트 객체.appendchild(텍스트객체);
+            3.태그 엘리먼트 객체에 텍스트노드 객체를 추가                     | 엘리먼트 객체.appendchild(텍스트객체);
             4.태그 엘리먼트가 들어가야 할 위치의 부모태그를 캐스팅하고 추가    | 부모태그.appendchild(객체);
         
 
@@ -22,26 +22,17 @@
         */
 
         window.onload = function(){
+            //----------------------------------------------------------------------------------------------        //@@@@@@@@@@@@@@@@@@@제이쿼리랑 비교
+            //동적파일에서 문서객체생성
 
             //태그 엘리먼트 객체생성
             var header = document.createElement('h1');
             var div = document.createElement('div');
 
-            var img = document.createElement('img');    //이미지생성
-
             //텍스트 노드 객체 생성
             var text = document.createTextNode('hello DOM');
             var text1 = document.createTextNode('this is div');
-
-            //img태그 속성 추가
-            img.src='../doh1.png';
-            img.width = 300;                            //무조건 숫자만 쓴다.(단위는px)
             
-            //속성 추가 메소드
-            img.setAttribute('src','../doh0.jfif');     //이걸 좀 더 권장....
-            img.setAttribute('width', 300);
-
-
             //텍스트노드를 태그엘리먼트로 추가
             header.appendChild(text);
             div.appendChild(text1);
@@ -49,30 +40,43 @@
             //body태그 캐스팅하고 header를 추가
             document.body.appendChild(header);
             document.body.appendChild(div);
+            
+            //이미지----------------------------------
+            //객체생성
+            var img = document.createElement('img');              //이미지생성
+            
+            //img태그 속성 추가
+            img.src='../doh1.png';
+            img.width = 300;                                     //무조건 숫자만 쓴다.(단위는px)
+            
+            //속성 추가 메소드
+            img.setAttribute('src','../doh0.jfif');              //이걸 좀 더 권장....
+            img.setAttribute('width', 300);
 
             document.body.appendChild(img);
 
             //----------------------------------------------------------------------------------------------
-
             //정적파일에서 문서객체생성 : 메소드이용
+            
+            //id 이름으로 엘리먼트 캐스팅
             var header1 = document.getElementById('header1');   //id가 중복되는 것이 있으면 안됨.
-            var header1 = document.getElementById('header2');
+            var header2 = document.getElementById('header2');
 
-            conesole.log(typeof(header1), header1.innerHTML);
-            conesole.log(typeof(header2), header2.innerHTML);
+            console.log(typeof(header1), header1.innerHTML);
+            console.log(typeof(header2), header2.innerHTML);    //이건 왜 에러나지?
 
             header1.innerHTML = 'h1 태그 안의 텍스트';
             header2.innerHTML = '다음에 만나요';
 
-            header1.style.backgroundColor = 'red';
+            header1.style.backgroundColor = 'red';              //style속성 추가하기
             header1.style.color = 'yellow';
             header1.style.marginTop = '100px';
 
             //태그 이름으로 엘리먼트 캐스팅
-            var heders = document.getElementsByTagName('h2');   //tagName으로는 중복선택 가능 > 배열
+            var headers = document.getElementsByTagName('h2');   //tagName으로는 중복선택 가능 > 배열
 
             for(let i=0; i<headers.length; i++){
-                headers[i].innerHTML +='H2 tag - '+ i;
+                headers[i].innerHTML += 'H2 tag - '+i;
             }
 
             //선택자를 이용해 엘리먼트 캐스팅
@@ -89,7 +93,7 @@
             var wrap = document.querySelector('div.wrap');
             wrap.removeChild(header3);
             //document.body.removeChild(header3);
-        };
+        }
 
 
         
@@ -100,7 +104,7 @@
 <body>
     <h1 id = 'header1'><i>안녕하세요</i></h1>
     <h2 id = 'header2'>반갑습니다</h2> 
-    <div id ='wrap'>
+    <div class ='wrap'>
         <h2 id = 'header3'>제거 대상</h2>
     </div> 
     
