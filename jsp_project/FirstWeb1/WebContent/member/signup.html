@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	td{
+		text-align: center;
+		padding : 5px;
+	}
+</style>
+</head>
+<body>
+	<h1>회원가입</h1>
+	<hr>
+	<form action="../SignupServlet" method="post"> <!-- 서블렛호출 -->
+		<table>
+			<tr>
+				<td>아이디</td>
+				<td>
+					<input type="text" id="userid" name="userid" placeholder="아이디를 입력하세요.">
+				</td>
+			</tr>
+			<tr>
+				<td>패스워드</td>
+				<td>
+					<input type="password" id="pw" name="pw" placeholder="비밀번호를 입력하세요.">
+				</td>
+			</tr>
+			<tr>
+				<td>패스워드(확인)</td>
+				<td>
+					<input type="password" id="pw2" name="pw2" placeholder="비밀번호를 입력하세요.">
+				</td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td>
+					<input type="text" id="username" name="username" placeholder="이름을 입력하세요.">
+				</td>
+			</tr>
+			<tr>
+				<td>자기소개</td>
+				<td>
+					<textarea name ="comment" rows="5" cols="25">자기소개를 해주세요.</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>
+					<input type="radio" name="gender" value="f" checked>여자 <br>
+					<input type="radio" name="gender" value="m">남자 <br>
+				</td>
+			</tr>
+			<tr>
+				<td>관심사</td>
+				<td>
+					<input type="checkbox" name="interest" value="JAVA">JAVA <br>
+					<input type="checkbox" name="interest" value="DATABASE">DATABASE <br>
+					<input type="checkbox" name="interest" value="HTML5">HTML5 <br>
+					<input type="checkbox" name="interest" value="CSS">CSS <br>
+					<input type="checkbox" name="interest" value="JAVASCRIPT">JAVASCRIPT <br>
+					<input type="checkbox" name="interest" value="SERVLET">SERVLET <br>
+				</td>
+			</tr>
+			<tr>
+				<td>태어난 년도</td>
+				<td>
+					<select name="byear">
+						<option selected value="1999">1999</option>
+						<option>1998</option>
+						<option>1997</option>
+						<option>1996</option>
+						<option>1995</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit"></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
