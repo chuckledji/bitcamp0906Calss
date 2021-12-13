@@ -25,7 +25,7 @@
 	
 	<h3>host : <%= request.getHeader("host") %></h3>
 	<%
-		Enumeration headers = request.getHeaderNames();	//헤더의 전체이름을 가져오고 / enumeration도 컬렉션이다.
+		Enumeration headers = request.getHeaderNames();		//헤더의 전체이름을 가져오고 / enumeration도 컬렉션이다.
 	
 	while(headers.hasMoreElements()){
 		//헤더이름을 가져온다.

@@ -10,9 +10,9 @@
 <body>
 
 	<div id="main_wrap">
-		<%@include file="myblog/header.jsp" %>
+		<%@include file="frame/header.jsp" %>
       
-        <%@include file="myblog/nav.jsp" %>
+        <%@include file="frame/nav.jsp" %>
        
         <!-- Contents 영역 시작 -->
         <div id="contents_wrap">
@@ -64,13 +64,13 @@
             </section>
             <!-- 게시물영역 종료 -->
             
-            <%@include file="myblog/aside.jsp"%>
+            <%@include file="frame/aside.jsp"%>
             
         </div>
         
         <!-- Contents 영역 종료 -->
         
-        <%@include file="myblog/footer.jsp"%>
+        <%@include file="frame/footer.jsp"%>
 
     </div>
 

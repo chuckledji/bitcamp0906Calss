@@ -34,20 +34,20 @@ public class LoginServlet extends HttpServlet {
 		//문자열을 출력, 요청한 쪽으로 응답
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
-		out.println("<head><title>파라미터 데이터 받기</title></head>");
+		out.println("	<head><title>파라미터 데이터 받기</title></head>");
 		out.println("	<body>");
 		out.println("		<h1>");
-		out.println("			userid : " + uid + "<br>");
-		out.println("			password : " + pw + "<br>");
+		out.println("			userid : "+ uid + " <br>");
+		out.println("			pw : "+ pw);
 		out.println("		</h1>");
 		out.println("	</body>");
 		out.println("</html>");
-
 		
 	}
 
 	//사용자가 요청할때 Post방식으로 요청했을 때 처리되는 메소드
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Post 방식으로 요청 처리!!!");
 		doGet(request, response);
 	}
 

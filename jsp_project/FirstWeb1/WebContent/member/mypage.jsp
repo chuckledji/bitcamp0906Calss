@@ -26,8 +26,8 @@
 	<h3>
 		사용자 로그인 아이디 : <%= uid %> <br>
 		
-		request 속성값:<%= request.getAttribute("num1"); %><br>
-		application속성값 : <%= application.getAttribute("num2"); %>
+		request 속성값:<%= request.getAttribute("num1") %><br>
+		application속성값 : <%= application.getAttribute("num2") %>
 		
 		<a href="logout.jsp">로그아웃</a>
 	</h3>
