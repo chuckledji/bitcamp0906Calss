@@ -30,12 +30,20 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.or
 	
 	
 	<servlet>
-		<servlet-name>FrontController</servlet-name>
-		<servlet-class>controller.FrontController</servlet-class>
+		<servlet-name>FrontController_Map</servlet-name>
+		<servlet-class>controller.FrontController_Map</servlet-class>
+		
+		<init-param>
+			<!-- 경로가 바뀔수있으므로 경로를 만든다 -->
+			<param-name>configPath</param-name>	
+			<param-value>/WEB-INF/command.properties</param-value>
+		</init-param>
+		
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>FrontController</servlet-name>
+		<servlet-name>FrontController_Map</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
