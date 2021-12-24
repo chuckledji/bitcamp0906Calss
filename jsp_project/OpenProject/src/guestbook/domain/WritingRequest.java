@@ -1,12 +1,12 @@
 package guestbook.domain;
 
-public class GuestRequest {
+public class WritingRequest {
 
 	private String subject;
 	private String content;
 	private int memberidx;
 	
-	public GuestRequest(String subject, String content, int memberidx) {
+	public WritingRequest(String subject, String content, int memberidx) {
 		this.subject = subject;
 		this.content = content;
 		this.memberidx = memberidx;

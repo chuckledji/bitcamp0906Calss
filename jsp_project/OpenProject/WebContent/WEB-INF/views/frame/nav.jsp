@@ -6,7 +6,8 @@
 			<li><a href="${pageContext.request.contextPath}/member/reg.do">회원 가입</a></li>
 			<li><a href="${pageContext.request.contextPath}/member/manager/list.do">회원 리스트</a></li>
 			<li><a href="${pageContext.request.contextPath}/member/my/mypage.do">마이페이지</a></li>
-			<li><a>방명록</a></li>
+			<li><a href="${pageContext.request.contextPath}/guestbook/writingform.do">방명록쓰기</a></li>
+			<li><a href="${pageContext.request.contextPath}/guestbook/list.do">방명록보기</a></li>
 			
 			<c:if test="${empty loginInfo}">
 			<li><a href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
