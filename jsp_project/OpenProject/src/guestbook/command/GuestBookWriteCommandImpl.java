@@ -16,7 +16,7 @@ public class GuestBookWriteCommandImpl implements Command {
 		
 		if(request.getMethod().equals("GET")) {
 			
-			view="/WEB-INF/views/guestbook/guestbook.jsp";
+			view="/WEB-INF/views/guestbook/writingform.jsp";
 			
 		}else if(request.getMethod().equals("POST")) {
 			

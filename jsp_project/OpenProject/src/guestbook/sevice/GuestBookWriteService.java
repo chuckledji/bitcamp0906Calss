@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import guestbook.dao.GuestBookDao;
-import guestbook.domain.GuestRequest;
+import guestbook.domain.WritingRequest;
 import jdbc.ConnectionProvider;
 
 public class GuestBookWriteService {
@@ -28,7 +28,7 @@ public class GuestBookWriteService {
 		
 		Connection conn = null;
 		
-		GuestRequest guestReq = new GuestRequest(title, content, Integer.parseInt(memberidx));
+		WritingRequest guestReq = new WritingRequest(title, content, Integer.parseInt(memberidx));
 		
 		try {
 			conn = ConnectionProvider.getConnection();

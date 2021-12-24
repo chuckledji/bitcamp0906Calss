@@ -1,0 +1,27 @@
+@charset "UTF-8";
+*{
+	margin=0;
+	padding=0;
+}
+
+header>h1{
+	padding:10px;
+	
+}
+
+nav {
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+}
+
+nav>ul{
+	overflow: hidden;	/* li를 수평방향으로 바꾸려고해서 overflow사용 */
+}
+
+nav>ul>li{
+	width: 100px;
+	float: left;
+	padding: 5px 15px;
+	
+	list-style: none;
+}
