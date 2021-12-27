@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import guestbook.domain.GuestBook;
 import guestbook.domain.ListRequest;
 import guestbook.domain.WritingRequest;
 import jdbc.util.JdbcUtil;
@@ -61,6 +62,7 @@ public class GuestBookDao {
 		}
 		return list;
 	}
+	
 	public int selectTotalCount(Connection conn) throws SQLException {
 		
 		int totalCount = 0;
@@ -87,6 +89,34 @@ public class GuestBookDao {
 	}
 	
 	
+	public GuestBook selectByIdx(Connection conn, int idx) throws SQLException {
+		
+		GuestBook gbook = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from guestbook where idx = ?";
+		
+		try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, idx);
+		
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			gbook = new GuestBook(rs.getInt("idx"), rs.getString("subject"), rs.getString("content"), rs.getString("regdate"), rs.getInt("memberidx"));
+		}
+		
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return null;
+	}
+	
+	private Guestbook 
 	
 	
 }

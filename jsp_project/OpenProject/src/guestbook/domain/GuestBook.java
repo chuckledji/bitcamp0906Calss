@@ -3,17 +3,17 @@ package guestbook.domain;
 public class GuestBook {
 
 	private int idx;
-	private String title;
+	private String subject;
 	private String content;
 	private String regdate;
 	private int memberidx;
 	
 	public GuestBook() {}
 
-	public GuestBook(int idx, String tilte, String content, String regdate, int memberidx) {
+	public GuestBook(int idx, String subject, String content, String regdate, int memberidx) {
 		super();
 		this.idx = idx;
-		this.title = tilte;
+		this.subject = subject;
 		this.content = content;
 		this.regdate = regdate;
 		this.memberidx = memberidx;
@@ -27,12 +27,12 @@ public class GuestBook {
 		this.idx = idx;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setTilte(String title) {
-		this.title = title;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public String getContent() {
@@ -61,7 +61,7 @@ public class GuestBook {
 
 	@Override
 	public String toString() {
-		return "GuestBook [idx=" + idx + ", title=" + title + ", content=" + content + ", regdate=" + regdate
+		return "GuestBook [idx=" + idx + ", subject=" + subject + ", content=" + content + ", regdate=" + regdate
 				+ ", memberidx=" + memberidx + "]";
 	}
 	

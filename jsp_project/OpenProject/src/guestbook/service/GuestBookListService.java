@@ -1,4 +1,4 @@
-package guestbook.sevice;
+package guestbook.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
