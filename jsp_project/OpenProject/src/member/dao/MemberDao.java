@@ -206,20 +206,19 @@ public class MemberDao {
 		}
 
 		public int updateMember(Connection conn, EditRequest editRequest) throws SQLException {
-
-			int resultCnt = 0;
 			
+			int resultCnt = 0;
 			PreparedStatement pstmt = null;
-			String sql ="update member set pw=?, username=?, photo=? where idx=?";
+			String sql = "update member set password=?, username=?, photo=? where idx=?";
 			
 			try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, editRequest.getPw());
-			pstmt.setString(2, editRequest.getUsername());
-			pstmt.setString(3, editRequest.getFileName());
-			pstmt.setInt(4, editRequest.getIdx());
-			
-			resultCnt = pstmt.executeUpdate();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, editRequest.getPw());
+				pstmt.setString(2, editRequest.getUsername());
+				pstmt.setString(3, editRequest.getFileName());
+				pstmt.setInt(4, editRequest.getIdx());
+				
+				resultCnt = pstmt.executeUpdate();
 			} finally {
 				JdbcUtil.close(pstmt);
 			}
@@ -229,21 +228,52 @@ public class MemberDao {
 
 		public int deleteMemberByIdx(Connection conn, int idx) throws SQLException {
 			
-			int resultCnt =0;
+			int resultCnt = 0;
 			
 			PreparedStatement pstmt = null;
-			 
-			String sql="delete from member where idx=?";
+			
+			String sql = "DELETE FROM member WHERE idx=?";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, idx);
 				
-				resultCnt = pstmt.executeUpdate();			
+				resultCnt = pstmt.executeUpdate();
+				
 			} finally {
 				JdbcUtil.close(pstmt);
 			}
+			
 			return resultCnt;
 		}
-		
+
+		public int selectByIdCount(Connection conn, String userId) throws SQLException {
+			
+			int resultCnt = 0;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = "select count(*) from member where userid=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, userId);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					resultCnt = rs.getInt(1);
+				}
+			} finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+			}
+			
+			
+			
+			
+			
+			return resultCnt;
+		}
+
 	}

@@ -11,20 +11,20 @@ public class GuestBookListCommandImpl implements Command {
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse response) {
 		
-		String pageNumber = request.getParameter("p");
+		String p = request.getParameter("p");
 		int pageNum = 1;
-		if(pageNumber != null && pageNumber.length()>0) {
-			
+		if(p != null) {
 			try {
-			pageNum = Integer.parseInt(pageNumber);
-			} catch(NumberFormatException e){
+				pageNum = Integer.parseInt(p);
+			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
 		}
 		
+		//System.out.println(GuestBookListService.getInstance().getPage(1));
 		request.setAttribute("listView", GuestBookListService.getInstance().getPage(pageNum));
 		
-		return "/WEB-INF/views/member/manager/list.jsp";
+		return "/WEB-INF/views/guestbook/list.jsp";
 	}
 
 }

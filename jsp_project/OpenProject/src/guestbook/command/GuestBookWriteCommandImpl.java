@@ -13,20 +13,17 @@ public class GuestBookWriteCommandImpl implements Command {
 		
 		String view = null;
 		
-		
 		if(request.getMethod().equals("GET")) {
 			
-			view="/WEB-INF/views/guestbook/writingform.jsp";
+			view = "/WEB-INF/views/guestbook/writeform.jsp";
 			
-		}else if(request.getMethod().equals("POST")) {
+		} else if(request.getMethod().equals("POST")) {
 			
+			request.setAttribute("result", GuestBookWriteService.getInstance().writeArticle(request, response));
 			
-			int gcnt = GuestBookWriteService.getInstance().insertWriting(request, response);
-			
-			request.setAttribute("result", gcnt>0?"등록되었습니다." : "등록에 실패했습니다. 다시 확인해주세요");
-			
-			view="/WEB-INF/views/guestbook/regwriting.jsp";
+			view = "/WEB-INF/views/guestbook/write.jsp";
 		}
+		
 		
 		return view;
 	}

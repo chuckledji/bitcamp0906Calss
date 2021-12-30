@@ -3,5 +3,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 		alert('${result}');
-		locaiton.href='list.do';
+		location.href='list.do';
 </script>

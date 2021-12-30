@@ -1,22 +1,21 @@
 package guestbook.domain;
 
-public class GuestBook {
+public class Article {
 
 	private int idx;
 	private String subject;
 	private String content;
 	private String regdate;
-	private int memberidx;
-	
-	public GuestBook() {}
+	private String username;
+	private String photo;
 
-	public GuestBook(int idx, String subject, String content, String regdate, int memberidx) {
-		super();
+	public Article(int idx, String subject, String content, String regdate, String username, String photo) {
 		this.idx = idx;
 		this.subject = subject;
 		this.content = content;
 		this.regdate = regdate;
-		this.memberidx = memberidx;
+		this.username = username;
+		this.photo = photo;
 	}
 
 	public int getIdx() {
@@ -51,20 +50,26 @@ public class GuestBook {
 		this.regdate = regdate;
 	}
 
-	public int getMemberidx() {
-		return memberidx;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setMemberidx(int memberidx) {
-		this.memberidx = memberidx;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	@Override
 	public String toString() {
-		return "GuestBook [idx=" + idx + ", subject=" + subject + ", content=" + content + ", regdate=" + regdate
-				+ ", memberidx=" + memberidx + "]";
+		return "Article [idx=" + idx + ", subject=" + subject + ", content=" + content + ", regdate=" + regdate
+				+ ", username=" + username + ", photo=" + photo + "]";
 	}
-	
-	
-	
+
 }

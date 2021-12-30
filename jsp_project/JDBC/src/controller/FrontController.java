@@ -22,7 +22,7 @@ import dept.service.BadRequestCommandImpl;
 import dept.service.Command;
 
 
-public class FrontController_Map extends HttpServlet{
+public class FrontController extends HttpServlet{
 
 	private Map<String, Command> commands = new HashMap<String, Command>();
 	
@@ -79,7 +79,7 @@ public class FrontController_Map extends HttpServlet{
 				//인스턴스생성
 				Command commandObj = (Command)commandClass.newInstance();
 					
-				//commands Map에 <요처ㅇ, 객체> 저장
+				//commands Map에 <요청, 객체> 저장
 				commands.put(command, commandObj);
 			} catch (InstantiationException e) {
 				e.printStackTrace();
@@ -135,8 +135,8 @@ public class FrontController_Map extends HttpServlet{
 		String viewPage = command.getPage(request, response);
 		
 		//5. view페이지를 지정(선택)하고 -> 포워딩
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);	//절대경로와는 다른것! 다시듣기
-		dispatcher.forward(request, response);		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);	
 		
 		
 	}

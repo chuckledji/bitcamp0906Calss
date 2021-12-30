@@ -8,115 +8,211 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import guestbook.domain.GuestBook;
-import guestbook.domain.ListRequest;
-import guestbook.domain.WritingRequest;
+import guestbook.domain.Article;
+import guestbook.domain.EditRequest;
+import guestbook.domain.Message;
+import guestbook.domain.PageView;
+import guestbook.domain.WriteRequest;
 import jdbc.util.JdbcUtil;
+import member.domain.Member;
 
 public class GuestBookDao {
 
-	private GuestBookDao() {}
+	private GuestBookDao() {
+	}
+
 	private static GuestBookDao dao = new GuestBookDao();
+
 	public static GuestBookDao getInstance() {
 		return dao;
 	}
-	public int insertGuestBook(Connection conn, WritingRequest guestReq) throws SQLException {
-	
-		int resultCnt=0;
+
+	public int insertArticle(Connection conn, WriteRequest writeRequest) throws SQLException {
+
+		int resultCnt = 0;
 		PreparedStatement pstmt = null;
-		
-		String sql = "insert into guestbook(subject, content, memberidx) values (?,?,?)";
-		
+
+		String sql = "INSERT INTO guestbook (subject, content, memberidx) VALUES (?,?,?)";
+
 		try {
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, guestReq.getSubject());
-		pstmt.setString(2, guestReq.getContent());
-		pstmt.setInt(3, guestReq.getMemberidx());
-		
-		resultCnt = pstmt.executeUpdate();
-		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writeRequest.getSubject());
+			pstmt.setString(2, writeRequest.getContent());
+			pstmt.setInt(3, writeRequest.getMemberIdx());
+
+			resultCnt = pstmt.executeUpdate();
 		} finally {
-			JdbcUtil.close(pstmt);			
+			JdbcUtil.close(pstmt);
 		}
+
 		return resultCnt;
 	}
-	public List<ListRequest> selectList(Connection conn, int index, int count) throws SQLException {
-		
-		//작성글테이블과 멤버테이블을 조인해서 데이터를 구해 ListRequest리스트에 넣어 보낸다
-		List<ListRequest> list = new ArrayList<ListRequest>();
-		
+
+	public List<Article> selectList(Connection conn, int index, int count) throws SQLException {
+
+		List<Article> list = new ArrayList<Article>();
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		String sql = "select g.idx, g.subject, m.userid, g.regdate from member m join guestbook g on m.idx = g.memberIdx order by g.idx asc limit ?, ?";
-				
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, index);
-		pstmt.setInt(2, count);
-		
-		rs = pstmt.executeQuery();
-		
-		while (rs.next()) {
-			ListRequest listRequest = new ListRequest(rs.getInt("g.idx"), rs.getString("g.subject"), rs.getString("m.userid"), rs.getString("g.regdate"));
-			list.add(listRequest);
+
+		String sql = "select g.idx as idx , g.subject as subject, g.content as content, g.regdate as regdate, m.username as username, m.photo as photo from guestbook g join member m on g.memberidx=m.idx order by idx desc limit ?, ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, index);
+			pstmt.setInt(2, count);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				list.add(new Article(
+						rs.getInt("idx"), 
+						rs.getString("subject"), 
+						rs.getString("content"), 
+						rs.getString("regdate"),
+						rs.getString("username"),
+						rs.getString("photo")));
+			}
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
 		}
+
 		return list;
 	}
-	
+
 	public int selectTotalCount(Connection conn) throws SQLException {
-		
 		int totalCount = 0;
-		
+
 		Statement stmt = null;
 		ResultSet rs = null;
-		
-		String sql = " select count(*) from guestbook";
-		
-		
+
+		String sql = "select count(*) from guestbook";
+
 		try {
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sql);
-		
-			if(rs.next()) {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			if (rs.next()) {
 				totalCount = rs.getInt(1);
 			}
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(stmt);
 		}
-				
+
 		return totalCount;
 	}
-	
-	
-	public GuestBook selectByIdx(Connection conn, int idx) throws SQLException {
+
+	public PageView selectByIdx(Connection conn, int idx) throws SQLException {
 		
-		GuestBook gbook = null;
-		
+		PageView pageView = null;
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		String sql = "select * from guestbook where idx = ?";
-		
+
+		String sql = "select g.idx as idx, g.subject as subject, g.content as content, m.username as username, g.regdate as regdate, m.photo as photo, m.idx as memberidx, m.userid as userid from project.guestbook g join project.member m on g.memberidx=m.idx where g.idx=?";
+
 		try {
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, idx);
-		
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()) {
-			gbook = new GuestBook(rs.getInt("idx"), rs.getString("subject"), rs.getString("content"), rs.getString("regdate"), rs.getInt("memberidx"));
-		}
-		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				pageView = new PageView(
+						rs.getInt("idx"), 
+						rs.getString("subject"), 
+						rs.getString("content"), 
+						rs.getString("regdate"),
+						rs.getString("username"),
+						rs.getString("photo"),
+						rs.getInt("memberidx"),
+						rs.getString("userid"));
+			}
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
-		
-		return null;
+
+		return pageView;
 	}
+
+	public Message selectMessageByIdx(Connection conn, int idx, int memberIdx) throws SQLException {
+		
+		Message message = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from guestbook where idx=? and memberidx=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			pstmt.setInt(2, memberIdx);
+			
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				message = new Message(
+						rs.getInt("idx"), 
+						rs.getString("subject"), 
+						rs.getString("content"), 
+						rs.getString("regdate"),
+						rs.getInt("memberidx"));
+			}
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+
+		return message;
+	}
+
+	public int updateMessage(Connection conn, EditRequest editRequest) throws SQLException {
+		
+		int resultCnt = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE guestbook "
+					+ " SET subject=?, content=? "
+					+ " WHERE idx=? and memberidx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, editRequest.getSubject());
+			pstmt.setString(2, editRequest.getContent());
+			pstmt.setInt(3, editRequest.getGuestbookIdx());
+			pstmt.setInt(4, editRequest.getMemberIdx());
+			
+			resultCnt = pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		return resultCnt;
+	}
+
 	
-	private Guestbook 
-	
-	
+	public int deleteMessage(Connection conn, int idx, int memberIdx) throws SQLException {
+		
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		String sql = "delete from guestbook where idx=? and memberidx=?";
+		
+		try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, idx);
+		pstmt.setInt(2, memberIdx);
+		
+		resultCnt = pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		return resultCnt;
+	}
+
 }
+

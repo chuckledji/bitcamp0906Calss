@@ -7,41 +7,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import guestbook.dao.GuestBookDao;
-import guestbook.domain.WritingRequest;
+import guestbook.domain.WriteRequest;
 import jdbc.ConnectionProvider;
 
 public class GuestBookWriteService {
 
-	private GuestBookWriteService() {}
+	private GuestBookWriteService() {
+	}
+
 	private static GuestBookWriteService service = new GuestBookWriteService();
+
 	public static GuestBookWriteService getInstance() {
 		return service;
 	}
-	
-	public int insertWriting(HttpServletRequest request, HttpServletResponse response) {
-		
+
+	public int writeArticle(HttpServletRequest request, HttpServletResponse response) {
+
 		int resultCnt = 0;
-		
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		String memberidx = request.getParameter("memberidx");
-		
+
 		Connection conn = null;
-		
-		WritingRequest guestReq = new WritingRequest(title, content, Integer.parseInt(memberidx));
-		
+
 		try {
 			conn = ConnectionProvider.getConnection();
 			
-			resultCnt = GuestBookDao.getInstance().insertGuestBook(conn, guestReq);
+			String memberIdx = request.getParameter("memberIdx");
+			String subject = request.getParameter("subject");
+			String content = request.getParameter("content");
+			
+			WriteRequest writeRequest = new WriteRequest(Integer.parseInt(memberIdx), subject, content);
+			
+			resultCnt = GuestBookDao.getInstance().insertArticle(conn, writeRequest);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return resultCnt;
 	}
-	
-	
-	
+
 }

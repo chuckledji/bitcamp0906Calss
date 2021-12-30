@@ -21,7 +21,7 @@ public class DeptDao {
 	
 	private DeptDao(){}
 	private static DeptDao dao = new DeptDao();	//외부에서 쓰는 것을 막도록 private
-	public static DeptDao getInstance() {		//싱글톤패턴설명다시듣기
+	public static DeptDao getInstance() {		
 		return dao;
 	}
 	
@@ -56,7 +56,6 @@ public class DeptDao {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(rs);
@@ -70,7 +69,7 @@ public class DeptDao {
 		
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
-		String sql="INSERT INTO dept ( deptno, dname, loc) VALUES(?,?,?)";	//workbench가서 확인..12-16)1117
+		String sql = "INSERT INTO dept (deptno, dname, loc) VALUES (?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -83,9 +82,8 @@ public class DeptDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcUtil.close(pstmt); //다형성(PreparedStatement)
+			JdbcUtil.close(pstmt);
 		}
-		
 		
 		return resultCnt;
 	}
@@ -121,30 +119,27 @@ public class DeptDao {
 	public int editDept(Connection conn, Dept dept) {
 		
 		int resultCnt = 0;
-		
-		//updatesql
 		PreparedStatement pstmt = null;
 		
-		String sql = "update dept set dname =?, loc=?, deptno=?";
+		String sql = "UPDATE dept SET dname=?, loc=? WHERE deptno=?";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dept.getDname());
 			pstmt.setString(2, dept.getLoc());
 			pstmt.setInt(3, dept.getDeptno());
 			
-			resultCnt =pstmt.executeUpdate();
+			resultCnt = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	finally {
+		} finally {
 			JdbcUtil.close(pstmt);
 		}
 		
-		
-		
 		return resultCnt;
 	}
-
+	
 	public int deleteDept(Connection conn, String deptno) {
 		
 		int resultcnt =0;
@@ -159,7 +154,6 @@ public class DeptDao {
 			resultcnt = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(pstmt);

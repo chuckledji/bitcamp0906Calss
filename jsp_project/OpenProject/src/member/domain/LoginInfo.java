@@ -28,5 +28,10 @@ public class LoginInfo {
 	public String toString() {
 		return "LoginInfo [userId=" + userId + ", userName=" + userName + ", photo=" + photo + "]";
 	}
+	public int getIdx() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 
 }

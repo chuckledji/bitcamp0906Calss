@@ -9,52 +9,69 @@
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 
 <style>
-#content>div{
-	padding : 15px;
+#content>div {
+	padding: 15px;
 }
-#content>table{
-	border : 0;
+#content>table {
+	border: 0;
 	border-collapse: collapse;
-	width : 900px;
+	
+	width: 900px;
 }
-#content>table td, #content>table th{
-	border : 1px solid #aaa;
-	padding : 10px;
+#content>table td, #content>table th {
+	/* border: 1px solid #aaa; */
+	padding: 10px;
+	
 	text-align: center;
 }
-#listInfo{
-	border : 1px solid #aaa;
+#content>table tr {
+	border: 1px solid #aaa;
+}
+#content>table>tbody>tr:hover {
+	background-color: #ddd;
+}
+#content>table th:nth-child(1) { width: 40px;}
+#content>table th:nth-child(3) { width: 150px;}
+#content>table th:nth-child(4) { width: 200px;}
+#content>table td>img {
+	height : 25px;
+	border: 1px solid #aaa;
+	border-radius: 50%;
+	
+	/* vertical-align: middle; */
+}
+#listInfo {
+	/* border : 1px solid #aaa; */
 	width : 870px;
 }
-#paging{
-	overflow : hidden; 
+#paging {
+	overflow: hidden;
 }
-#paging>a{
-	display : block;
+#paging>a {
+	display: block;
 	
-	width : 30px;
+	width: 30px;
 	height: 30px;
 	
-	border : 1px solid #aaa;
+	border: 1px solid #aaa;
 	
 	text-align: center;
 	line-height: 30px;
 	
 	float : left;
 	
-	margin-right : 5px;
+	margin-right: 5px;
 	
 	text-decoration: none;
 }
-#paging>a:hover{
-	background-color : #ff0;
-	color : #00f;
+#paging>a:hover {
+	background-color: #ff0;
+	color: #00f;
 }
-.curpage{
+.curpage {
 	background-color: #333;
-	color : #fff;
+	color: #fff;
 }
-
 </style>
 </head>
 <body>
@@ -71,34 +88,35 @@
 	<div id="content">
 		<h3>방명록 리스트</h3>
 		<hr>
-		<div id = "listInfo">
-			전체 글: ${listView.totalCount} , 현재 페이지: ${listView.currentPage}/${listView.pageTotalCount} 
+		<div id="listInfo">
+			방명록 메시지 수: ${listView.totalCount}개 , 현재 페이지: ${listView.currentPage}/${listView.pageTotalCount} 
 		</div>
 		<table>
-			<tr>
-				<th>idx</th>
-				<th>subject</th>
-				<th>writer</th>
-				<th>regdate</th>
-				<th></th>
-			</tr>
+			<thead>
+				<tr>
+					<th>idx</th>
+					<th>subject</th>
+					<th>writer</th>
+					<th>regdate</th>
+				</tr>
+			</thead>
 			
 			<c:if test="${empty listView.list}">\
 			<tr>
-				<td colspan="5">현재 등록된 방명록이 없습니다.</td>
+				<td colspan="4">등록된 게시물 데이터가 없습니다.</td>
 			</tr>
 			</c:if>
 			<c:if test="${not empty listView.list}">
 			
-			<c:forEach items="${listView.list}" var="guestbook">
+			<c:forEach items="${listView.list}" var="article">
 			<tr>
-				<td>${guestbook.idx}</td>
-				<td>${guestbook.subject}</td>
-				<td>${guestbook.userid}</td>
-				<td>${guestbook.regdate}</td>
+				<td>${article.idx}</td>
+				<td><a href="${pageContext.request.contextPath}/guestbook/view.do?idx=${article.idx}">${article.subject}</a></td>
 				<td>
-					<a href="">보기</a>				
+					<img src="${pageContext.request.contextPath}/uploadfile/${article.photo}">
+					${article.username}
 				</td>
+				<td>${article.regdate}</td>
 			</tr>
 			</c:forEach>
 			
@@ -110,7 +128,7 @@
 			<c:if test="${listView.pageTotalCount > 0}">
 			
 			<c:forEach begin="1" end="${listView.pageTotalCount}" var="pnum">
-				<a href="list.do?p=${pnum}" class="${listView.currentPage eq pnum ? 'curpage' : ''}">${pnum}</a>  
+				<a href="list.do?p=${pnum}" class="${listView.currentPage eq pnum ? 'curpage': ''}">${pnum}</a>  
 			</c:forEach>
 			
 			</c:if>
@@ -126,8 +144,11 @@
 	<%@ include file="/WEB-INF/views/frame/footerset.jsp" %>
 
 <script>
-
-
 </script>
+
 </body>
 </html>
+
+
+
+
