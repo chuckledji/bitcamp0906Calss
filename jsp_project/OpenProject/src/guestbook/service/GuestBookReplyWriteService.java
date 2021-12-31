@@ -84,7 +84,7 @@ public class GuestBookReplyWriteService {
 		writeRepy(request, response);
 
 		// List<ReplyListItem> -> JSON
-		int idx = Integer.parseInt(request.getParameter("guestbookIdx"));
+		int idx = Integer.parseInt(request.getParameter("guestbook4Idx"));
 
 		Connection conn = null;
 		List<ReplyListItem> list = null;
