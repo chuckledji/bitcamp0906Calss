@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<context:annotation-config/>
+	<context:component-scan base-package="mm"></context:component-scan>	
+	
+	<bean id="memberDao"  class="mm.dao.MemberDao"/>	
+	<bean id="regService" class="mm.service.MemberRegService"/>
+	<bean id="changeService" class="mm.service.ChangePasswordService"/>
+	
+</beans>
