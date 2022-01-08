@@ -25,6 +25,50 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	
+	
+	<!-- 20220106 추가 -->
+	
+	<beans:bean id="multipartResolver"
+				class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" >
+			<beans:value>utf-8</beans:value>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="authCheckInterceptor" class="com.bitcamp.mvc.intercepter.AuthCheckInterceptor"/>
+	
+	
+	<interceptors>
+	
+		<interceptor>															<!-- 한개의 핸들러인터셉터 생성 -->
+			
+			<mapping path="/mypage/**"/>										<!-- 인터셉터를 적용할 경로 설정 -->
+			<beans:bean class="com.bitcamp.mvc.intercepter.TestInterceptor1"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/mypage/**"/>
+			<beans:bean class="com.bitcamp.mvc.intercepter.TestInterceptor2"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/mypage/**"/>
+			<beans:bean class="com.bitcamp.mvc.intercepter.TestInterceptor3"/>
+		</interceptor>
+		
+		
+		<interceptor>
+			<mapping path="/mypage/**"/>
+			<exclude-mapping path="/mypage/help/**"/>						<!-- 일부 경로를 제외를 하고싶을때 사용 -->
+			<beans:ref bean="authCheckInterceptor"/>							<!-- 따로 설정한 bean객체를 참조 -->
+		</interceptor>
+		
+	</interceptors>
+	<!-- /20220106 추가 -->
+	
+	
+	
 	<!-- <beans:bean id="helloService" class="com.bitcamp.mvc.HelloService"/> -->
 	
 	

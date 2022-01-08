@@ -13,12 +13,12 @@ public class SimpleController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 사용자 요청받기
+		// 1. 사용자 요청 받기
 		doProcess(request, response);	//호출
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 사용자 요청받기
+		// 1. 사용자 요청 받기
 		doProcess(request, response);	//호출
 	}
 	

@@ -30,7 +30,7 @@ public class MemberDao {
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
 		
-		String sql = "insert into member(userid, pw, username, photo) values (?,?,?,?)";
+		String sql = "insert into member(userid, password, username, photo) values (?,?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);	//이번엔 서비스에서 예외처리하도록 처리.

@@ -18,9 +18,9 @@ public class GuestBookWriteCommandImpl implements Command {
 			view = "/WEB-INF/views/guestbook/writeform.jsp";
 			
 		} else if(request.getMethod().equals("POST")) {
-			
+			System.out.println("문제찾기-controller-1");
 			request.setAttribute("result", GuestBookWriteService.getInstance().writeArticle(request, response));
-			
+			System.out.println("문제찾기-controller-2");
 			view = "/WEB-INF/views/guestbook/write.jsp";
 		}
 		

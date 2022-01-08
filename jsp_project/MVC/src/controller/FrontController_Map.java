@@ -130,14 +130,15 @@ public class FrontController_Map extends HttpServlet{
 			command = new BadRequestCommandImpl();
 		}
 		
+		
 	
 		//4. 결과를 request객체의 속성에 저장한다 : view페이지에 결과 데이터를 공유(전달)한다.
 	
 		String viewPage = command.getPage(request, response);
 		
 		//5. view페이지를 지정(선택)하고 -> 포워딩
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);	//절대경로와는 다른것! 다시듣기
-		dispatcher.forward(request, response);		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
 		
 		
 	}

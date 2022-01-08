@@ -29,31 +29,37 @@ public class FrontController extends HttpServlet  {
 		
 		// 설정 파일에 init-param 설정된 경로 가져오기
 		String configFile = config.getInitParameter("configPath");
+		System.out.println("1");
 		// 시스템 경로 실제 경로
 		String configPath = config.getServletContext().getRealPath(configFile);
-		
+		System.out.println("2");
 				
 		// 프로퍼티(MAP 파생된 클래스) 파일 생성
 		// 파일 -> 객체
 		
 		Properties prop = new Properties();
+		System.out.println("3");
 		FileInputStream fis = null;
-		
+		System.out.println("4");
 		try {
+			System.out.println("4-1");
 			fis = new FileInputStream(configPath);
-			
+			System.out.println("5");
 			// 파일 -> 객체 Properties
 			prop.load(fis);
-			
+			System.out.println("6");
 			fis.close();
+			System.out.println("7");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			System.out.println("8");
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("9");
 		}
 		
 		Iterator<Object> itr = prop.keySet().iterator();
-		
+		System.out.println("10");
 		while(itr.hasNext()) {
 			
 			String command = (String) itr.next();

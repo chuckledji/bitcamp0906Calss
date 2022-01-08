@@ -1,13 +1,13 @@
 package com.bitcamp.mvc.domain;
 
-public class SerchType {
+public class SearchType {
 
 	private int value;
 	private String text;
 	
-	public SerchType() {}
+	public SearchType() {}
 
-	public SerchType(int value, String text) {
+	public SearchType(int value, String text) {
 		this.value = value;
 		this.text = text;
 	}
