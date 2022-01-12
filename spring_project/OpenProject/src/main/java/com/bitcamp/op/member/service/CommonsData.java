@@ -1,4 +1,4 @@
-package com.bitcamp.op.service;
+package com.bitcamp.op.member.service;
 
 public interface CommonsData {
 

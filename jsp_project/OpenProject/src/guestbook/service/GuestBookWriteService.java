@@ -33,11 +33,11 @@ public class GuestBookWriteService {
 			String memberIdx = request.getParameter("memberIdx");
 			String subject = request.getParameter("subject");
 			String content = request.getParameter("content");
-			System.out.println("문제찾기-service-1");
+			
 			WriteRequest writeRequest = new WriteRequest(Integer.parseInt(memberIdx), subject, content);
-			System.out.println("문제찾기-service-2");
+			
 			resultCnt = GuestBookDao.getInstance().insertArticle(conn, writeRequest);
-			System.out.println("문제찾기-service-3");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

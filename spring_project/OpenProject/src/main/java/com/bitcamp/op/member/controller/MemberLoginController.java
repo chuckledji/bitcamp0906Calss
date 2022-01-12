@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bitcamp.op.member.domain.MemberLoginRequest;
+import com.bitcamp.op.member.exception.LoginInvalidException;
 import com.bitcamp.op.member.service.MemberLoginService;
 
 @Controller
@@ -24,6 +26,7 @@ public class MemberLoginController {
 		return "member/loginform";
 	}
 	
+	@PostMapping
 	public String login(
 				MemberLoginRequest loginRequest,
 				HttpSession session,

@@ -9,6 +9,7 @@ public class MemberRegRequest {
 	private String username;
 	private MultipartFile photo;
 	private String fileName;
+	private int idx;
 	
 	public String getUserid() {
 		return userid;
@@ -35,16 +36,18 @@ public class MemberRegRequest {
 		this.photo = photo;
 	}
 	
-	
-	
-	
 	public String getFileName() {
 		return fileName;
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 	
 	@Override
 	public String toString() {

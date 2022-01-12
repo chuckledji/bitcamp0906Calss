@@ -2,16 +2,23 @@ package member.domain;
 
 public class LoginInfo {
 
+	private int idx;
 	private String userId;
 	private String userName;
 	private String photo;
-	
-	public LoginInfo(String userId, String userName, String photo) {
+
+	public LoginInfo(int idx, String userId, String userName, String photo) {
+		this.idx = idx;
 		this.userId = userId;
 		this.userName = userName;
 		this.photo = photo;
 	}
-	//로그인중 정보변화는 있으면 안되므로 getter만 만든다
+
+	//로그인 중 정보변화는 없어야하므로 getter만 만든다
+	public int getIdx() {
+		return idx;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -23,15 +30,10 @@ public class LoginInfo {
 	public String getPhoto() {
 		return photo;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "LoginInfo [userId=" + userId + ", userName=" + userName + ", photo=" + photo + "]";
+		return "LoginInfo [idx=" + idx + ", userId=" + userId + ", userName=" + userName + ", photo=" + photo + "]";
 	}
-	public int getIdx() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 
 }

@@ -16,28 +16,26 @@ import com.bitcamp.op.member.domain.MemberRegRequest;
 import com.bitcamp.op.member.service.MemberRegService;
 
 @Controller
-@RequestMapping("/member/reg")			//이클립스에서 command객체로 하던 것 어노테이션으로 정리
+@RequestMapping("/member/reg") // 이클립스에서 command객체로 하던 것 어노테이션으로 정리
 public class MemberRegController {
-	
+
 	@Autowired
 	private MemberRegService regService;
-	
-	
+
 	@GetMapping
 	public String getRegForm() {
 		return "member/regform";
 	}
-	
+
 	@PostMapping
-	public void memberReg(
-				MemberRegRequest regRequest,
-				Model model,
-				HttpServletRequest request
-				) throws IllegalStateException, IOException, SQLException {
-		//System.out.println(regRequest);
-		
-		model.addAttribute("result",regService.insertMember(regRequest, request));
+	public void memberReg(MemberRegRequest regRequest, Model model, HttpServletRequest request)
+			throws IllegalStateException, IOException, SQLException {
+		// System.out.println(regRequest);
+
+		model.addAttribute("result", regService.insertMember(regRequest, request));
+
+		System.out.println("@Controller: idx => " + regRequest.getIdx());
+		// view 페이지의 idx로 사용해서 redirect 처리 가능
 	}
-	
-	
+
 }

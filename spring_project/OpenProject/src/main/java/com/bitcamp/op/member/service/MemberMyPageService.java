@@ -1,41 +1,57 @@
 package com.bitcamp.op.member.service;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.op.dao.MemberDao;
-import com.bitcamp.op.jdbc.ConnectionProvider;
-import com.bitcamp.op.jdbc.JdbcUtil;
+import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
+import com.bitcamp.op.member.dao.MemberDao;
+import com.bitcamp.op.member.dao.MyBatisMemberDao;
 import com.bitcamp.op.member.domain.LoginInfo;
 import com.bitcamp.op.member.domain.Member;
 
 @Service
 public class MemberMyPageService {
 
-	@Autowired
+//	@Autowired
+//	private MemberDao dao;
+	
+//	@Autowired
+//	private JdbcTemplateMemberDao dao;
+	
+//	@Autowired
+//	private MyBatisMemberDao dao;
+	
 	private MemberDao dao;
+	@Autowired
+	private SqlSessionTemplate template;
+	
 	
 	public Member getMember(HttpSession session) throws SQLException {
 		
 		int memberIdx = ((LoginInfo)session.getAttribute("loginInfo")).getIdx();
 		
-		//Dao쪽으로 Idx보내고
 		Member member = null;
-		Connection conn = null;
+		//Connection conn = null;
+
+		dao = template.getMapper(MemberDao.class);					//Dao-SqlSessionTemplate
 		
-		try {
-			conn = ConnectionProvider.getConnection();
-			member = dao.selectByIdx(conn, memberIdx);
-		} finally {
-			JdbcUtil.close(conn);
-		}
-		
+		//try {
+			//conn = ConnectionProvider.getConnection();
+
+			//member = dao.selectByIdx(conn, memberIdx);			//Dao
+			member = dao.selectByIdx(memberIdx);					//JdbcTemplate, MyBatis, Dao-SqlSessionTemplate
+			System.out.println(dao.selectByIdx2(memberIdx));
+			
+		//} finally {
+		//	JdbcUtil.close(conn);
+		//}
+
 		return member;
-		
+
 	}
 }
