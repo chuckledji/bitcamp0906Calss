@@ -1,13 +1,14 @@
 package com.bitcamp.op.member.service;
 
-
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.accept.ParameterContentNegotiationStrategy;
 
 import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
 import com.bitcamp.op.member.dao.MemberDao;
@@ -19,54 +20,58 @@ import com.bitcamp.op.member.domain.SearchParams;
 @Service
 public class MemberListService {
 
-//	@Autowired
-//	private MemberDao dao;
+	// @Autowired
+	// private MemberDao dao;
 
-//	@Autowired
-//	private JdbcTemplateMemberDao dao;
-	
-//	@Autowired
-//	private MyBatisMemberDao dao;
+	// @Autowired
+	// private JdbcTemplateMemberDao dao;
+
+	// @Autowired
+	// private mybatisMemberDao dao;
 
 	private MemberDao dao;
+
 	@Autowired
 	private SqlSessionTemplate template;
-	
-	
-	// 페이지 당 표현할 회원의 수
+
+	// 페이지당 표현할 회원의 수
 	private final int COUNT_PER_PAGE = 3;
 
-	
-	public ListPageView getPageView(int pageNum) throws SQLException {
+	public ListPageView getPageView(SearchParams params) throws SQLException {
 
 		ListPageView view = null;
+		// Connection conn = null;
 
-		dao = template.getMapper(MemberDao.class);									//Dao-sqlSessionTemplate
-		
-//		Connection conn = null;
-//		try {
-//			conn = ConnectionProvider.getConnection();		
+		dao = template.getMapper(MemberDao.class);
+
+		// 검색 타입과 검색어를 확인 -> 모든 데이터가 null 이 아니어야 한다.
+		// 데이터 중 하나라도 null 이거나 공백이면 searchType 을 null 로 바꾸어야 한다.
+		if (params.getKeyword() == null || params.getKeyword().trim().isEmpty()) {
+			params.setSearchType(null);
+		}
 
 		// 전체 회원의 수
-		// int totalCount = dao.selectTotalCount(conn);
-		int totalCount = dao.selectTotalCount();									//커넥션 생략됨.
+		Map<String, String> searchMap = new HashMap<String, String>();
+		
+		searchMap.put("searchType", params.getSearchType());
+		searchMap.put("keyword", params.getKeyword());
+		
+		int totalCount = dao.selectTotalCount(searchMap);
 
 		// 현재 페이지 번호
 		// int currentPage = pageNum;
+		int currentPage = params.getP() == 0 ? 1 : params.getP();
 
-		int index = (pageNum - 1) * COUNT_PER_PAGE;
-//		List<Member> list = dao.selectList(conn, index, COUNT_PER_PAGE);			//Dao
-//		List<Member> list = dao.selectList(index, COUNT_PER_PAGE);					//JdbcTemplate
-//		SearchParams params = new SearchParams(index, COUNT_PER_PAGE, null,null);	//MyBatis-SqlSession
-//		List<Member> list = dao.selectList(params);									//MyBatis-SqlSession
-		List<Member> list = dao.selectList(COUNT_PER_PAGE, index);					//Dao-SqlSessionTemplate
-		
-		
-		view = new ListPageView(totalCount, pageNum, COUNT_PER_PAGE, list);
+		int index = (currentPage - 1) * COUNT_PER_PAGE;
+		// List<Member> list = dao.selectList(new SearchParams(index, COUNT_PER_PAGE));
 
-//		} finally {
-//			JdbcUtil.close(conn);
-//		}
+		params.setIndex(index);
+		params.setCount(COUNT_PER_PAGE);
+		
+		List<Member> list = dao.selectList(params);
+		// List<Member> list = dao.selectList(index, COUNT_PER_PAGE);
+
+		view = new ListPageView(totalCount, currentPage, COUNT_PER_PAGE, list);
 
 		return view;
 	}

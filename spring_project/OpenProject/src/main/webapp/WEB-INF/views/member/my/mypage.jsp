@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>회원 정보</title>
+<title>My Page</title>
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 
@@ -18,53 +19,53 @@
 }
 </style>
 
-
 </head>
 <body>
 
-	<!-- 해더 시작 -->
+	<!-- 헤더 시작 -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-	<!-- 해더 끝 -->
+	<!-- 헤더 끝 -->
 
-	<!-- 네비게이션 시작 -->
+	<!-- 내비게이션 시작 -->
 	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
-	<!-- 네비게이션 끝 -->
+	<!-- 내비게이션 끝 -->
 
 	<!-- content 시작 -->
 	<div id="content">
 		<h3>회원 정보</h3>
 		<hr>
+		
 			<table>
 				<tr>
 					<td>아이디</td>
-					<td> ${member.userid} </td>
+					<td>${member.userid}</td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td> ${member.password}</td>
+					<td>${member.password}</td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td> ${member.username}</td>
+					<td>${member.username}</td>
 				</tr>
 				<tr>
 					<td>사진</td>
 					<td>
-						<img src="${pageContext.request.contextPath}/uploadfile/${member.photo}" height="100">
+						<img src="${pageContext.request.contextPath}/uploadfile/${member.photo}" height="100px">
 					</td>
 				</tr>
 				<tr>
 					<td>가입일</td>
-					<td> ${member.regdate}</td>
-				</tr>		
+					<td>${member.regdate}</td>
+				</tr>
 			</table>
-
+		
+	
 	</div>
 	<!-- content 끝 -->
 
-
 	<!-- Javascript 추가 -->
-	<%@ include file="/WEB-INF/views/frame/footerset.jsp" %>
+	<%@ include file="/WEB-INF/views/frame/footerset.jsp"%>
 
 </body>
 </html>

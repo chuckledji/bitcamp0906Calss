@@ -1,18 +1,20 @@
 package com.bitcamp.op.member.domain;
 
 public class SearchParams {
-	
+
+	private int p;
 	private int index;
 	private int count;
-	private String serchType;
+	private String searchType;
 	private String keyword;
-	
-	public SearchParams() {}
-	
-	public SearchParams(int index, int count, String serchType, String keyword) {
+
+	public SearchParams() {
+	}
+
+	public SearchParams(int index, int count, String searchType, String keyword) {
 		this.index = index;
 		this.count = count;
-		this.serchType = serchType;
+		this.searchType = searchType;
 		this.keyword = keyword;
 	}
 
@@ -32,12 +34,12 @@ public class SearchParams {
 		this.count = count;
 	}
 
-	public String getSerchType() {
-		return serchType;
+	public String getSearchType() {
+		return searchType;
 	}
 
-	public void setSerchType(String serchType) {
-		this.serchType = serchType;
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
 	}
 
 	public String getKeyword() {
@@ -47,8 +49,31 @@ public class SearchParams {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+
+	public int getP() {
+		return p;
+	}
+
+	public void setP(int p) {
+		this.p = p;
+	}
+
+	@Override
+	public String toString() {
+		return "SearchParams [p=" + p + ", index=" + index + ", count=" + count + ", searchType=" + searchType
+				+ ", keyword=" + keyword + "]";
+	}
 	
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
@@ -17,52 +17,48 @@
 }
 </style>
 
-
 </head>
 <body>
 
-	<!-- 해더 시작 -->
+	<!-- 헤더 시작 -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-	<!-- 해더 끝 -->
+	<!-- 헤더 끝 -->
 
-	<!-- 네비게이션 시작 -->
+	<!-- 내비게이션 시작 -->
 	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
-	<!-- 네비게이션 끝 -->
+	<!-- 내비게이션 끝 -->
 
 	<!-- content 시작 -->
 	<div id="content">
 		<h3>로그인</h3>
 		<hr>
-		<!-- form 경로와 처리 경로가 동일 -> method 로 구분 -->
 		<form method="post">
-			<input type="hidden" name="url" value="${param.referer}">	<!-- 이동해야되는 url?다시듣기 -->
+			<input type="hidden" name="url" value="${param.referer}">
 			<table>
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="userid" value="${cookie.saveId != null ? cookie.saveId.value : ''}"></td>
+					<td><input type="text" name="userid" id="userid" value="${cookie.saveId != null ? cookie.saveId.value : ''}"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw"></td>
+					<td><input type="password" name="pw" id="pw"></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td> <input type="checkbox" name="saveid" value="on" ${cookie.saveId != null ? 'checked' : ''}> 아이디 저장하기</td>
-				</tr>				
+				</tr>		
 				<tr>
 					<td></td>
-					<td> <input type="submit" value="로그인"> <input type="reset"> </td>
-				</tr>			
+					<td><input type="submit" value="로그인"></td>
+				</tr>
 			</table>
-		
 		</form>
 	
 	</div>
 	<!-- content 끝 -->
 
-
 	<!-- Javascript 추가 -->
-	<%@ include file="/WEB-INF/views/frame/footerset.jsp" %>
+	<%@ include file="/WEB-INF/views/frame/footerset.jsp"%>
 
 </body>
 </html>

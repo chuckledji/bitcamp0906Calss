@@ -7,12 +7,10 @@ public class ListPageView {
 	private int totalCount;
 	private int currentPage;
 	private int countPerPage;
-	private int pageTotalCount;
 	private List<Member> list;
-	
-	
+	private int pageTotalCount;
+
 	public ListPageView(int totalCount, int currentPage, int countPerPage, List<Member> list) {
-		
 		this.totalCount = totalCount;
 		this.currentPage = currentPage;
 		this.countPerPage = countPerPage;
@@ -20,69 +18,55 @@ public class ListPageView {
 		calTotalCount();
 	}
 
-
 	private void calTotalCount() {
 		pageTotalCount = totalCount / countPerPage;
-		pageTotalCount = totalCount%countPerPage>0 ? pageTotalCount++ : pageTotalCount;
+		pageTotalCount = totalCount % countPerPage > 0 ? ++pageTotalCount : pageTotalCount;
 	}
-
 
 	public int getTotalCount() {
 		return totalCount;
 	}
 
-
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
-
 
 	public int getCurrentPage() {
 		return currentPage;
 	}
 
-
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-
 
 	public int getCountPerPage() {
 		return countPerPage;
 	}
 
-
 	public void setCountPerPage(int countPerPage) {
 		this.countPerPage = countPerPage;
 	}
-
-
-	public int getPageTotalCount() {
-		return pageTotalCount;
-	}
-
-
-	public void setPageTotalCount(int pageTotalCount) {
-		this.pageTotalCount = pageTotalCount;
-	}
-
 
 	public List<Member> getList() {
 		return list;
 	}
 
-
 	public void setList(List<Member> list) {
 		this.list = list;
 	}
 
+	public int getPageTotalCount() {
+		return pageTotalCount;
+	}
+
+	public void setPageTotalCount(int pageTotalCount) {
+		this.pageTotalCount = pageTotalCount;
+	}
 
 	@Override
 	public String toString() {
 		return "ListPageView [totalCount=" + totalCount + ", currentPage=" + currentPage + ", countPerPage="
-				+ countPerPage + ", pageTotalCount=" + pageTotalCount + ", list=" + list + "]";
+				+ countPerPage + ", list=" + list + ", pageTotalCount=" + pageTotalCount + "]";
 	}
-	
-	
-	
+
 }

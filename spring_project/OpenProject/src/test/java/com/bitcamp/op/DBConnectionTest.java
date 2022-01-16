@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 // 스프링 실행을 위한 설정
 @RunWith(SpringJUnit4ClassRunner.class)									//pom.xml에 spring-test를 등록해서 ~4ClassRunner추가 가능
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")	//이걸 해야 sqlsessionTemplate가능?1013수업
 public class DBConnectionTest {
 	
 	@Autowired
@@ -32,8 +32,8 @@ public class DBConnectionTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		//conn = dataSource.getConnection();
-		
+		//conn = dataSource.getConnection();	//dataSource에도 커넥션을 얻어올 수 있는 메소드가 있음.
+	
 	}
 
 	@After
