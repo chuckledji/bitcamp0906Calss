@@ -51,7 +51,7 @@ public class DaoTest {
 		map.put("searchType", "uid");
 		map.put("keyWord", "rrr");
 		int cnt = dao.selectTotalCount(map);
-		assertEquals("아이디가 rrr문자열을 포함하는 회원의 수", 3, cnt);								//select # from member where uid= %rrr%  ??맞나
+		assertEquals("아이디가 rrr문자열을 포함하는 회원의 수", 3, cnt);								//select # from member where uid= %rrr% 
 		
 		//fail("Not yet implemented");
 	}
