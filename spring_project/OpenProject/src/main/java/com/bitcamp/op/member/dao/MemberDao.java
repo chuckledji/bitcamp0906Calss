@@ -30,5 +30,7 @@ public interface MemberDao {
 	public int deleteByIdx(int memberIdx);
 
 	public int editMember(EditRequest editRequest);
+
+	public int selectCountByUserId(String userId);
 }
 

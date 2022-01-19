@@ -39,13 +39,14 @@
 		
 		$('#userid').focusout(function(){
 					
-			$.ajax({
-				url : 'checkid',
+			$.ajax({				 // http://localhost:8080/op/member/reg
+				url : 'checkid',	 // http://localhost:8080/op/member/checkid
 				type : 'get',
 				data : {
 					userid : $('#userid').val()
 				},
 				success : function(data){
+					console.log(' 통신 결과' : \data);
 					// Y | N
 					if(data == 'Y'){
 						// 사용 가능한 아이디
@@ -60,6 +61,7 @@
 					}
 				},
 				error : function(){
+					console.log(' 통신 결과' : \data);
 					console.log('비동기 통신 오류');
 				}
 			});

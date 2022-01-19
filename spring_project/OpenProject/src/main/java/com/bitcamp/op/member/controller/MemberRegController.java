@@ -16,7 +16,7 @@ import com.bitcamp.op.member.domain.MemberRegRequest;
 import com.bitcamp.op.member.service.MemberRegService;
 
 @Controller
-@RequestMapping("/member/reg") // 이클립스에서 command객체로 하던 것 어노테이션으로 정리
+@RequestMapping("/member/reg") // http://localhost:8080/op/member/reg
 public class MemberRegController {
 
 	@Autowired
