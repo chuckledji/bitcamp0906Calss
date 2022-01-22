@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.op. member.dao.JdbcTemplateMemberDao;
@@ -31,6 +32,10 @@ public class MemberRegService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	
 	
 	public int insertMember(MemberRegRequest regRequest, HttpServletRequest request)
@@ -56,6 +61,14 @@ public class MemberRegService {
 			regRequest.setFileName(newFileName);
 		}
 
+		//비밀번호 암호화
+		String bPw = encoder.encode(regRequest.getPw());
+		//야 모르게따 너무졸리다
+		System.out.println("평문 : "+regRequest.getPw());
+		System.out.println("암호문 : "+bPw);
+		System.out.println("암호문 사이즈 : "+bPw.length());
+		
+		
 		// DAO 를 이용해서 데이터 베이스 처리
 		//Connection conn = null;
 
@@ -70,7 +83,8 @@ public class MemberRegService {
 
 			//resultCnt = dao.insertMember(regRequest);			
 			//resultCnt = dao.insert(regRequest);
-			resultCnt = dao.insertMember(regRequest);
+			
+			//resultCnt = dao.insertMember(regRequest);
 			
 			
 			System.out.println("idx => " + regRequest.getIdx());
